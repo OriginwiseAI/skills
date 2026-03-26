@@ -2,16 +2,27 @@
 name: kpainter
 description: Connect a user's KPainter account and API key, then create or refine knowledge videos, slides, images, and web apps through conversation. Use when the user wants to create or refine KPainter content or choose the right KPainter format.
 metadata:
-  version: "0.1.0"
+  version: "0.6.0"
   homepage: https://kpainter.ai/
+  skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
   openapi_docs_url: https://kpainter.ai/docs/openapi
   api_key_url: https://kpainter.ai/api-key
 ---
 
-# KPainter
+# KPainter Skill
 
 Use this skill when an agent should help a user connect KPainter, choose the right output type, and create or refine content through normal conversation.
+
+## Official URLs
+
+| Resource | URL |
+| --- | --- |
+| Homepage | `https://kpainter.ai/` |
+| Skill file | `https://kpainter.ai/skill.md` |
+| Skills docs | `https://kpainter.ai/docs/skills` |
+| OpenAPI docs | `https://kpainter.ai/docs/openapi` |
+| API Key | `https://kpainter.ai/api-key` |
 
 ## Primary goals
 
@@ -134,6 +145,11 @@ Recommended behavior:
 2. Offer `Knowledge Video (Slides)` as the lower-cost alternative.
 3. Ask for confirmation instead of silently switching formats.
 
+Good fallback phrasing:
+
+- You may not have enough credits for a full Knowledge Video right now. I can switch this to Knowledge Video (Slides), which is usually cheaper. Do you want me to do that?
+- Your current credits may be a better fit for Knowledge Video (Slides). If you want, I can keep the same topic and switch only the format.
+
 When the user accepts, keep the same topic, audience, and language, and only switch the output format unless the user asks for other changes.
 
 ## How the agent should talk to the user
@@ -212,8 +228,73 @@ After the first result, the user may say things like:
 - make it more polished
 - switch it to Knowledge Video (Slides)
 - switch it to vector animation
+- keep it as an explainer video but make it feel more like a finished short video
 - keep the same topic but change the tone
 - make it more suitable for classroom use
+
+## Install options
+
+### Skills CLI
+
+Quick install while this repository contains one public skill:
+
+```bash
+npx skills add OriginwiseAI/skills
+```
+
+Install this skill explicitly:
+
+```bash
+npx skills add OriginwiseAI/skills --skill kpainter
+```
+
+Install all skills in this repository explicitly:
+
+```bash
+npx skills add OriginwiseAI/skills --all
+```
+
+You can preview discovery before installing:
+
+```bash
+npx skills add OriginwiseAI/skills --list
+```
+
+### Legacy Bun command
+
+For teams that still use the old package name, the legacy Bun command is:
+
+```bash
+bunx add-skill OriginwiseAI/skills
+bunx add-skill OriginwiseAI/skills --skill kpainter
+```
+
+Prefer `npx skills add` for new documentation and examples.
+
+### Direct URL
+
+Give the agent this file directly:
+
+`https://kpainter.ai/skill.md`
+
+### Local skill folder
+
+For agents that support local skill folders, save this file as a local skill.
+
+Example:
+
+```bash
+mkdir -p ~/.codex/skills/kpainter
+curl -s https://kpainter.ai/skill.md > ~/.codex/skills/kpainter/SKILL.md
+```
+
+If the agent platform uses a different skills directory, save the same file there instead.
+
+### Where to read more
+
+- `https://kpainter.ai/docs/skills`
+- `https://kpainter.ai/docs/openapi`
+- `https://kpainter.ai/api-key`
 
 ## Security rules
 
@@ -221,6 +302,15 @@ After the first result, the user may say things like:
 - the agent should not ask the user to share the key with unrelated services
 - the agent should not present itself as the KPainter account owner
 - if the user resets the key, the agent should ask the user to reconnect it
+
+## Update guidance
+
+If KPainter skills stop working or the user changes keys, the agent should:
+
+1. reread this file or refresh the local skill
+2. ask the user to reconnect the latest API key
+3. confirm the available output types again
+4. ask what the user wants to create now
 
 ## Success state
 

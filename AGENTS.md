@@ -4,6 +4,7 @@
 
 - This repository is the canonical source for all public KPainter / Originwise skills.
 - Skill content should be maintained here first, then mirrored to other repos or websites only if needed.
+- The current public website mirror target is `kgp-web/public/skill.md`.
 
 ## Naming
 

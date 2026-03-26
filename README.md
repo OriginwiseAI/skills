@@ -52,5 +52,6 @@ skills/
 ## Notes
 
 - This repository is the canonical source for public skill content.
+- The public site mirror at `https://kpainter.ai/skill.md` should be synced from `skills/kpainter/SKILL.md`, not edited separately.
 - Public metadata should stay English-first for broad marketplace compatibility.
 - The skill supports the user's preferred language. Multilingual examples are examples, not a language allowlist.
