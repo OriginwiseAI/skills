@@ -38,7 +38,7 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Current Skill
 
 - `kpainter`
-  Connect a user's KPainter account and API key, then create or refine knowledge videos, slides, images, and web apps through conversation.
+  Turn one prompt into controllable knowledge videos, slides, images, and web apps with KPainter.
 
 ## Repository Layout
 

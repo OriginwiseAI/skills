@@ -36,7 +36,7 @@ Create knowledge videos, slides, images, and web apps from one prompt.
 
 ## English One-Paragraph Description
 
-KPainter helps users turn one topic into polished knowledge outputs through normal conversation. Connect a KPainter account and API key, then create or refine Knowledge Video, Knowledge Video (Slides), Vector Animation, Slides, Image, and Web App results without leaving the current agent workflow.
+KPainter helps users turn one topic into polished knowledge outputs through normal conversation. Create or refine Knowledge Video, Knowledge Video (Slides), Vector Animation, Slides, Image, and Web App results with a more controllable workflow than generic video generators. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
 
 ## Official Links
 
