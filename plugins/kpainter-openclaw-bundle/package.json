@@ -2,12 +2,26 @@
   "name": "kpainter-openclaw-bundle",
   "displayName": "KPainter OpenClaw Bundle",
   "version": "0.1.0",
+  "description": "OpenClaw bundle metadata pack for KPainter distribution targets.",
+  "type": "module",
+  "files": [
+    "README.md",
+    "openclaw.bundle.json",
+    "dist/README.md",
+    "dist/bundle-manifest.json"
+  ],
   "openclaw": {
     "bundleFormat": "openclaw-bundle",
     "hostTargets": [
       "desktop",
       "mobile"
-    ]
+    ],
+    "compat": {
+      "minGatewayVersion": "2026.3.22"
+    },
+    "build": {
+      "openclawVersion": "2026.3.22"
+    }
   },
   "repository": {
     "type": "git",

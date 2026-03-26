@@ -182,7 +182,10 @@ Example `package.json`:
   "version": "0.1.0",
   "openclaw": {
     "bundleFormat": "openclaw-bundle",
-    "hostTargets": ["desktop", "mobile"]
+    "hostTargets": ["desktop", "mobile"],
+    "compat": {
+      "minGatewayVersion": "2026.3.22"
+    }
   }
 }
 ```
@@ -191,7 +194,9 @@ Example `openclaw.bundle.json`:
 
 ```json
 {
-  "id": "kpainter.bundle"
+  "id": "kpainter-openclaw-bundle",
+  "hostTargets": ["desktop", "mobile"],
+  "format": "openclaw-bundle"
 }
 ```
 
@@ -213,6 +218,7 @@ Notes:
 - bundle plugins do not need the code-plugin source repo requirement
 - bundle plugins still need a clear host target story
 - if `openclaw.bundle.json` is omitted, `--host-targets` is still required
+- a lightweight metadata pack is acceptable as a first bundle release if it clearly declares host targets and does not pretend to execute code
 
 ## VirusTotal `Pending`
 
@@ -237,8 +243,8 @@ The lowest-risk order for KPainter is:
 
 1. Keep `kpainter` as the current public `skill`
 2. Publish `kpainter-openclaw` as a preview `code-plugin` only after validating it on the target OpenClaw version
-3. Publish a separate `bundle-plugin` only if KPainter needs host-specific bundle packaging or bundle-only distribution
-4. Keep `kpainter-openclaw-bundle` as a scaffold until there is a real bundle artifact or host-target story
+3. Publish `kpainter-openclaw-bundle` as a preview `bundle-plugin` when KPainter wants a distinct bundle-only distribution line for host targets
+4. If future hosts need real bundle assets, publish forward under the same bundle package name instead of creating a third package name
 
 Important current caution:
 

@@ -1,0 +1,18 @@
+{
+  "bundleId": "kpainter-openclaw-bundle",
+  "displayName": "KPainter OpenClaw Bundle",
+  "summary": "Metadata bundle for KPainter distribution across OpenClaw hosts.",
+  "hostTargets": [
+    "desktop",
+    "mobile"
+  ],
+  "relatedPackages": {
+    "skill": "kpainter",
+    "codePlugin": "kpainter-openclaw"
+  },
+  "links": {
+    "homepage": "https://kpainter.ai/",
+    "docs": "https://kpainter.ai/docs/skills",
+    "apiKey": "https://kpainter.ai/api-key"
+  }
+}

@@ -1,20 +1,48 @@
 # KPainter OpenClaw Bundle
 
-Draft ClawHub `bundle-plugin` package for KPainter.
+OpenClaw `bundle-plugin` package for KPainter.
 
-## Status
+## What it is
 
-This is a scaffold only.
+This package is a lightweight bundle-family metadata pack for KPainter's
+OpenClaw distribution surface.
 
-It exists to define a separate bundle package name, host target shape, and
-publish command. The `dist/` folder currently contains placeholder notes and
-should be replaced with real bundle artifacts before any real public release.
+It does not execute code. Instead, it declares:
+
+- bundle-family package identity separate from the `kpainter` skill and the `kpainter-openclaw` code plugin
+- host targets for `desktop` and `mobile`
+- a small bundle manifest describing what this package is meant to accompany
+
+This is useful when a downstream host or marketplace flow wants a bundle-only
+artifact line without overloading the code-plugin package name.
 
 ## Files
 
 - `package.json`
 - `openclaw.bundle.json`
+- `dist/bundle-manifest.json`
 - `dist/README.md`
+
+## Current intent
+
+This bundle currently acts as a distribution metadata pack that points to the
+real KPainter surfaces:
+
+- skill: `kpainter`
+- code plugin: `kpainter-openclaw`
+- homepage: `https://kpainter.ai/`
+
+## Validation
+
+Before publishing:
+
+```bash
+cd plugins/kpainter-openclaw-bundle
+jq . package.json >/dev/null
+jq . openclaw.bundle.json >/dev/null
+jq . dist/bundle-manifest.json >/dev/null
+npm pack --dry-run
+```
 
 ## Suggested publish command
 
@@ -26,12 +54,10 @@ clawhub package publish ./plugins/kpainter-openclaw-bundle \
   --version 0.1.0 \
   --bundle-format openclaw-bundle \
   --host-targets desktop,mobile \
-  --changelog "Initial draft bundle-plugin release"
+  --changelog "Initial preview bundle-plugin release"
 ```
 
-## TODO Before Publishing
+## Current caveats
 
-- replace placeholder bundle files with real artifacts
-- confirm the final bundle id
-- confirm supported host targets
-- confirm the release version
+- This package is intentionally bundle-only metadata, not a runnable plugin.
+- If KPainter later needs host-specific assets or a concrete bundle binary layout, publish a new version that adds those artifacts under the same package name.

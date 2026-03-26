@@ -1,4 +1,10 @@
 {
-  "id": "kpainter.bundle",
-  "name": "KPainter OpenClaw Bundle"
+  "id": "kpainter-openclaw-bundle",
+  "name": "KPainter OpenClaw Bundle",
+  "description": "Metadata bundle for distributing KPainter across OpenClaw host targets.",
+  "format": "openclaw-bundle",
+  "hostTargets": [
+    "desktop",
+    "mobile"
+  ]
 }
