@@ -42,4 +42,4 @@
 
 - `npx skills add <owner>/<repo>` depends on the remote repository being publicly cloneable. If the Git host returns `403` for anonymous clone, remote installation fails even when the repo exists.
 - A repo with no valid `SKILL.md` returns `No valid skills found. Skills require a SKILL.md with name and description.`
-- 2026-03-26 `kpainter@0.6.0` has been published to ClawHub under owner `bbgasj`; future version bumps should keep the slug stable and publish new semver versions instead of creating a second public slug unless there is a deliberate migration plan.
+- 2026-03-26 `kpainter` has been published to ClawHub under owner `bbgasj`; keep the slug stable and publish forward with new semver versions (currently `0.6.1` after the multilingual example refresh) instead of creating a second public slug unless there is a deliberate migration plan.

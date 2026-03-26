@@ -2,7 +2,7 @@
 name: kpainter
 description: Connect a user's KPainter account and API key, then create or refine knowledge videos, slides, images, and web apps through conversation. Use when the user wants to create or refine KPainter content or choose the right KPainter format.
 metadata:
-  version: "0.6.0"
+  version: "0.6.1"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
