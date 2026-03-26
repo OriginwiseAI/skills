@@ -38,6 +38,11 @@ Recommended naming:
 
 Do not try to publish the same package name once as `code-plugin` and again as `bundle-plugin`.
 
+This repo now keeps matching draft scaffolds under:
+
+- `plugins/kpainter-openclaw`
+- `plugins/kpainter-openclaw-bundle`
+
 ## When to use each family
 
 ### `code-plugin`

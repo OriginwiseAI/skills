@@ -1,0 +1,17 @@
+{
+  "name": "kpainter-openclaw-bundle",
+  "displayName": "KPainter OpenClaw Bundle",
+  "version": "0.1.0",
+  "openclaw": {
+    "bundleFormat": "openclaw-bundle",
+    "hostTargets": [
+      "desktop",
+      "mobile"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OriginwiseAI/skills.git",
+    "directory": "plugins/kpainter-openclaw-bundle"
+  }
+}

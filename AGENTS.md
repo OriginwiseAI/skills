@@ -34,6 +34,7 @@
 - Keep `SKILL.md` concise and agent-facing.
 - Put repository-level human guidance in `README.md`, not inside the skill folder.
 - Put marketplace copy, rollout plans, and channel checklists in `docs/`, not in the skill folder.
+- Draft ClawHub plugin package scaffolds may live under `plugins/<package-name>/`; keep them clearly separated from installable `skills/` content and document their publish commands in repo docs.
 
 ## Product Language
 
@@ -50,3 +51,4 @@
 - 2026-03-26 ClawHub skill listing summary is driven by the published `SKILL.md` payload, especially the frontmatter `description`, and may be visually followed by the opening paragraph. Treat those two fields as the canonical marketplace summary source; do not lead them with setup wording like account or API-key connection steps.
 - 2026-03-26 ClawHub plugin packages are family-locked by package name: a name first published as `code-plugin` cannot later be republished as `bundle-plugin`, so KPainter should use separate package names for separate plugin families.
 - 2026-03-26 ClawHub `VirusTotal Pending` is an asynchronous scan state, not an immediate malware verdict; plugin releases stay private until verification completes, while skill downloads may remain temporarily blocked until VT finishes.
+- 2026-03-26 KPainter draft ClawHub plugin scaffolds now live under `plugins/kpainter-openclaw` and `plugins/kpainter-openclaw-bundle`; treat them as release skeletons only, not finished integrations.

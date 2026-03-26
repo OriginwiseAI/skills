@@ -51,6 +51,16 @@ docs/
   distribution-roadmap.md
   kpainter-mcp-mvp.md
   marketplace-asset-pack.md
+plugins/
+  README.md
+  kpainter-openclaw/
+    package.json
+    openclaw.plugin.json
+    src/index.js
+  kpainter-openclaw-bundle/
+    package.json
+    openclaw.bundle.json
+    dist/README.md
 skills/
   kpainter/
     SKILL.md
