@@ -47,6 +47,7 @@ assets/
   brand/
   screenshots/
 docs/
+  clawhub-plugin-publishing.md
   distribution-roadmap.md
   kpainter-mcp-mvp.md
   marketplace-asset-pack.md
@@ -73,6 +74,7 @@ skills/
 ## Planning Docs
 
 - Marketplace asset pack: `docs/marketplace-asset-pack.md`
+- ClawHub plugin publishing guide: `docs/clawhub-plugin-publishing.md`
 - Distribution roadmap: `docs/distribution-roadmap.md`
 - MCP MVP spec: `docs/kpainter-mcp-mvp.md`
 - Tencent SkillHub listing pack: `docs/tencent-skillhub-listing.md`
