@@ -185,6 +185,8 @@ If the intended output language is unclear, ask one short follow-up question bef
 
 ## Multilingual examples
 
+Examples only, not a language allowlist.
+
 ### English
 
 > Make a knowledge video that explains MCP clearly.
@@ -204,6 +206,14 @@ If the intended output language is unclear, ask one short follow-up question bef
 ### Spanish
 
 > Crea un video de conocimiento que explique MCP con claridad.
+
+### Korean
+
+> MCP를 명확하게 설명하는 지식 영상을 만들어 주세요.
+
+### French
+
+> Crée une vidéo de connaissance qui explique clairement le MCP.
 
 ## Example user requests
 
