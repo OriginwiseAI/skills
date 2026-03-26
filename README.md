@@ -43,7 +43,7 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Plugin Packages
 
 - `plugins/kpainter-openclaw`
-  Preview OpenClaw `code-plugin` with KPainter catalog, account, create, list, detail, and status tools.
+  Preview OpenClaw `code-plugin` with KPainter catalog, account, create, list, detail, and status tools. Published to ClawHub as `kpainter-openclaw@0.1.0`.
 - `plugins/kpainter-openclaw-bundle`
   Draft OpenClaw `bundle-plugin` scaffold, not published as a real bundle yet.
 
