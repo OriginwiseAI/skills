@@ -76,3 +76,4 @@ skills/
 - Distribution roadmap: `docs/distribution-roadmap.md`
 - MCP MVP spec: `docs/kpainter-mcp-mvp.md`
 - Tencent SkillHub listing pack: `docs/tencent-skillhub-listing.md`
+- Tencent SkillHub outreach template: `docs/tencent-skillhub-outreach.md`
