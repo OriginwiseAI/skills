@@ -20,7 +20,7 @@ does not leak into the installable `SKILL.md` surface.
 Publishing status:
 
 1. `kpainter-openclaw` now contains a real minimal runtime and has been published to ClawHub as preview release `0.1.0`.
-2. `kpainter-openclaw-bundle` is now a real bundle-family metadata pack and is ready for first preview publish.
+2. `kpainter-openclaw-bundle` is now a real bundle-family metadata pack and has been published to ClawHub as preview release `0.1.0`.
 
 Before publishing any plugin release:
 

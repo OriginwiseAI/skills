@@ -46,7 +46,9 @@ This repo now keeps matching draft scaffolds under:
 Current published state:
 
 - `kpainter-openclaw@0.1.0` has been accepted by ClawHub as a `code-plugin`
+- `kpainter-openclaw-bundle@0.1.0` has been accepted by ClawHub as a `bundle-plugin`
 - the first release is currently a preview runtime with KPainter API tools
+- the first bundle release is a metadata-only host-target pack, not runnable plugin code
 - initial security/verification scan state may remain `pending` right after publish
 
 ## When to use each family
