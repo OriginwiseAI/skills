@@ -1,4 +1,61 @@
 {
-  "id": "kpainter.openclaw",
-  "name": "KPainter OpenClaw"
+  "id": "kpainter-openclaw",
+  "name": "KPainter OpenClaw",
+  "description": "Use KPainter from OpenClaw to create knowledge videos, slides, images, and web apps.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "apiBaseUrl": {
+        "type": "string",
+        "default": "https://kpainter.ai/kp-app-api/v1",
+        "description": "KPainter API base URL."
+      },
+      "apiKey": {
+        "type": "string",
+        "description": "KPainter API key from https://kpainter.ai/api-key."
+      },
+      "requestTimeoutMs": {
+        "type": "integer",
+        "minimum": 1000,
+        "maximum": 120000,
+        "default": 30000,
+        "description": "Per-request timeout in milliseconds."
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "kpainter_get_create_catalog",
+      "description": "Fetch KPainter languages, voices, and visual-style catalog data."
+    },
+    {
+      "name": "kpainter_get_me",
+      "description": "Fetch the current KPainter user profile."
+    },
+    {
+      "name": "kpainter_get_credit_balance",
+      "description": "Fetch current KPainter credits and subscription balance."
+    },
+    {
+      "name": "kpainter_create_knowledge",
+      "description": "Create a KPainter knowledge video, slides, image, or web app."
+    },
+    {
+      "name": "kpainter_list_knowledge",
+      "description": "List the current user's KPainter creations."
+    },
+    {
+      "name": "kpainter_get_knowledge",
+      "description": "Fetch one KPainter creation by knowledge id."
+    },
+    {
+      "name": "kpainter_get_job_status",
+      "description": "Fetch KPainter job status by job id."
+    },
+    {
+      "name": "kpainter_get_knowledge_status",
+      "description": "Fetch KPainter knowledge status by knowledge id."
+    }
+  ]
 }

@@ -83,9 +83,23 @@ Example `package.json`:
   "name": "kpainter-openclaw",
   "displayName": "KPainter OpenClaw",
   "version": "0.1.0",
+  "type": "module",
+  "openclaw": {
+    "extensions": ["./src/index.js"],
+    "compat": {
+      "pluginApi": "^1.2.0"
+    },
+    "build": {
+      "openclawVersion": "2026.3.22"
+    },
+    "configSchema": {
+      "type": "object"
+    }
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OriginwiseAI/kpainter-openclaw.git"
+    "url": "https://github.com/OriginwiseAI/skills.git",
+    "directory": "plugins/kpainter-openclaw"
   }
 }
 ```
@@ -94,16 +108,31 @@ Example `openclaw.plugin.json`:
 
 ```json
 {
-  "id": "kpainter.openclaw",
-  "name": "KPainter OpenClaw"
+  "id": "kpainter-openclaw",
+  "name": "KPainter OpenClaw",
+  "configSchema": {
+    "type": "object"
+  }
 }
 ```
 
-Example placeholder runtime file:
+Minimum publish metadata now needed in practice:
 
-```js
-export const kpainterPluginPlaceholder = true;
-```
+- `openclaw.extensions`
+- `openclaw.compat.pluginApi`
+- `openclaw.build.openclawVersion`
+- config schema metadata
+
+Current KPainter runtime scope:
+
+- `kpainter_get_create_catalog`
+- `kpainter_get_me`
+- `kpainter_get_credit_balance`
+- `kpainter_create_knowledge`
+- `kpainter_list_knowledge`
+- `kpainter_get_knowledge`
+- `kpainter_get_job_status`
+- `kpainter_get_knowledge_status`
 
 Example publish command:
 
@@ -124,6 +153,8 @@ Notes:
 - `code-plugin` versions must be valid semver
 - ClawHub will reject the publish if `openclaw.plugin.json` is missing
 - ClawHub will reject the publish if `source-repo` or `source-commit` is missing
+- ClawHub backend now also extracts `openclaw.extensions`, compatibility metadata, build metadata, and config schema from the package payload
+- for KPainter, send both `Authorization: Bearer <key>` and `X-KGP-Api-Key: <key>` until the public API auth surface is fully unified
 
 ## Minimal `bundle-plugin` skeleton
 
@@ -199,7 +230,12 @@ Implications:
 The lowest-risk order for KPainter is:
 
 1. Keep `kpainter` as the current public `skill`
-2. Build a real `code-plugin` only when there is executable OpenClaw runtime behavior to ship
-3. Publish a separate `bundle-plugin` only if KPainter needs host-specific bundle packaging
+2. Publish `kpainter-openclaw` as a preview `code-plugin` only after validating it on the target OpenClaw version
+3. Publish a separate `bundle-plugin` only if KPainter needs host-specific bundle packaging or bundle-only distribution
+4. Keep `kpainter-openclaw-bundle` as a scaffold until there is a real bundle artifact or host-target story
 
-If KPainter only wants wider agent distribution first, do not rush the plugin track before the MCP track has a concrete runtime design.
+Important current caution:
+
+- external OpenClaw plugins are moving quickly right now
+- recent upstream regressions have affected `plugin-sdk` resolution and plugin-registered tools
+- treat the first KPainter plugin releases as preview-quality until runtime verification passes on a clean OpenClaw install

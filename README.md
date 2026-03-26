@@ -40,6 +40,13 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 - `kpainter`
   Turn one prompt into controllable knowledge videos, slides, images, and web apps with KPainter.
 
+## Plugin Packages
+
+- `plugins/kpainter-openclaw`
+  Preview OpenClaw `code-plugin` with KPainter catalog, account, create, list, detail, and status tools.
+- `plugins/kpainter-openclaw-bundle`
+  Draft OpenClaw `bundle-plugin` scaffold, not published as a real bundle yet.
+
 ## Repository Layout
 
 ```text

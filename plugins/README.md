@@ -10,14 +10,20 @@ They are intentionally separate from the public `skills/` directory:
 Current draft packages:
 
 - `kpainter-openclaw`
-  Draft `code-plugin`
+  First real `code-plugin` preview for KPainter API tools
 - `kpainter-openclaw-bundle`
   Draft `bundle-plugin`
 
-These folders are starting points, not finished runtime integrations.
+These folders are intentionally separate from `skills/` so ClawHub package work
+does not leak into the installable `SKILL.md` surface.
 
-Before publishing:
+Publishing status:
 
-1. Replace placeholder implementation files with real runtime behavior or bundle artifacts.
-2. Recheck package name, runtime id, and host targets.
+1. `kpainter-openclaw` now contains a real minimal runtime and can be packaged as a preview `code-plugin`.
+2. `kpainter-openclaw-bundle` remains a bundle-family scaffold only.
+
+Before publishing any plugin release:
+
+1. Recheck package name, runtime id, and host targets.
+2. Validate the package locally with `node --check` and `npm pack --dry-run`.
 3. Use the ClawHub publishing notes in `../docs/clawhub-plugin-publishing.md`.
