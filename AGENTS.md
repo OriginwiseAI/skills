@@ -17,6 +17,8 @@
 - Keep public marketplace-facing metadata English-first.
 - Multilingual support should be described as support for the user's preferred language or any language. Do not imply a limited allowlist unless the product actually has one.
 - Multilingual examples are allowed, but examples must not be framed as an exhaustive list of supported languages.
+- Public `SKILL.md` examples should keep at least a small multilingual spread beyond English and Chinese when space allows; Japanese, Arabic, and Spanish are currently good default examples, but still only as examples rather than a support boundary.
+- The current public OpenClaw / ClawHub slug is `kpainter`; keep install docs aligned with `openclaw skills install kpainter`.
 - While this repo contains only one public skill, README can use `npx skills add OriginwiseAI/skills` as the quick install command.
 - Also include the explicit install form `npx skills add OriginwiseAI/skills --skill kpainter`.
 - If the repo later contains multiple public skills, update README to distinguish:
@@ -40,3 +42,4 @@
 
 - `npx skills add <owner>/<repo>` depends on the remote repository being publicly cloneable. If the Git host returns `403` for anonymous clone, remote installation fails even when the repo exists.
 - A repo with no valid `SKILL.md` returns `No valid skills found. Skills require a SKILL.md with name and description.`
+- 2026-03-26 `kpainter@0.6.0` has been published to ClawHub under owner `bbgasj`; future version bumps should keep the slug stable and publish new semver versions instead of creating a second public slug unless there is a deliberate migration plan.

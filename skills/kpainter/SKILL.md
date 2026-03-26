@@ -183,6 +183,28 @@ The user can describe the topic, audience, tone, and constraints in any language
 The agent should preserve the user's requested output language unless the user asks to switch.
 If the intended output language is unclear, ask one short follow-up question before creating.
 
+## Multilingual examples
+
+### English
+
+> Make a knowledge video that explains MCP clearly.
+
+### Chinese
+
+> 帮我做一个讲清楚 MCP 的知识视频。
+
+### Japanese
+
+> MCP をわかりやすく説明する知識動画を作ってください。
+
+### Arabic
+
+> أنشئ فيديو معرفيًا يشرح MCP بشكل واضح.
+
+### Spanish
+
+> Crea un video de conocimiento que explique MCP con claridad.
+
 ## Example user requests
 
 ### Knowledge Video
@@ -233,6 +255,16 @@ After the first result, the user may say things like:
 - make it more suitable for classroom use
 
 ## Install options
+
+### OpenClaw / ClawHub
+
+Install this skill natively in OpenClaw with:
+
+```bash
+openclaw skills install kpainter
+```
+
+Publish and registry workflows use ClawHub, while the runtime install path uses OpenClaw's native skills commands.
 
 ### Skills CLI
 
