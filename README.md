@@ -43,6 +43,13 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Repository Layout
 
 ```text
+assets/
+  brand/
+  screenshots/
+docs/
+  distribution-roadmap.md
+  kpainter-mcp-mvp.md
+  marketplace-asset-pack.md
 skills/
   kpainter/
     SKILL.md
@@ -62,3 +69,10 @@ skills/
 - The current public OpenClaw / ClawHub slug is `kpainter`.
 - Public metadata should stay English-first for broad marketplace compatibility.
 - The skill supports the user's preferred language. Multilingual examples are examples, not a language allowlist.
+
+## Planning Docs
+
+- Marketplace asset pack: `docs/marketplace-asset-pack.md`
+- Distribution roadmap: `docs/distribution-roadmap.md`
+- MCP MVP spec: `docs/kpainter-mcp-mvp.md`
+- Tencent SkillHub listing pack: `docs/tencent-skillhub-listing.md`
