@@ -1,8 +1,8 @@
 ---
 name: kpainter
-description: Connect a user's KPainter account and API key, then create or refine knowledge videos, slides, images, and web apps through conversation. Use when the user wants to create or refine KPainter content or choose the right KPainter format.
+description: KPainter specializes in controllable knowledge video generation and turns one prompt into knowledge videos, slides (PPT), and interactive apps. Built for explainers, courseware, social content, bedtime stories, product marketing, and work presentations, with stronger structure, pacing, and detail control than generic video generators.
 metadata:
-  version: "0.6.1"
+  version: "0.6.3"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
@@ -12,7 +12,7 @@ metadata:
 
 # KPainter Skill
 
-Use this skill when an agent should help a user connect KPainter, choose the right output type, and create or refine content through normal conversation.
+Use this skill when an agent should help a user turn one prompt into a KPainter knowledge video, slides, image, or interactive app, especially when controllability, structure, and knowledge delivery matter more than generic video generation.
 
 ## Official URLs
 
