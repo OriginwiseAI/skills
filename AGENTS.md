@@ -45,6 +45,6 @@
 
 - `npx skills add <owner>/<repo>` depends on the remote repository being publicly cloneable. If the Git host returns `403` for anonymous clone, remote installation fails even when the repo exists.
 - A repo with no valid `SKILL.md` returns `No valid skills found. Skills require a SKILL.md with name and description.`
-- 2026-03-26 `kpainter` has been published to ClawHub under owner `bbgasj`; keep the slug stable and publish forward with new semver versions (currently `0.6.1` after the multilingual example refresh) instead of creating a second public slug unless there is a deliberate migration plan.
+- 2026-03-26 `kpainter` has been published to ClawHub under owner `bbgasj`; keep the slug stable and publish forward with new semver versions (currently `0.6.3`) instead of creating a second public slug unless there is a deliberate migration plan.
 - 2026-03-26 Tencent SkillHub has been identified as a domestic skill-style distribution surface adjacent to ClawHub, but a public self-serve submission flow has not yet been confirmed in this repo; keep a ready-to-submit Chinese listing pack and treat onboarding as potentially manual until proven otherwise.
-- 2026-03-26 ClawHub listing copy may surface the repo `README.md` `Current Skill` summary before or alongside `SKILL.md` opening guidance, so keep that README sentence marketplace-ready and do not lead with setup wording like account or API-key connection steps.
+- 2026-03-26 ClawHub skill listing summary is driven by the published `SKILL.md` payload, especially the frontmatter `description`, and may be visually followed by the opening paragraph. Treat those two fields as the canonical marketplace summary source; do not lead them with setup wording like account or API-key connection steps.
