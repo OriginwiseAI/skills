@@ -65,12 +65,12 @@ npm pack --dry-run
   --family code-plugin \
   --name kpainter-openclaw \
   --display-name "KPainter OpenClaw" \
-  --version 0.1.3 \
+  --version 0.1.4 \
   --source-repo OriginwiseAI/skills \
   --source-commit <git-sha> \
   --source-ref refs/heads/main \
   --source-path plugins/kpainter-openclaw \
-  --changelog "Refine marketplace wording and keep GPT-Image-2 as trailing image support note"
+  --changelog "Shorten marketplace summaries and keep GPT-Image-2 as a trailing note"
 ```
 
 ## Current caveats

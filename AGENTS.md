@@ -44,7 +44,7 @@
 
 ## Error Log
 
-- 2026-04-25 ClawHub / OpenClaw 的 skill、plugin、bundle summary 如果要提具体模型支持，不要把像 `GPT-Image-2` 这种 provider/model 名直接塞进核心功能并列列表里；在 dashboard 卡片里很容易把 `images` 断成难看的换行。更稳的做法是：先写 `videos / slides / images / interactive lessons` 这类产品能力，再追加一句 `Latest image support now includes GPT-Image-2.`
+- 2026-04-25 ClawHub / OpenClaw 的 skill、plugin、bundle summary 不只是“别把 `GPT-Image-2` 塞进功能并列列表里”，还要控制第一句整体长度；dashboard 卡片会很早截断。更稳的做法是：第一句压成 `KPainter turns one prompt into explainer videos, slides, images, and interactive lessons.`，第二句再补 `Latest image support includes GPT-Image-2.`
 - 2026-04-25 ClawHub / OpenClaw 这类公开 skill 与 plugin 展示面如果要把 `knowledge_video` 改成 `explainer_video`，不能只改网站镜像或单一文档；至少要同时更新 skill frontmatter `description`、`SKILL.md` 里的公开结果类型命名、code-plugin/bundle-plugin 的 package description，以及各自发布命令里的版本号，否则 dashboard 上三项会出现“skill 已改名、plugin 仍写 knowledge video、bundle 还是旧版本”的割裂状态。
 - 2026-04-25 如果再把公开结果类型 `web_app` 改成 `interactive_lesson`，要和 `explainer_video` 一样把“正式枚举”和“自然语言触发词”分开处理：对外技术名统一写 `interactive_lesson`，但 skill 用户语料仍应兼容 `web app / learning app / interactive page` 这些旧说法，避免只改枚举后自然语言触发能力变差。
 - `npx skills add <owner>/<repo>` depends on the remote repository being publicly cloneable. If the Git host returns `403` for anonymous clone, remote installation fails even when the repo exists.
