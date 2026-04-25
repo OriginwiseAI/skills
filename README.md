@@ -1,6 +1,6 @@
 # Originwise Skills
 
-Public skills for KPainter and future Originwise agent integrations.
+KPainter helps users explain any topic with explainer videos, slides, and interactive lessons, then bring those workflows into agents and products through Skills, OpenAPI, and MCP.
 
 ## Install
 
@@ -38,7 +38,24 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Current Skill
 
 - `kpainter`
-  Turn one prompt into controllable explainer videos, slides, GPT-Image-2-powered images, and interactive lessons with KPainter.
+  Explain any topic with explainer videos, slides, GPT-Image-2-powered images, and interactive lessons. Built for teaching, training, and demos, with clear structure, strong pacing, and more control than generic AI tools.
+
+## Current Positioning
+
+- Hero message: `Explain any topic with explainer videos, slides, and interactive lessons`
+- Core product promise: Turn topics, lessons, and documents into structured learning content.
+- Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, slides, images, and interactive lessons into your agent or product.
+
+## Core Formats
+
+- `Explainer Video`
+  Turn one topic into a structured, visually rich explainer that is easier to watch, remember, and share.
+- `Slides`
+  Organize content into presentation-ready slides for courseware, training, webinars, proposals, and page-by-page editing.
+- `Interactive Lessons`
+  Turn knowledge into interactive demos, guided exploration, practice, quizzes, and hands-on learning experiences.
+- `Image`
+  Generate GPT-Image-2-powered covers, posters, and visual summaries when one strong visual result is the fastest path.
 
 ## Plugin Packages
 
