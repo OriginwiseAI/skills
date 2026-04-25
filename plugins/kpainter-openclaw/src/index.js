@@ -261,7 +261,7 @@ export default function registerKPainterPlugin(api) {
   api.registerTool({
     name: "kpainter_create_knowledge",
     description:
-      "Create a KPainter knowledge video, slides, image, or web app from a prompt and optional output settings.",
+      "Create a KPainter explainer video, slides, GPT-Image-2 image, or interactive lesson from a prompt and optional output settings.",
     inputSchema: {
       type: "object",
       additionalProperties: false,

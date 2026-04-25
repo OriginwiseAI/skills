@@ -38,12 +38,14 @@
 
 ## Product Language
 
-- KPainter creates `Knowledge Video`, `Knowledge Video (Slides)`, `Vector Animation`, `Slides`, `Image`, and `Web App`.
-- Bare `video` is too broad; the skill should ask one short follow-up when the user does not clarify `Knowledge Video`, `Knowledge Video (Slides)`, or `Vector Animation`.
-- Use current external type names when technical names are required: `knowledge_video`, `slides_video`, `vector_animation`, `slide_deck`, `image`, `web_app`.
+- KPainter creates `Explainer Video`, `Explainer Video (Slide-based)`, `Vector Animation`, `Slides`, `Image`, and `Interactive Lesson`.
+- Bare `video` is too broad; the skill should ask one short follow-up when the user does not clarify `Explainer Video`, `Explainer Video (Slide-based)`, or `Vector Animation`.
+- Use current external type names when technical names are required: `explainer_video`, `slides_video`, `vector_animation`, `slide_deck`, `image`, `interactive_lesson`.
 
 ## Error Log
 
+- 2026-04-25 ClawHub / OpenClaw 这类公开 skill 与 plugin 展示面如果要把 `knowledge_video` 改成 `explainer_video`，不能只改网站镜像或单一文档；至少要同时更新 skill frontmatter `description`、`SKILL.md` 里的公开结果类型命名、code-plugin/bundle-plugin 的 package description，以及各自发布命令里的版本号，否则 dashboard 上三项会出现“skill 已改名、plugin 仍写 knowledge video、bundle 还是旧版本”的割裂状态。
+- 2026-04-25 如果再把公开结果类型 `web_app` 改成 `interactive_lesson`，要和 `explainer_video` 一样把“正式枚举”和“自然语言触发词”分开处理：对外技术名统一写 `interactive_lesson`，但 skill 用户语料仍应兼容 `web app / learning app / interactive page` 这些旧说法，避免只改枚举后自然语言触发能力变差。
 - `npx skills add <owner>/<repo>` depends on the remote repository being publicly cloneable. If the Git host returns `403` for anonymous clone, remote installation fails even when the repo exists.
 - A repo with no valid `SKILL.md` returns `No valid skills found. Skills require a SKILL.md with name and description.`
 - 2026-03-26 `kpainter` has been published to ClawHub under owner `bbgasj`; keep the slug stable and publish forward with new semver versions (currently `0.6.3`) instead of creating a second public slug unless there is a deliberate migration plan.

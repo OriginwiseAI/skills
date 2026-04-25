@@ -9,7 +9,7 @@ can:
 
 - fetch the create catalog
 - inspect the current account and credits
-- create knowledge videos, slides, images, and web apps
+- create explainer videos, slides, GPT-Image-2 images, and interactive lessons
 - list creations and poll job or knowledge status
 
 ## Files
@@ -61,16 +61,16 @@ npm pack --dry-run
 ## Suggested publish command
 
 ```bash
-clawhub package publish ./plugins/kpainter-openclaw \
+  clawhub package publish ./plugins/kpainter-openclaw \
   --family code-plugin \
   --name kpainter-openclaw \
   --display-name "KPainter OpenClaw" \
-  --version 0.1.0 \
+  --version 0.1.2 \
   --source-repo OriginwiseAI/skills \
   --source-commit <git-sha> \
   --source-ref refs/heads/main \
   --source-path plugins/kpainter-openclaw \
-  --changelog "Initial preview code-plugin release"
+  --changelog "Refresh public naming and add GPT-Image-2 image support wording"
 ```
 
 ## Current caveats

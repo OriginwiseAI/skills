@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw-bundle",
   "name": "KPainter OpenClaw Bundle",
-  "description": "Metadata bundle for distributing KPainter across OpenClaw host targets.",
+  "description": "Metadata bundle for distributing KPainter explainer videos, slides, GPT-Image-2 images, and interactive lessons across OpenClaw host targets.",
   "format": "openclaw-bundle",
   "hostTargets": [
     "desktop",

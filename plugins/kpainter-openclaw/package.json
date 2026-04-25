@@ -1,8 +1,8 @@
 {
   "name": "kpainter-openclaw",
   "displayName": "KPainter OpenClaw",
-  "version": "0.1.0",
-  "description": "OpenClaw plugin for KPainter creation, catalog, account, and status APIs.",
+  "version": "0.1.2",
+  "description": "OpenClaw plugin for KPainter explainer video, slides, GPT-Image-2 image, and interactive lesson APIs.",
   "type": "module",
   "exports": {
     ".": "./src/index.js"
@@ -16,10 +16,11 @@
     "openclaw",
     "clawhub",
     "kpainter",
-    "knowledge-video",
+    "explainer-video",
     "slides",
     "image",
-    "web-app"
+    "interactive-lesson",
+    "gpt-image-2"
   ],
   "peerDependencies": {
     "openclaw": ">=2026.3.22"

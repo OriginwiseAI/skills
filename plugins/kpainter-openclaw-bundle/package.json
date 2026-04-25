@@ -1,8 +1,8 @@
 {
   "name": "kpainter-openclaw-bundle",
   "displayName": "KPainter OpenClaw Bundle",
-  "version": "0.1.0",
-  "description": "OpenClaw bundle metadata pack for KPainter distribution targets.",
+  "version": "0.1.2",
+  "description": "OpenClaw bundle metadata pack for KPainter explainer video, slides, GPT-Image-2 image, and interactive lesson distribution.",
   "type": "module",
   "files": [
     "README.md",

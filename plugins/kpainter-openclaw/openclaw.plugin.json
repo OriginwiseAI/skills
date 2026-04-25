@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw",
   "name": "KPainter OpenClaw",
-  "description": "Use KPainter from OpenClaw to create knowledge videos, slides, images, and web apps.",
+  "description": "Use KPainter from OpenClaw to create explainer videos, slides, GPT-Image-2 images, and interactive lessons.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -39,7 +39,7 @@
     },
     {
       "name": "kpainter_create_knowledge",
-      "description": "Create a KPainter knowledge video, slides, image, or web app."
+      "description": "Create a KPainter explainer video, slides, GPT-Image-2 image, or interactive lesson."
     },
     {
       "name": "kpainter_list_knowledge",
