@@ -65,7 +65,7 @@ npm pack --dry-run
   --family code-plugin \
   --name kpainter-openclaw \
   --display-name "KPainter OpenClaw" \
-  --version 0.1.4 \
+  --version 0.1.5 \
   --source-repo OriginwiseAI/skills \
   --source-commit <git-sha> \
   --source-ref refs/heads/main \

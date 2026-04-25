@@ -1,7 +1,7 @@
 {
   "name": "kpainter-openclaw-bundle",
   "displayName": "KPainter OpenClaw Bundle",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "OpenClaw bundle metadata for KPainter explainer videos, slides, images, and interactive lessons. Latest image support includes GPT-Image-2.",
   "type": "module",
   "files": [

@@ -1,8 +1,8 @@
 ---
 name: kpainter
-description: KPainter turns one prompt into explainer videos, slides, images, and interactive lessons. Latest image support includes GPT-Image-2.
+description: Explain any topic with explainer videos, slides, images, and interactive lessons. Latest image support includes GPT-Image-2.
 metadata:
-  version: "0.6.8"
+  version: "0.6.9"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
