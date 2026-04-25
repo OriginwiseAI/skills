@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw",
   "name": "KPainter OpenClaw",
-  "description": "Use KPainter from OpenClaw to create explainer videos, slides, GPT-Image-2 images, and interactive lessons.",
+  "description": "Use KPainter from OpenClaw to create explainer videos, slides, images, and interactive lessons. Latest image support now includes GPT-Image-2.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -39,7 +39,7 @@
     },
     {
       "name": "kpainter_create_knowledge",
-      "description": "Create a KPainter explainer video, slides, GPT-Image-2 image, or interactive lesson."
+      "description": "Create a KPainter explainer video, slides, image, or interactive lesson."
     },
     {
       "name": "kpainter_list_knowledge",

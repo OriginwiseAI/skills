@@ -9,7 +9,7 @@ can:
 
 - fetch the create catalog
 - inspect the current account and credits
-- create explainer videos, slides, GPT-Image-2 images, and interactive lessons
+- create explainer videos, slides, images, and interactive lessons
 - list creations and poll job or knowledge status
 
 ## Files
@@ -65,12 +65,12 @@ npm pack --dry-run
   --family code-plugin \
   --name kpainter-openclaw \
   --display-name "KPainter OpenClaw" \
-  --version 0.1.2 \
+  --version 0.1.3 \
   --source-repo OriginwiseAI/skills \
   --source-commit <git-sha> \
   --source-ref refs/heads/main \
   --source-path plugins/kpainter-openclaw \
-  --changelog "Refresh public naming and add GPT-Image-2 image support wording"
+  --changelog "Refine marketplace wording and keep GPT-Image-2 as trailing image support note"
 ```
 
 ## Current caveats

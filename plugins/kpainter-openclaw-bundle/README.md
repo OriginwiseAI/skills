@@ -51,10 +51,10 @@ clawhub package publish ./plugins/kpainter-openclaw-bundle \
   --family bundle-plugin \
   --name kpainter-openclaw-bundle \
   --display-name "KPainter OpenClaw Bundle" \
-  --version 0.1.2 \
+  --version 0.1.3 \
   --bundle-format openclaw-bundle \
   --host-targets desktop,mobile \
-  --changelog "Refresh bundle metadata for explainer video, interactive lesson, and GPT-Image-2 image wording"
+  --changelog "Refine bundle marketplace wording and keep GPT-Image-2 as trailing image support note"
 ```
 
 ## Current caveats

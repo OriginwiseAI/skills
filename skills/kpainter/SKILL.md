@@ -1,8 +1,8 @@
 ---
 name: kpainter
-description: KPainter specializes in controllable explainer video generation and turns one prompt into explainer videos, slides (PPT), GPT-Image-2-powered images, and interactive lessons. Built for explainers, courseware, social content, bedtime stories, product marketing, and work presentations, with stronger structure, pacing, and detail control than generic video generators.
+description: KPainter specializes in controllable explainer video generation and turns one prompt into explainer videos, slides (PPT), images, and interactive lessons. Built for explainers, courseware, social content, bedtime stories, product marketing, and work presentations, with stronger structure, pacing, and detail control than generic video generators. Latest image support now includes GPT-Image-2.
 metadata:
-  version: "0.6.6"
+  version: "0.6.7"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
@@ -12,7 +12,7 @@ metadata:
 
 # KPainter Skill
 
-Use this skill when an agent should help a user turn one prompt into a KPainter explainer video, slides, GPT-Image-2-powered image, or interactive lesson, especially when controllability, structure, and knowledge delivery matter more than generic video generation.
+Use this skill when an agent should help a user turn one prompt into a KPainter explainer video, slides, image, or interactive lesson, especially when controllability, structure, and knowledge delivery matter more than generic video generation. Latest image support now includes GPT-Image-2.
 
 ## Official URLs
 
