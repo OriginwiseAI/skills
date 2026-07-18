@@ -45,6 +45,8 @@
 
 ## Error Log
 
+- 2026-07-19 ClawHub 的已登录发布页需要通过浏览器上传整个 `skills/kpainter` 文件夹；若 Chrome 扩展未开启 “Allow access to file URLs”，无论传目录还是单个 `SKILL.md`，`fileChooser.setFiles` 都会返回 `Not allowed`。此时不要重复发布或改 Skill 包格式，应让用户在 `chrome://extensions` 的 ChatGPT Chrome Extension 详情中开启该权限，再回到同一发布页重试。GitHub Import 只显示已授权账号可见的仓库；组织仓库未授权时继续使用文件夹上传。
+
 - 2026-07-19 Public AI Video is part of the Skill/OpenAPI contract. Keep one stable `ai_video` type and select `gemini-omni-flash`, `veo-3.1-fast`, or `veo-3.1-standard` through `video_generation`; do not create model-specific types. The public surface currently exposes text-to-video only, and Catalog must report first frame, last frame, and attachments as unavailable until a Public Files API exists. Only Omni supports `iterate`; never expose `previous_interaction_id`.
 
 - 2026-07-18 Public Skill, plugin, bundle, marketplace, and website-mirror copy must use `AI PPT`, `AI Image`, and `AI App`. Standalone `AI Video` remains a main-site-only capability until the Public OpenAPI catalog exposes it; never imply that the Skill can create it.
