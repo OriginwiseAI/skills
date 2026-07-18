@@ -49,9 +49,9 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Core Formats
 
 - `Explainer Video`
-  Use narrated visuals, captions, and step-by-step structure for courses, training, science, and longer topics.
+  Use narrated visuals and page-by-page structure for courses, training, science, and longer topics.
 - `Knowledge Video`
-  Turn one topic into a polished, dynamic, story-led knowledge piece with stronger watchability and sharing value.
+  Use continuous animated scenes and narration for science, brand communication, and children’s stories.
 - `Slides`
   Organize content into presentation-ready slides for courseware, training, webinars, proposals, and page-by-page editing.
 - `Interactive Lessons`

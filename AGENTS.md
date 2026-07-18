@@ -44,6 +44,7 @@
 
 ## Error Log
 
+- 2026-07-18 `kpainter@0.6.11` corrects the public product contract: Explainer Video currently has no captions/subtitle assets and must be described as narrated page-by-page visuals; Knowledge Video must be described neutrally as continuous animated scenes with narration, without “polished/stronger/better/more complete” ranking language. Keep the canonical Skill, website mirror, public docs, and marketplace copy synchronized.
 - 2026-07-18 解说视频与知识视频已拆成独立产品：公开 Skill/API 必须保持 `explainer_video -> static-video`、`knowledge_video -> unify-video`，不得恢复 Standard/Lite、Slide-based 或 `slides_video`。更新时同步 canonical Skill、网站镜像、市场文案和包版本。
 - 2026-04-25 ClawHub / OpenClaw 的 skill、plugin、bundle summary 不只是“别把 `GPT-Image-2` 塞进功能并列列表里”，还要控制第一句整体长度；dashboard 卡片会很早截断。当前建议第一句使用 `KPainter creates explainer videos, knowledge videos, slides, images, and interactive lessons.`
 - 2026-04-25 ClawHub / OpenClaw 这类公开 skill 与 plugin 展示面如果要把 `knowledge_video` 改成 `explainer_video`，不能只改网站镜像或单一文档；至少要同时更新 skill frontmatter `description`、`SKILL.md` 里的公开结果类型命名、code-plugin/bundle-plugin 的 package description，以及各自发布命令里的版本号，否则 dashboard 上三项会出现“skill 已改名、plugin 仍写 knowledge video、bundle 还是旧版本”的割裂状态。

@@ -2,7 +2,7 @@
 name: kpainter
 description: Create controllable Explainer Videos, Knowledge Videos, Vector Animations, Slides, Images, and Interactive Lessons with KPainter.
 metadata:
-  version: "0.6.10"
+  version: "0.6.11"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
@@ -41,8 +41,8 @@ Explainer Video and Knowledge Video are independent products. Never present them
 
 | Product | Public API type | Best for |
 | --- | --- | --- |
-| Explainer Video | `explainer_video` | narrated visuals, captions, step-by-step courses, training, SOPs, science, and longer topics |
-| Knowledge Video | `knowledge_video` | polished, dynamic, story-led knowledge pieces with stronger watchability and sharing value |
+| Explainer Video | `explainer_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
+| Knowledge Video | `knowledge_video` | continuous animated scenes and narration for science, brand communication, and children’s stories |
 | Vector Animation | `vector_animation` | workflows, structures, mechanisms, algorithms, math, science, and principles |
 | Slides | `slide_deck` | editable PPT/PDF presentations |
 | Image | `image` | covers, posters, illustrations, and visual summaries |
@@ -60,7 +60,7 @@ Route by the result the user wants.
 4. Map presentation requests to `slide_deck`.
 5. Map poster, cover, illustration, or single-visual requests to `image`.
 6. Map clickable lesson, app, interactive page, quiz, or simulation requests to `interactive_lesson`.
-7. If the user only says “video” or “讲解视频,” ask one short follow-up: do they want a structured Explainer Video, a polished Knowledge Video, or Vector Animation?
+7. If the user only says “video” or “讲解视频,” ask one short follow-up: do they want a page-by-page Explainer Video, a continuously animated Knowledge Video, or Vector Animation?
 
 Do not expose API type names unless the user asks for technical details.
 
@@ -68,8 +68,8 @@ Do not expose API type names unless the user asks for technical details.
 
 Choose Explainer Video when the user wants:
 
-- clear, step-by-step explanation
-- narrated visuals and captions
+- clear, page-by-page explanation
+- narrated visuals
 - course or classroom content
 - training, SOP, or product walkthroughs
 - longer topics with stable information density
@@ -88,18 +88,17 @@ Load valid scene counts, voices, styles, ratios, and qualities from the catalog.
 
 Choose Knowledge Video when the user wants:
 
-- a polished final video
-- richer dynamic visuals
-- stronger story, mood, and pacing
+- continuous animated scenes and narration
+- story, mood, and pacing across the video
 - science communication or brand storytelling
 - a short piece designed to be watched and shared
 - children’s stories or other story-led knowledge
 
 Examples:
 
-- Make a polished 30-second Knowledge Video about MCP.
-- Turn this topic into a story-led Knowledge Video.
-- 做一个 30 秒左右的知识视频，把 MCP 讲得更有故事感。
+- Make a 30-second Knowledge Video about MCP with continuous animated scenes and narration.
+- Turn this topic into a Knowledge Video with continuous animated storytelling.
+- 做一个 30 秒左右的知识视频，用连续动态画面和旁白讲清楚 MCP。
 - 做一个适合传播的知识视频成片。
 
 When the user gives no duration, suggest about 30 seconds first. Read current duration limits from the catalog.
@@ -199,9 +198,9 @@ KPainter supports creation and refinement in the user’s preferred language.
 Examples:
 
 - Make an Explainer Video that explains MCP step by step.
-- Make a polished Knowledge Video about AI agents.
+- Make a Knowledge Video about AI agents with continuous animated scenes and narration.
 - 帮我做一个解说视频，分步骤讲清楚 MCP。
-- 做一个更有故事感的知识视频。
+- 做一个用连续动态画面讲述内容的知识视频。
 - MCP を段階的に説明する解説動画を作ってください。
 - أنشئ فيديو معرفيًا مصقولًا يشرح MCP.
 - Crea un video explicativo paso a paso sobre MCP.
