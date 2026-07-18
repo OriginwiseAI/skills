@@ -1,8 +1,8 @@
 ---
 name: kpainter
-description: Create controllable Explainer Videos, Knowledge Videos, Vector Animations, Slides, Images, and Interactive Lessons with KPainter.
+description: Create controllable Explainer Videos, Knowledge Storybooks, Vector Animations, Slides, Images, and Interactive Lessons with KPainter.
 metadata:
-  version: "0.6.11"
+  version: "0.6.12"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
@@ -37,30 +37,30 @@ Keep the key inside the current agent connection flow. Never ask the user to sen
 
 ## Products And Public API Types
 
-Explainer Video and Knowledge Video are independent products. Never present them as Standard and Lite modes.
+Explainer Video and Knowledge Storybook are independent products. Never present them as Standard and Lite modes.
 
 | Product | Public API type | Best for |
 | --- | --- | --- |
-| Explainer Video | `explainer_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
-| Knowledge Video | `knowledge_video` | continuous animated scenes and narration for science, brand communication, and children’s stories |
+| Explainer Video | `knowledge_video` | continuous animated scenes and narration for explainers, brand communication, and stories |
+| Knowledge Storybook | `explainer_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
 | Vector Animation | `vector_animation` | workflows, structures, mechanisms, algorithms, math, science, and principles |
 | Slides | `slide_deck` | editable PPT/PDF presentations |
 | Image | `image` | covers, posters, illustrations, and visual summaries |
 | Interactive Lesson | `interactive_lesson` | clickable lessons, demos, exercises, and learning apps |
 
-Do not use the retired public type `slides_video`. Do not describe Explainer Video as “Lite,” “Slide-based,” or a mode under Knowledge Video.
+The API type values remain stable even though the product names changed. Always map by this table instead of inferring from the identifier. Do not use the retired public type `slides_video`, and do not describe Knowledge Storybook as “Lite” or a mode under Explainer Video.
 
 ## Choose The Product
 
 Route by the result the user wants.
 
-1. Map an explicit “Explainer Video” or “解说视频” request to `explainer_video`.
-2. Map an explicit “Knowledge Video” or “知识视频” request to `knowledge_video`.
+1. Map an explicit “Explainer Video” or “解说视频” request to `knowledge_video`.
+2. Map an explicit “Knowledge Storybook” or “知识绘本” request to `explainer_video`.
 3. Map workflow, structure, mechanism, algorithm, math, or principle animation to `vector_animation`.
 4. Map presentation requests to `slide_deck`.
 5. Map poster, cover, illustration, or single-visual requests to `image`.
 6. Map clickable lesson, app, interactive page, quiz, or simulation requests to `interactive_lesson`.
-7. If the user only says “video” or “讲解视频,” ask one short follow-up: do they want a page-by-page Explainer Video, a continuously animated Knowledge Video, or Vector Animation?
+7. If the user only says “video” or “讲解视频,” ask one short follow-up: do they want a continuously animated Explainer Video, a page-by-page Knowledge Storybook, or Vector Animation?
 
 Do not expose API type names unless the user asks for technical details.
 
@@ -68,40 +68,40 @@ Do not expose API type names unless the user asks for technical details.
 
 Choose Explainer Video when the user wants:
 
-- clear, page-by-page explanation
-- narrated visuals
-- course or classroom content
-- training, SOP, or product walkthroughs
-- longer topics with stable information density
-- a lower-cost alternative to Knowledge Video
-
-Examples:
-
-- Make an Explainer Video that teaches MCP in 6 scenes.
-- Turn this training manual into a narrated Explainer Video.
-- 做一个解说视频，分步骤讲清楚 MCP。
-- 把这份培训手册做成解说视频。
-
-Load valid scene counts, voices, styles, ratios, and qualities from the catalog.
-
-## Knowledge Video
-
-Choose Knowledge Video when the user wants:
-
 - continuous animated scenes and narration
-- story, mood, and pacing across the video
+- clear explanation with visual pacing
 - science communication or brand storytelling
 - a short piece designed to be watched and shared
 - children’s stories or other story-led knowledge
 
 Examples:
 
-- Make a 30-second Knowledge Video about MCP with continuous animated scenes and narration.
-- Turn this topic into a Knowledge Video with continuous animated storytelling.
-- 做一个 30 秒左右的知识视频，用连续动态画面和旁白讲清楚 MCP。
-- 做一个适合传播的知识视频成片。
+- Make a 30-second Explainer Video about MCP with continuous animated scenes and narration.
+- Turn this topic into an Explainer Video with continuous visual storytelling.
+- 做一个 30 秒左右的解说视频，用连续动态画面和旁白讲清楚 MCP。
+- 做一个适合传播的解说视频成片。
 
 When the user gives no duration, suggest about 30 seconds first. Read current duration limits from the catalog.
+
+## Knowledge Storybook
+
+Choose Knowledge Storybook when the user wants:
+
+- clear, page-by-page explanation
+- narrated visuals
+- course or classroom content
+- training, SOP, or product walkthroughs
+- longer topics with stable information density
+- a lower-cost alternative to Explainer Video
+
+Examples:
+
+- Make a Knowledge Storybook that teaches MCP in 6 pages.
+- Turn this training manual into a narrated Knowledge Storybook.
+- 做一个知识绘本，用 6 页分步骤讲清楚 MCP。
+- 把这份培训手册做成知识绘本。
+
+Load valid page counts, voices, styles, ratios, and qualities from the catalog.
 
 ## Vector Animation
 
@@ -116,17 +116,17 @@ Examples:
 
 ## Credit Fallback
 
-If the user wants Knowledge Video but does not have enough credits:
+If the user wants Explainer Video but does not have enough credits:
 
-1. Explain that the current Knowledge Video may exceed the available credits.
-2. Offer Explainer Video as the lower-cost alternative.
+1. Explain that the current Explainer Video may exceed the available credits.
+2. Offer Knowledge Storybook as the lower-cost alternative.
 3. Keep the topic, audience, and language unchanged.
 4. Ask before switching.
 
 Recommended wording:
 
-- Your current credits may not cover a full Knowledge Video. I can keep the same topic and language and switch to a clear, lower-cost Explainer Video. Would you like me to switch?
-- 当前积分可能不够生成完整知识视频。我可以保留主题和语言，改成结构清晰、成本更低的解说视频，要切换吗？
+- Your current credits may not cover a full Explainer Video. I can keep the same topic and language and switch to a clear, lower-cost Knowledge Storybook. Would you like me to switch?
+- 当前积分可能不够生成完整解说视频。我可以保留主题和语言，改成结构清晰、成本更低的知识绘本，要切换吗？
 
 ## Collect Only Missing Information
 
@@ -197,10 +197,10 @@ KPainter supports creation and refinement in the user’s preferred language.
 
 Examples:
 
-- Make an Explainer Video that explains MCP step by step.
-- Make a Knowledge Video about AI agents with continuous animated scenes and narration.
-- 帮我做一个解说视频，分步骤讲清楚 MCP。
-- 做一个用连续动态画面讲述内容的知识视频。
+- Make an Explainer Video about AI agents with continuous animated scenes and narration.
+- Make a Knowledge Storybook that explains MCP page by page.
+- 帮我做一个解说视频，用连续动态画面讲清楚 MCP。
+- 做一个知识绘本，逐页讲解 MCP。
 - MCP を段階的に説明する解説動画を作ってください。
 - أنشئ فيديو معرفيًا مصقولًا يشرح MCP.
 - Crea un video explicativo paso a paso sobre MCP.
@@ -253,9 +253,9 @@ curl -s https://kpainter.ai/skill.md > ~/.codex/skills/kpainter/SKILL.md
 
 The skill succeeds when the agent can:
 
-- explain Explainer Video and Knowledge Video as independent products
+- explain Explainer Video and Knowledge Storybook as independent products
 - use the current public API type names
 - choose the appropriate product from user intent
 - ask only for missing information
 - create, poll, read, and refine results
-- offer Explainer Video as a confirmed lower-cost fallback when appropriate
+- offer Knowledge Storybook as a confirmed lower-cost fallback when appropriate

@@ -15,7 +15,7 @@ Last updated: 2026-03-26
 Keep these names stable across listings, screenshots, skill docs, and MCP/plugin docs:
 
 - `Explainer Video`
-- `Knowledge Video`
+- `Knowledge Storybook`
 - `Vector Animation`
 - `Slides`
 - `Image`
@@ -32,11 +32,11 @@ When API type names are needed, use:
 
 ## English Tagline
 
-Create knowledge videos, slides, images, and web apps from one prompt.
+Create explainer videos, knowledge storybooks, slides, images, and web apps from one prompt.
 
 ## English One-Paragraph Description
 
-KPainter helps users turn one topic into controllable knowledge outputs through normal conversation. Create or refine Explainer Video, Knowledge Video, Vector Animation, Slides, Image, and Interactive Lesson results. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
+KPainter helps users turn one topic into controllable knowledge outputs through normal conversation. Create or refine Explainer Video, Knowledge Storybook, Vector Animation, Slides, Image, and Interactive Lesson results. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
 
 ## Official Links
 
@@ -60,19 +60,19 @@ KPainter helps users turn one topic into controllable knowledge outputs through 
 
 ## English Sample Prompts
 
-1. Make a knowledge video that explains MCP clearly in about 30 seconds.
-2. Create a PPT-style knowledge video that teaches transformer attention step by step.
+1. Make an Explainer Video that explains MCP clearly in about 30 seconds.
+2. Create a Knowledge Storybook that teaches transformer attention step by step.
 3. Use vector animation to explain how a retrieval pipeline works.
 4. Build a slide deck for onboarding new product managers to AI agents.
 5. Create a course cover image for an introduction to prompt engineering.
 6. Build an interactive web app that helps students explore how attention works.
-7. Turn this document into a classroom-friendly knowledge video in Spanish.
-8. Keep the same topic, but switch the result from Knowledge Video to Explainer Video.
+7. Turn this document into a classroom-friendly Knowledge Storybook in Spanish.
+8. Keep the same topic, but switch the result from Explainer Video to Knowledge Storybook.
 
 ## Chinese Sample Prompts For Domestic Listings
 
-1. 帮我做一个讲清楚 MCP 的知识视频。
-2. 做一个图解版知识视频，分步骤讲解 Transformer attention。
+1. 帮我做一个讲清楚 MCP 的解说视频。
+2. 做一个知识绘本，分步骤讲解 Transformer attention。
 3. 用矢量动画讲清楚 RAG 的调用流程。
 4. 做一份给新员工培训 AI agents 的 PPT。
 5. 做一张提示词工程课程封面图。
@@ -95,7 +95,7 @@ KPainter helps users turn one topic into controllable knowledge outputs through 
 - Keep marketplace-facing metadata English-first unless the target platform is explicitly Chinese-first.
 - Do not say the product supports only a listed language set; say it supports the user's preferred language.
 - Do not use old video type names such as `generated_video`, `presentation_video`, or `animated_video`.
-- Do not say bare `video` automatically means one product; clarify whether the user wants Explainer Video, Knowledge Video, or Vector Animation.
+- Do not say bare `video` automatically means one product; clarify whether the user wants Explainer Video, Knowledge Storybook, or Vector Animation.
 
 ## Manual Inputs Still Needed From The Team
 

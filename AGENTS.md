@@ -38,15 +38,17 @@
 
 ## Product Language
 
-- KPainter creates `Explainer Video`, `Knowledge Video`, `Vector Animation`, `Slides`, `Image`, and `Interactive Lesson`.
-- Explainer Video and Knowledge Video are independent products, not Standard/Lite or parent/child modes. Bare `video` is too broad; ask one short follow-up when the user does not clarify `Explainer Video`, `Knowledge Video`, or `Vector Animation`.
+- KPainter creates `Explainer Video`, `Knowledge Storybook`, `Vector Animation`, `Slides`, `Image`, and `Interactive Lesson`.
+- Explainer Video and Knowledge Storybook are independent products, not Standard/Lite or parent/child modes. Bare `video` is too broad; ask one short follow-up when the user does not clarify `Explainer Video`, `Knowledge Storybook`, or `Vector Animation`.
 - Use current external type names when technical names are required: `explainer_video`, `knowledge_video`, `vector_animation`, `slide_deck`, `image`, `interactive_lesson`. `slides_video` is retired.
 
 ## Error Log
 
-- 2026-07-18 `kpainter@0.6.11` corrects the public product contract: Explainer Video currently has no captions/subtitle assets and must be described as narrated page-by-page visuals; Knowledge Video must be described neutrally as continuous animated scenes with narration, without “polished/stronger/better/more complete” ranking language. Keep the canonical Skill, website mirror, public docs, and marketplace copy synchronized.
-- 2026-07-18 解说视频与知识视频已拆成独立产品：公开 Skill/API 必须保持 `explainer_video -> static-video`、`knowledge_video -> unify-video`，不得恢复 Standard/Lite、Slide-based 或 `slides_video`。更新时同步 canonical Skill、网站镜像、市场文案和包版本。
-- 2026-04-25 ClawHub / OpenClaw 的 skill、plugin、bundle summary 不只是“别把 `GPT-Image-2` 塞进功能并列列表里”，还要控制第一句整体长度；dashboard 卡片会很早截断。当前建议第一句使用 `KPainter creates explainer videos, knowledge videos, slides, images, and interactive lessons.`
+- 2026-07-18 `kpainter@0.6.12` updates the product names while keeping API enum values stable: `Explainer Video / 解说视频 -> knowledge_video` for continuous animated scenes, and `Knowledge Storybook / 知识绘本 -> explainer_video` for narrated page-by-page visuals. Never infer the product from the API identifier; keep the canonical Skill, website mirror, docs, marketplace copy, and plugin metadata synchronized.
+
+- 2026-07-18 `kpainter@0.6.11` 的旧称谓规则已由 `0.6.12` 覆盖；当前连续动态产品叫 Explainer Video，逐页图文产品叫 Knowledge Storybook，仍不得使用“polished/stronger/better/more complete”等等级比较语言。
+- 2026-07-18 两个视频产品仍是独立产品：公开 Skill/API 保持 `explainer_video -> static-video`、`knowledge_video -> unify-video` 的技术映射，但展示名按最新规则使用 Knowledge Storybook 与 Explainer Video；不得恢复 Standard/Lite、Slide-based 或 `slides_video`。更新时同步 canonical Skill、网站镜像、市场文案和包版本。
+- 2026-04-25 ClawHub / OpenClaw 的 skill、plugin、bundle summary 不只是“别把 `GPT-Image-2` 塞进功能并列列表里”，还要控制第一句整体长度；dashboard 卡片会很早截断。当前建议第一句使用 `KPainter creates explainer videos, knowledge storybooks, slides, images, and interactive lessons.`
 - 2026-04-25 ClawHub / OpenClaw 这类公开 skill 与 plugin 展示面如果要把 `knowledge_video` 改成 `explainer_video`，不能只改网站镜像或单一文档；至少要同时更新 skill frontmatter `description`、`SKILL.md` 里的公开结果类型命名、code-plugin/bundle-plugin 的 package description，以及各自发布命令里的版本号，否则 dashboard 上三项会出现“skill 已改名、plugin 仍写 knowledge video、bundle 还是旧版本”的割裂状态。
 - 2026-04-25 如果再把公开结果类型 `web_app` 改成 `interactive_lesson`，要和 `explainer_video` 一样把“正式枚举”和“自然语言触发词”分开处理：对外技术名统一写 `interactive_lesson`，但 skill 用户语料仍应兼容 `web app / learning app / interactive page` 这些旧说法，避免只改枚举后自然语言触发能力变差。
 - `npx skills add <owner>/<repo>` depends on the remote repository being publicly cloneable. If the Git host returns `403` for anonymous clone, remote installation fails even when the repo exists.
