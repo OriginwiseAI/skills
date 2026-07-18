@@ -38,18 +38,19 @@
 
 ## Product Language
 
-- KPainter creates `Explainer Video`, `Explainer Video (Slide-based)`, `Vector Animation`, `Slides`, `Image`, and `Interactive Lesson`.
-- Bare `video` is too broad; the skill should ask one short follow-up when the user does not clarify `Explainer Video`, `Explainer Video (Slide-based)`, or `Vector Animation`.
-- Use current external type names when technical names are required: `explainer_video`, `slides_video`, `vector_animation`, `slide_deck`, `image`, `interactive_lesson`.
+- KPainter creates `Explainer Video`, `Knowledge Video`, `Vector Animation`, `Slides`, `Image`, and `Interactive Lesson`.
+- Explainer Video and Knowledge Video are independent products, not Standard/Lite or parent/child modes. Bare `video` is too broad; ask one short follow-up when the user does not clarify `Explainer Video`, `Knowledge Video`, or `Vector Animation`.
+- Use current external type names when technical names are required: `explainer_video`, `knowledge_video`, `vector_animation`, `slide_deck`, `image`, `interactive_lesson`. `slides_video` is retired.
 
 ## Error Log
 
-- 2026-04-25 ClawHub / OpenClaw 的 skill、plugin、bundle summary 不只是“别把 `GPT-Image-2` 塞进功能并列列表里”，还要控制第一句整体长度；dashboard 卡片会很早截断。更稳的做法是：第一句压成 `KPainter turns one prompt into explainer videos, slides, images, and interactive lessons.`，第二句再补 `Latest image support includes GPT-Image-2.`
+- 2026-07-18 解说视频与知识视频已拆成独立产品：公开 Skill/API 必须保持 `explainer_video -> static-video`、`knowledge_video -> unify-video`，不得恢复 Standard/Lite、Slide-based 或 `slides_video`。更新时同步 canonical Skill、网站镜像、市场文案和包版本。
+- 2026-04-25 ClawHub / OpenClaw 的 skill、plugin、bundle summary 不只是“别把 `GPT-Image-2` 塞进功能并列列表里”，还要控制第一句整体长度；dashboard 卡片会很早截断。当前建议第一句使用 `KPainter creates explainer videos, knowledge videos, slides, images, and interactive lessons.`
 - 2026-04-25 ClawHub / OpenClaw 这类公开 skill 与 plugin 展示面如果要把 `knowledge_video` 改成 `explainer_video`，不能只改网站镜像或单一文档；至少要同时更新 skill frontmatter `description`、`SKILL.md` 里的公开结果类型命名、code-plugin/bundle-plugin 的 package description，以及各自发布命令里的版本号，否则 dashboard 上三项会出现“skill 已改名、plugin 仍写 knowledge video、bundle 还是旧版本”的割裂状态。
 - 2026-04-25 如果再把公开结果类型 `web_app` 改成 `interactive_lesson`，要和 `explainer_video` 一样把“正式枚举”和“自然语言触发词”分开处理：对外技术名统一写 `interactive_lesson`，但 skill 用户语料仍应兼容 `web app / learning app / interactive page` 这些旧说法，避免只改枚举后自然语言触发能力变差。
 - `npx skills add <owner>/<repo>` depends on the remote repository being publicly cloneable. If the Git host returns `403` for anonymous clone, remote installation fails even when the repo exists.
 - A repo with no valid `SKILL.md` returns `No valid skills found. Skills require a SKILL.md with name and description.`
-- 2026-03-26 `kpainter` has been published to ClawHub under owner `bbgasj`; keep the slug stable and publish forward with new semver versions (currently `0.6.3`) instead of creating a second public slug unless there is a deliberate migration plan.
+- 2026-03-26 `kpainter` has been published to ClawHub under owner `bbgasj`; keep the slug stable and publish forward with new semver versions instead of creating a second public slug. The source prepared for the Explainer/Knowledge split is `0.6.10`.
 - 2026-03-26 Tencent SkillHub has been identified as a domestic skill-style distribution surface adjacent to ClawHub, but a public self-serve submission flow has not yet been confirmed in this repo; keep a ready-to-submit Chinese listing pack and treat onboarding as potentially manual until proven otherwise.
 - 2026-03-26 ClawHub skill listing summary is driven by the published `SKILL.md` payload, especially the frontmatter `description`, and may be visually followed by the opening paragraph. Treat those two fields as the canonical marketplace summary source; do not lead them with setup wording like account or API-key connection steps.
 - 2026-03-26 ClawHub plugin packages are family-locked by package name: a name first published as `code-plugin` cannot later be republished as `bundle-plugin`, so KPainter should use separate package names for separate plugin families.

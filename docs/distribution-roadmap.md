@@ -7,7 +7,7 @@ Last updated: 2026-03-26
 - Canonical public skill repo: `OriginwiseAI/skills`
 - Public skill slug: `kpainter`
 - Public site mirror: `https://kpainter.ai/skill.md`
-- ClawHub release: `kpainter@0.6.3`
+- Next ClawHub skill release from this source: `kpainter@0.6.10`
 - Repo-based install path: `npx skills add OriginwiseAI/skills`
 
 ## Asset Types
@@ -34,7 +34,7 @@ Best for GPT Store, Microsoft 365 Agent Store, and other channel-specific storef
 
 - Keep `kpainter` as the skill slug.
 - Keep `kpainter.ai` as the public domain.
-- Keep public type naming aligned to `knowledge_video / slides_video / vector_animation`.
+- Keep public type naming aligned to `explainer_video / knowledge_video / vector_animation`.
 - Finish the marketplace asset pack in `docs/marketplace-asset-pack.md`.
 
 ### P1: Finish The Skill Track

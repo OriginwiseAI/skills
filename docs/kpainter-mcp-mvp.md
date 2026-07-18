@@ -72,10 +72,10 @@ Core inputs:
 - optional `voice_id`
 - optional `style_id`
 
-### `kpainter_create_slides_video`
+### `kpainter_create_explainer_video`
 
 Purpose:
-create `slides_video`
+create `explainer_video`
 
 Maps to:
 - `POST /creations`

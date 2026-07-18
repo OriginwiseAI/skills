@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw-bundle",
   "name": "KPainter OpenClaw Bundle",
-  "description": "Bundle metadata for KPainter explainer videos, slides, images, and interactive lessons. Latest image support includes GPT-Image-2.",
+  "description": "Bundle metadata for KPainter explainer videos, knowledge videos, slides, images, and interactive lessons.",
   "format": "openclaw-bundle",
   "hostTargets": [
     "desktop",

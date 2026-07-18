@@ -1,8 +1,8 @@
 {
   "name": "kpainter-openclaw",
   "displayName": "KPainter OpenClaw",
-  "version": "0.1.5",
-  "description": "OpenClaw plugin for KPainter explainer videos, slides, images, and interactive lessons. Latest image support includes GPT-Image-2.",
+  "version": "0.1.6",
+  "description": "OpenClaw plugin for KPainter explainer videos, knowledge videos, slides, images, and interactive lessons.",
   "type": "module",
   "exports": {
     ".": "./src/index.js"

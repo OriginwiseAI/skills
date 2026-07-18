@@ -1,6 +1,6 @@
 # Originwise Skills
 
-KPainter helps users explain any topic with explainer videos, slides, images, and interactive lessons, then bring those workflows into agents and products through Skills, OpenAPI, and MCP.
+KPainter helps users explain any topic with Explainer Videos, Knowledge Videos, Vector Animations, Slides, Images, and Interactive Lessons, then bring those workflows into agents and products through Skills, OpenAPI, and MCP.
 
 ## Install
 
@@ -38,18 +38,20 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Current Skill
 
 - `kpainter`
-  Explain any topic with explainer videos, slides, images, and interactive lessons. Latest image support includes GPT-Image-2.
+  Create controllable Explainer Videos, Knowledge Videos, Vector Animations, Slides, Images, and Interactive Lessons.
 
 ## Current Positioning
 
-- Hero message: `Explain any topic with explainer videos, slides, and interactive lessons`
+- Hero message: `Create explainer videos, knowledge videos, slides, images, and interactive lessons`
 - Core product promise: Turn topics, lessons, and documents into structured learning content.
-- Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, slides, images, and interactive lessons into your agent or product.
+- Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, knowledge videos, slides, images, and interactive lessons into your agent or product.
 
 ## Core Formats
 
 - `Explainer Video`
-  Turn one topic into a structured, visually rich explainer that is easier to watch, remember, and share.
+  Use narrated visuals, captions, and step-by-step structure for courses, training, science, and longer topics.
+- `Knowledge Video`
+  Turn one topic into a polished, dynamic, story-led knowledge piece with stronger watchability and sharing value.
 - `Slides`
   Organize content into presentation-ready slides for courseware, training, webinars, proposals, and page-by-page editing.
 - `Interactive Lessons`
@@ -60,9 +62,9 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Plugin Packages
 
 - `plugins/kpainter-openclaw`
-  Preview OpenClaw `code-plugin` with KPainter catalog, account, create, list, detail, and status tools. Published to ClawHub as `kpainter-openclaw@0.1.5`.
+  Preview OpenClaw `code-plugin` with KPainter catalog, account, create, list, detail, and status tools. Source is prepared at `0.1.6`; latest ClawHub release is `0.1.5`.
 - `plugins/kpainter-openclaw-bundle`
-  Preview OpenClaw `bundle-plugin` metadata pack for KPainter host-target distribution. Published to ClawHub as `kpainter-openclaw-bundle@0.1.5`.
+  Preview OpenClaw `bundle-plugin` metadata pack for KPainter host-target distribution. Source is prepared at `0.1.6`; latest ClawHub release is `0.1.5`.
 
 ## Repository Layout
 

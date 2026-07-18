@@ -68,7 +68,7 @@ KPainter 可以把一个主题快速做成知识视频、图解版知识视频�
 
 - Keep the primary skill slug as `kpainter`.
 - If SkillHub allows only one display language, prefer Chinese copy with `KPainter` as the visible product name.
-- Do not rename the public video type family to ad-hoc marketplace aliases; keep technical naming aligned with `knowledge_video / slides_video / vector_animation`.
+- Keep technical naming aligned with `explainer_video / knowledge_video / vector_animation`; Explainer Video and Knowledge Video are independent products.
 - If Tencent requests extra trust or moderation information, provide the public docs links, policy links, and support mailbox first.
 
 ## Current Blockers
