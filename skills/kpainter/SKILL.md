@@ -1,8 +1,8 @@
 ---
 name: kpainter
-description: Create controllable Explainer Videos, Knowledge Storybooks, Vector Animations, Slides, Images, and Interactive Lessons with KPainter.
+description: Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, Slides, Images, and Interactive Lessons with KPainter.
 metadata:
-  version: "0.6.12"
+  version: "0.6.13"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
@@ -37,30 +37,30 @@ Keep the key inside the current agent connection flow. Never ask the user to sen
 
 ## Products And Public API Types
 
-Explainer Video and Knowledge Storybook are independent products. Never present them as Standard and Lite modes.
+Explainer Video and Read Aloud Video are independent products. Never present them as Standard and Lite modes.
 
 | Product | Public API type | Best for |
 | --- | --- | --- |
 | Explainer Video | `knowledge_video` | continuous animated scenes and narration for explainers, brand communication, and stories |
-| Knowledge Storybook | `explainer_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
+| Read Aloud Video | `explainer_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
 | Vector Animation | `vector_animation` | workflows, structures, mechanisms, algorithms, math, science, and principles |
 | Slides | `slide_deck` | editable PPT/PDF presentations |
 | Image | `image` | covers, posters, illustrations, and visual summaries |
 | Interactive Lesson | `interactive_lesson` | clickable lessons, demos, exercises, and learning apps |
 
-The API type values remain stable even though the product names changed. Always map by this table instead of inferring from the identifier. Do not use the retired public type `slides_video`, and do not describe Knowledge Storybook as “Lite” or a mode under Explainer Video.
+The API type values remain stable even though the product names changed. Always map by this table instead of inferring from the identifier. Do not use the retired public type `slides_video`, and do not describe Read Aloud Video as “Lite” or a mode under Explainer Video.
 
 ## Choose The Product
 
 Route by the result the user wants.
 
 1. Map an explicit “Explainer Video” or “解说视频” request to `knowledge_video`.
-2. Map an explicit “Knowledge Storybook” or “知识绘本” request to `explainer_video`.
+2. Map an explicit “Read Aloud Video” or “绘本视频” request to `explainer_video`.
 3. Map workflow, structure, mechanism, algorithm, math, or principle animation to `vector_animation`.
 4. Map presentation requests to `slide_deck`.
 5. Map poster, cover, illustration, or single-visual requests to `image`.
 6. Map clickable lesson, app, interactive page, quiz, or simulation requests to `interactive_lesson`.
-7. If the user only says “video” or “讲解视频,” ask one short follow-up: do they want a continuously animated Explainer Video, a page-by-page Knowledge Storybook, or Vector Animation?
+7. If the user only says “video” or “讲解视频,” ask one short follow-up: do they want a continuously animated Explainer Video, a page-by-page Read Aloud Video, or Vector Animation?
 
 Do not expose API type names unless the user asks for technical details.
 
@@ -83,9 +83,9 @@ Examples:
 
 When the user gives no duration, suggest about 30 seconds first. Read current duration limits from the catalog.
 
-## Knowledge Storybook
+## Read Aloud Video
 
-Choose Knowledge Storybook when the user wants:
+Choose Read Aloud Video when the user wants:
 
 - clear, page-by-page explanation
 - narrated visuals
@@ -96,10 +96,10 @@ Choose Knowledge Storybook when the user wants:
 
 Examples:
 
-- Make a Knowledge Storybook that teaches MCP in 6 pages.
-- Turn this training manual into a narrated Knowledge Storybook.
-- 做一个知识绘本，用 6 页分步骤讲清楚 MCP。
-- 把这份培训手册做成知识绘本。
+- Make a Read Aloud Video that teaches MCP in 6 pages.
+- Turn this training manual into a narrated Read Aloud Video.
+- 做一个绘本视频，用 6 页分步骤讲清楚 MCP。
+- 把这份培训手册做成绘本视频。
 
 Load valid page counts, voices, styles, ratios, and qualities from the catalog.
 
@@ -119,14 +119,14 @@ Examples:
 If the user wants Explainer Video but does not have enough credits:
 
 1. Explain that the current Explainer Video may exceed the available credits.
-2. Offer Knowledge Storybook as the lower-cost alternative.
+2. Offer Read Aloud Video as the lower-cost alternative.
 3. Keep the topic, audience, and language unchanged.
 4. Ask before switching.
 
 Recommended wording:
 
-- Your current credits may not cover a full Explainer Video. I can keep the same topic and language and switch to a clear, lower-cost Knowledge Storybook. Would you like me to switch?
-- 当前积分可能不够生成完整解说视频。我可以保留主题和语言，改成结构清晰、成本更低的知识绘本，要切换吗？
+- Your current credits may not cover a full Explainer Video. I can keep the same topic and language and switch to a clear, lower-cost Read Aloud Video. Would you like me to switch?
+- 当前积分可能不够生成完整解说视频。我可以保留主题和语言，改成结构清晰、成本更低的绘本视频，要切换吗？
 
 ## Collect Only Missing Information
 
@@ -198,9 +198,9 @@ KPainter supports creation and refinement in the user’s preferred language.
 Examples:
 
 - Make an Explainer Video about AI agents with continuous animated scenes and narration.
-- Make a Knowledge Storybook that explains MCP page by page.
+- Make a Read Aloud Video that explains MCP page by page.
 - 帮我做一个解说视频，用连续动态画面讲清楚 MCP。
-- 做一个知识绘本，逐页讲解 MCP。
+- 做一个绘本视频，逐页讲解 MCP。
 - MCP を段階的に説明する解説動画を作ってください。
 - أنشئ فيديو معرفيًا مصقولًا يشرح MCP.
 - Crea un video explicativo paso a paso sobre MCP.
@@ -253,9 +253,9 @@ curl -s https://kpainter.ai/skill.md > ~/.codex/skills/kpainter/SKILL.md
 
 The skill succeeds when the agent can:
 
-- explain Explainer Video and Knowledge Storybook as independent products
+- explain Explainer Video and Read Aloud Video as independent products
 - use the current public API type names
 - choose the appropriate product from user intent
 - ask only for missing information
 - create, poll, read, and refine results
-- offer Knowledge Storybook as a confirmed lower-cost fallback when appropriate
+- offer Read Aloud Video as a confirmed lower-cost fallback when appropriate

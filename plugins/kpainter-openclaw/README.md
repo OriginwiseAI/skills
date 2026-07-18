@@ -9,7 +9,7 @@ can:
 
 - fetch the create catalog
 - inspect the current account and credits
-- create explainer videos, knowledge storybooks, slides, images, and interactive lessons
+- create explainer videos, read aloud videos, slides, images, and interactive lessons
 - list creations and poll job or knowledge status
 
 ## Files
@@ -65,12 +65,12 @@ npm pack --dry-run
   --family code-plugin \
   --name kpainter-openclaw \
   --display-name "KPainter OpenClaw" \
-  --version 0.1.7 \
+  --version 0.1.8 \
   --source-repo OriginwiseAI/skills \
   --source-commit <git-sha> \
   --source-ref refs/heads/main \
   --source-path plugins/kpainter-openclaw \
-  --changelog "Rename the continuous video product to Explainer Video and the page-by-page product to Knowledge Storybook"
+  --changelog "Rename the continuous video product to Explainer Video and the page-by-page product to Read Aloud Video"
 ```
 
 ## Current caveats

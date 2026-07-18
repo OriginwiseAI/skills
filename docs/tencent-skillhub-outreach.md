@@ -13,7 +13,7 @@ Use this message if Tencent SkillHub requires manual feedback, curation review, 
 `KPainter` 是一个面向知识表达和内容创作的 AI skill，支持在 agent 对话里连接用户自己的 KPainter 账号和 API Key，并创建或继续修改以下结果：
 
 - 解说视频
-- 知识绘本
+- 绘本视频
 - 矢量动画
 - PPT
 - 图片
@@ -39,7 +39,7 @@ Use this message if Tencent SkillHub requires manual feedback, curation review, 
 
 Hello, we would like to submit `KPainter` to Tencent SkillHub.
 
-KPainter is an AI skill focused on knowledge creation. It helps users connect their own KPainter account and API key, then create or refine Explainer Videos, Knowledge Storybooks, Vector Animations, Slides, Images, and Interactive Lessons inside an agent workflow.
+KPainter is an AI skill focused on knowledge creation. It helps users connect their own KPainter account and API key, then create or refine Explainer Videos, Read Aloud Videos, Vector Animations, Slides, Images, and Interactive Lessons inside an agent workflow.
 
 Current public information:
 

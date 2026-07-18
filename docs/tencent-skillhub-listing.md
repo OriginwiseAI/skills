@@ -16,23 +16,23 @@ Alternative if a bilingual title is needed:
 
 ## Recommended Short Subtitle
 
-一键生成解说视频、知识绘本、矢量动画、PPT、图片和应用。
+一键生成解说视频、绘本视频、矢量动画、PPT、图片和应用。
 
 ## Recommended Long Description
 
-KPainter 可以把一个主题快速做成解说视频、知识绘本、矢量动画、PPT、图片和互动应用。用户只需要连接自己的 KPainter 账号和 API Key，就可以在当前 agent 或 skill 环境里直接创建、继续修改和切换结果形式，不需要跳出对话重新组织流程。它尤其适合课程讲解、课件制作、产品解说、流程说明、知识传播和多语言内容创作。
+KPainter 可以把一个主题快速做成解说视频、绘本视频、矢量动画、PPT、图片和互动应用。用户只需要连接自己的 KPainter 账号和 API Key，就可以在当前 agent 或 skill 环境里直接创建、继续修改和切换结果形式，不需要跳出对话重新组织流程。它尤其适合课程讲解、课件制作、产品解说、流程说明、知识传播和多语言内容创作。
 
 ## Chinese Value Points
 
 - 适合知识讲解和结构化表达，不只是泛娱乐视频
-- 能在 `解说视频 / 知识绘本 / 矢量动画 / PPT / 图片 / 应用` 之间切换
+- 能在 `解说视频 / 绘本视频 / 矢量动画 / PPT / 图片 / 应用` 之间切换
 - 支持用户用自己的语言直接描述需求
 - 对接用户自己的 KPainter API Key，适合 agent 内工作流
 
 ## Suggested Tags
 
 - `解说视频`
-- `知识绘本`
+- `绘本视频`
 - `PPT`
 - `图解视频`
 - `矢量动画`
@@ -42,7 +42,7 @@ KPainter 可以把一个主题快速做成解说视频、知识绘本、矢量�
 ## Chinese Example Prompts
 
 1. 帮我做一个讲清楚 MCP 的解说视频，30 秒左右。
-2. 做一个知识绘本，分步骤讲解 Transformer attention。
+2. 做一个绘本视频，分步骤讲解 Transformer attention。
 3. 用矢量动画讲清楚 RAG 的调用流程。
 4. 做一份给新员工培训 AI agents 的 PPT。
 5. 把这份材料做成一张课程封面图。
@@ -69,7 +69,7 @@ KPainter 可以把一个主题快速做成解说视频、知识绘本、矢量�
 
 - Keep the primary skill slug as `kpainter`.
 - If SkillHub allows only one display language, prefer Chinese copy with `KPainter` as the visible product name.
-- Keep technical naming aligned with `explainer_video / knowledge_video / vector_animation`; Explainer Video and Knowledge Storybook are independent products, with the current display-name mapping documented in the canonical Skill.
+- Keep technical naming aligned with `explainer_video / knowledge_video / vector_animation`; Explainer Video and Read Aloud Video are independent products, with the current display-name mapping documented in the canonical Skill.
 - If Tencent requests extra trust or moderation information, provide the public docs links, policy links, and support mailbox first.
 
 ## Current Blockers

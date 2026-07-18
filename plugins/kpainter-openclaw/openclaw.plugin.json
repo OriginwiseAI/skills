@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw",
   "name": "KPainter OpenClaw",
-  "description": "Create KPainter explainer videos, knowledge storybooks, slides, images, and interactive lessons from OpenClaw.",
+  "description": "Create KPainter explainer videos, read aloud videos, slides, images, and interactive lessons from OpenClaw.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -39,7 +39,7 @@
     },
     {
       "name": "kpainter_create_knowledge",
-      "description": "Create a KPainter explainer video, knowledge storybook, slides, image, or interactive lesson."
+      "description": "Create a KPainter explainer video, read aloud video, slides, image, or interactive lesson."
     },
     {
       "name": "kpainter_list_knowledge",
