@@ -133,14 +133,13 @@ Minimum publish metadata now needed in practice:
 
 Current KPainter runtime scope:
 
-- `kpainter_get_create_catalog`
+- `kpainter_get_catalog`
 - `kpainter_get_me`
-- `kpainter_get_credit_balance`
-- `kpainter_create_knowledge`
-- `kpainter_list_knowledge`
-- `kpainter_get_knowledge`
+- `kpainter_create_creation`
+- `kpainter_list_creations`
+- `kpainter_get_creation`
 - `kpainter_get_job_status`
-- `kpainter_get_knowledge_status`
+- `kpainter_edit_creation`
 
 Example publish command:
 
@@ -162,7 +161,7 @@ Notes:
 - ClawHub will reject the publish if `openclaw.plugin.json` is missing
 - ClawHub will reject the publish if `source-repo` or `source-commit` is missing
 - ClawHub backend now also extracts `openclaw.extensions`, compatibility metadata, build metadata, and config schema from the package payload
-- for KPainter, send both `Authorization: Bearer <key>` and `X-KGP-Api-Key: <key>` until the public API auth surface is fully unified
+- the code plugin calls `https://api.kpainter.ai/openapi/v1` and sends both `Authorization: Bearer <key>` and `X-KGP-Api-Key: <key>`
 
 ## Minimal `bundle-plugin` skeleton
 

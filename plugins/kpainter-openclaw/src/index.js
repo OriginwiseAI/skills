@@ -1,17 +1,17 @@
-const DEFAULT_API_BASE_URL = "https://kpainter.ai/kp-app-api/v1";
+const DEFAULT_API_BASE_URL = "https://api.kpainter.ai/openapi/v1";
 const DEFAULT_TIMEOUT_MS = 30_000;
-const CONTENT_TYPES = ["video", "static-video", "unify-video", "image", "h5", "slides"];
-const OUTPUT_QUALITIES = ["1K", "2K", "4K"];
-const ASPECT_RATIOS = ["16:9", "9:16"];
-const TRIGGER_MODES = ["async", "sync"];
-const SORT_OPTIONS = [
-  "created_asc",
-  "created_desc",
-  "views_desc",
-  "likes_desc",
-  "published_asc",
-  "published_desc",
+const CONTENT_TYPES = [
+  "explainer_video",
+  "knowledge_video",
+  "vector_animation",
+  "image",
+  "ai_video",
+  "slide_deck",
+  "interactive_lesson",
 ];
+const OUTPUT_QUALITIES = ["1K", "2K", "4K"];
+const ASPECT_RATIOS = ["16:9", "9:16", "3:2", "2:3", "1:1"];
+const EDIT_ACTIONS = ["update_scene_narration", "regenerate_scene", "iterate"];
 
 function isRecord(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -21,140 +21,74 @@ function trimToString(value) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-function buildNoInputSchema() {
-  return {
-    type: "object",
-    additionalProperties: false,
-    properties: {},
-  };
-}
-
 function cleanObject(value) {
-  const result = {};
-  for (const [key, entry] of Object.entries(value)) {
-    if (entry === undefined) continue;
-    result[key] = entry;
-  }
-  return result;
+  return Object.fromEntries(Object.entries(value).filter(([, entry]) => entry !== undefined));
 }
 
-function deepCloneJson(value) {
-  return value === undefined ? undefined : JSON.parse(JSON.stringify(value));
+function noInputSchema() {
+  return { type: "object", additionalProperties: false, properties: {} };
 }
 
 function resolveConfig(context) {
   const config = isRecord(context?.config) ? context.config : {};
-  const apiBaseUrl = trimToString(config.apiBaseUrl) || DEFAULT_API_BASE_URL;
-  const apiKey = trimToString(config.apiKey);
   const rawTimeout = Number(config.requestTimeoutMs);
-  const requestTimeoutMs =
-    Number.isFinite(rawTimeout) && rawTimeout >= 1000 ? Math.floor(rawTimeout) : DEFAULT_TIMEOUT_MS;
-
   return {
-    apiBaseUrl: apiBaseUrl.replace(/\/+$/, ""),
-    apiKey,
-    requestTimeoutMs,
+    apiBaseUrl: (trimToString(config.apiBaseUrl) || DEFAULT_API_BASE_URL).replace(/\/+$/, ""),
+    apiKey: trimToString(config.apiKey),
+    requestTimeoutMs:
+      Number.isFinite(rawTimeout) && rawTimeout >= 1_000
+        ? Math.floor(rawTimeout)
+        : DEFAULT_TIMEOUT_MS,
   };
 }
 
-function ensureApiKey(config) {
+function requireApiKey(config) {
   if (config.apiKey) return config.apiKey;
-  throw new Error(
-    'Missing KPainter API key. Set plugins.entries["kpainter-openclaw"].config.apiKey first.',
-  );
-}
-
-function buildHeaders(config, needsAuth, extraHeaders = {}) {
-  const headers = {
-    Accept: "application/json",
-    ...extraHeaders,
-  };
-
-  if (!needsAuth) {
-    if (config.apiKey) {
-      headers.Authorization = `Bearer ${config.apiKey}`;
-      headers["X-KGP-Api-Key"] = config.apiKey;
-    }
-    return headers;
-  }
-
-  const apiKey = ensureApiKey(config);
-  headers.Authorization = `Bearer ${apiKey}`;
-  headers["X-KGP-Api-Key"] = apiKey;
-  return headers;
+  throw new Error('Missing KPainter API key. Configure plugins.entries["kpainter-openclaw"].config.apiKey.');
 }
 
 function appendQuery(url, query) {
-  if (!isRecord(query)) return;
-
-  for (const [key, rawValue] of Object.entries(query)) {
-    if (rawValue === undefined || rawValue === null || rawValue === "") continue;
-    if (Array.isArray(rawValue)) {
-      for (const item of rawValue) {
-        if (item === undefined || item === null || item === "") continue;
-        url.searchParams.append(key, String(item));
-      }
-      continue;
-    }
-    url.searchParams.set(key, String(rawValue));
+  for (const [key, value] of Object.entries(query || {})) {
+    if (value === undefined || value === null || value === "") continue;
+    url.searchParams.set(key, String(value));
   }
 }
 
-async function readResponsePayload(response) {
+async function readPayload(response) {
   const contentType = response.headers.get("content-type") || "";
-  if (contentType.includes("application/json")) {
-    try {
-      return await response.json();
-    } catch {
-      return null;
-    }
-  }
-
-  try {
-    return await response.text();
-  } catch {
-    return null;
-  }
+  return contentType.includes("application/json") ? response.json() : response.text();
 }
 
-function buildApiError(response, payload) {
-  const message =
-    (isRecord(payload) && trimToString(payload.message)) ||
-    (isRecord(payload) && Array.isArray(payload.detail) && trimToString(payload.detail[0]?.msg)) ||
-    `KPainter API request failed with HTTP ${response.status}`;
-  const error = new Error(message);
-  error.status = response.status;
-  error.payload = payload;
-  return error;
-}
-
-async function requestJson(context, { method, path, query, body, needsAuth = false }) {
+async function requestJson(context, { method, path, query, body, authenticated = true }) {
   const config = resolveConfig(context);
   const url = new URL(`${config.apiBaseUrl}${path}`);
   appendQuery(url, query);
-
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), config.requestTimeoutMs);
 
   try {
-    const headers = buildHeaders(
-      config,
-      needsAuth,
-      body === undefined ? undefined : { "Content-Type": "application/json" },
-    );
-
+    const headers = { Accept: "application/json" };
+    if (authenticated) {
+      const apiKey = requireApiKey(config);
+      headers.Authorization = `Bearer ${apiKey}`;
+      headers["X-KGP-Api-Key"] = apiKey;
+    }
+    if (body !== undefined) headers["Content-Type"] = "application/json";
     const response = await fetch(url, {
       method,
       headers,
       body: body === undefined ? undefined : JSON.stringify(body),
       signal: controller.signal,
     });
-
-    const payload = await readResponsePayload(response);
+    const payload = await readPayload(response);
     if (!response.ok) {
-      throw buildApiError(response, payload);
+      const detail = isRecord(payload?.detail) ? payload.detail : payload;
+      const message = trimToString(detail?.message) || `KPainter API request failed with HTTP ${response.status}`;
+      const error = new Error(message);
+      error.status = response.status;
+      error.payload = payload;
+      throw error;
     }
-
     return payload;
   } catch (error) {
     if (error?.name === "AbortError") {
@@ -166,325 +100,164 @@ async function requestJson(context, { method, path, query, body, needsAuth = fal
   }
 }
 
-function buildExtraConfig(input) {
-  const safeInput = isRecord(input) ? input : {};
-  const extraConfig = isRecord(safeInput.extra_config) ? deepCloneJson(safeInput.extra_config) : {};
-
-  if (trimToString(safeInput.output_quality) || trimToString(safeInput.aspect_ratio)) {
-    const output = isRecord(extraConfig.output) ? extraConfig.output : {};
-    if (trimToString(safeInput.output_quality)) output.quality = trimToString(safeInput.output_quality);
-    if (trimToString(safeInput.aspect_ratio)) output.aspect_ratio = trimToString(safeInput.aspect_ratio);
-    extraConfig.output = output;
-  }
-
-  if (trimToString(safeInput.voice_profile_id)) {
-    extraConfig.voice_profile_id = trimToString(safeInput.voice_profile_id);
-  }
-
-  if (Number.isInteger(safeInput.scene_count)) {
-    const staticVideo = isRecord(extraConfig.static_video) ? extraConfig.static_video : {};
-    staticVideo.scene_count = safeInput.scene_count;
-    extraConfig.static_video = staticVideo;
-  }
-
-  if (Number.isInteger(safeInput.target_duration_seconds)) {
-    const unifyVideo = isRecord(extraConfig.unify_video) ? extraConfig.unify_video : {};
-    unifyVideo.target_duration_seconds = safeInput.target_duration_seconds;
-    extraConfig.unify_video = unifyVideo;
-  }
-
-  return Object.keys(extraConfig).length > 0 ? extraConfig : undefined;
-}
-
 function buildCreatePayload(input) {
-  const safeInput = isRecord(input) ? input : {};
-  const payload = cleanObject({
-    topic_input: trimToString(safeInput.topic_input),
-    description: trimToString(safeInput.description) || undefined,
-    audience_profile: trimToString(safeInput.audience_profile) || undefined,
-    language: trimToString(safeInput.language) || undefined,
-    content_type: trimToString(safeInput.content_type) || undefined,
-    trigger_mode: trimToString(safeInput.trigger_mode) || undefined,
-    enable_retrieval: Boolean(safeInput.enable_retrieval),
-    extra_config: buildExtraConfig(safeInput),
+  const imageGeneration = cleanObject({
+    provider: trimToString(input?.image_provider) || undefined,
+    model: trimToString(input?.image_model) || undefined,
+    size: trimToString(input?.image_size) || undefined,
+    quality: trimToString(input?.image_quality) || undefined,
+  });
+  const videoGeneration = cleanObject({
+    model: trimToString(input?.video_model) || undefined,
+    task: trimToString(input?.video_task) || undefined,
+    resolution: trimToString(input?.video_resolution) || undefined,
+    duration_seconds: input?.video_duration_seconds,
+    native_audio: input?.video_native_audio,
   });
 
-  if (!payload.topic_input) {
-    throw new Error("topic_input is required");
-  }
-
-  return payload;
-}
-
-function buildPublicUrl(publicToken) {
-  const token = trimToString(publicToken);
-  return token ? `https://kpainter.ai/knowledge/${token}` : null;
+  return cleanObject({
+    type: trimToString(input?.type),
+    prompt: trimToString(input?.prompt),
+    instructions: trimToString(input?.instructions) || undefined,
+    language: trimToString(input?.language) || undefined,
+    aspect_ratio: trimToString(input?.aspect_ratio) || undefined,
+    output_quality: trimToString(input?.output_quality) || undefined,
+    voice_id: trimToString(input?.voice_id) || undefined,
+    style_id: trimToString(input?.style_id) || undefined,
+    duration_seconds: input?.duration_seconds,
+    scene_count: input?.scene_count,
+    image_generation: Object.keys(imageGeneration).length ? imageGeneration : undefined,
+    video_generation: Object.keys(videoGeneration).length ? videoGeneration : undefined,
+  });
 }
 
 export default function registerKPainterPlugin(api) {
   api.registerTool({
-    name: "kpainter_get_create_catalog",
-    description:
-      "Fetch the KPainter create catalog including languages, voices, and visual styles.",
-    inputSchema: buildNoInputSchema(),
-    handler: async (_input, context) =>
-      requestJson(context, {
-        method: "GET",
-        path: "/knowledge/create-catalog",
-      }),
-  });
-
-  api.registerTool({
     name: "kpainter_get_me",
-    description: "Fetch the current KPainter account profile for the configured API key.",
-    inputSchema: buildNoInputSchema(),
-    handler: async (_input, context) =>
-      requestJson(context, {
-        method: "GET",
-        path: "/users/me",
-        needsAuth: true,
-      }),
+    description: "Validate the configured KPainter Public OpenAPI key.",
+    inputSchema: noInputSchema(),
+    handler: async (_input, context) => requestJson(context, { method: "GET", path: "/me" }),
   });
 
   api.registerTool({
-    name: "kpainter_get_credit_balance",
-    description: "Fetch the current KPainter credits balance and recent transactions.",
-    inputSchema: buildNoInputSchema(),
-    handler: async (_input, context) =>
-      requestJson(context, {
-        method: "GET",
-        path: "/users/me/credits",
-        needsAuth: true,
-      }),
+    name: "kpainter_get_catalog",
+    description: "Read KPainter product, generation-model, voice, style, and limit capabilities.",
+    inputSchema: noInputSchema(),
+    handler: async (_input, context) => requestJson(context, { method: "GET", path: "/catalog" }),
   });
 
   api.registerTool({
-    name: "kpainter_create_knowledge",
-    description:
-      "Create a KPainter explainer video, read aloud video, vector animation, AI PPT, AI image, or AI app from a prompt and optional output settings.",
+    name: "kpainter_create_creation",
+    description: "Create a KPainter result. Call kpainter_get_catalog first.",
     inputSchema: {
       type: "object",
       additionalProperties: false,
-      required: ["topic_input"],
+      required: ["type", "prompt"],
       properties: {
-        topic_input: {
+        type: { type: "string", enum: CONTENT_TYPES },
+        prompt: { type: "string", minLength: 1, maxLength: 10000 },
+        instructions: { type: "string", maxLength: 10000 },
+        language: { type: "string", maxLength: 32 },
+        aspect_ratio: { type: "string", enum: ASPECT_RATIOS },
+        output_quality: { type: "string", enum: OUTPUT_QUALITIES },
+        voice_id: { type: "string" },
+        style_id: { type: "string" },
+        duration_seconds: { type: "integer", minimum: 4, maximum: 90 },
+        scene_count: { type: "integer", minimum: 1, maximum: 20 },
+        image_provider: { type: "string", enum: ["gemini", "azure_openai"] },
+        image_model: { type: "string" },
+        image_size: { type: "string", enum: ["1536x1024", "1024x1536", "1024x1024"] },
+        image_quality: { type: "string", enum: ["low", "medium", "high"] },
+        video_model: {
           type: "string",
-          minLength: 1,
-          maxLength: 10000,
-          description: "Main topic or prompt for the KPainter creation request.",
+          enum: ["gemini-omni-flash", "veo-3.1-fast", "veo-3.1-standard"],
         },
-        description: {
-          type: "string",
-          maxLength: 10000,
-          description: "Optional extra instruction or creative brief.",
-        },
-        audience_profile: {
-          type: "string",
-          maxLength: 1024,
-          description: "Optional target audience description.",
-        },
-        language: {
-          type: "string",
-          maxLength: 32,
-          description: "Preferred output language code such as zh or en.",
-        },
-        content_type: {
-          type: "string",
-          enum: CONTENT_TYPES,
-          description: "KPainter content type.",
-        },
-        trigger_mode: {
-          type: "string",
-          enum: TRIGGER_MODES,
-          description: "Use sync only for image requests; other types should stay async.",
-        },
-        enable_retrieval: {
-          type: "boolean",
-          description: "Allow KPainter planner retrieval/search when needed.",
-        },
-        output_quality: {
-          type: "string",
-          enum: OUTPUT_QUALITIES,
-          description: "Convenience field mapped to extra_config.output.quality.",
-        },
-        aspect_ratio: {
-          type: "string",
-          enum: ASPECT_RATIOS,
-          description: "Convenience field mapped to extra_config.output.aspect_ratio.",
-        },
-        voice_profile_id: {
-          type: "string",
-          description: "Optional KPainter voice profile id.",
-        },
-        scene_count: {
-          type: "integer",
-          minimum: 1,
-          description: "Optional scene/page count for static-video or slides flows.",
-        },
-        target_duration_seconds: {
-          type: "integer",
-          minimum: 4,
-          maximum: 90,
-          description: "Optional target duration for unify-video.",
-        },
-        extra_config: {
-          type: "object",
-          additionalProperties: true,
-          description:
-            "Optional raw extra_config object. Convenience fields above merge into this payload.",
-        },
+        video_task: { type: "string", enum: ["text_to_video"] },
+        video_resolution: { type: "string", enum: ["720p", "1080p", "4K"] },
+        video_duration_seconds: { type: "integer", minimum: 3, maximum: 10 },
+        video_native_audio: { type: "boolean", const: true },
       },
     },
     handler: async (input, context) => {
-      const result = await requestJson(context, {
-        method: "POST",
-        path: "/knowledge",
-        body: buildCreatePayload(input),
-        needsAuth: true,
-      });
-
-      return cleanObject({
-        ...result,
-        public_url: buildPublicUrl(result?.public_token),
-      });
+      const body = buildCreatePayload(input);
+      if (!body.type || !body.prompt) throw new Error("type and prompt are required");
+      return requestJson(context, { method: "POST", path: "/creations", body });
     },
   });
 
   api.registerTool({
-    name: "kpainter_list_knowledge",
-    description: "List the current user's KPainter creations with optional filters.",
+    name: "kpainter_list_creations",
+    description: "List creations owned by the configured API key.",
     inputSchema: {
       type: "object",
       additionalProperties: false,
       properties: {
-        page: {
-          type: "integer",
-          minimum: 1,
-          default: 1,
-        },
-        page_size: {
-          type: "integer",
-          minimum: 1,
-          maximum: 100,
-          default: 20,
-        },
-        status: {
-          type: "string",
-          description: "Optional status filter such as queued, processing, ready, or failed.",
-        },
-        content_type: {
-          anyOf: [
-            {
-              type: "string",
-              enum: CONTENT_TYPES,
-            },
-            {
-              type: "array",
-              items: {
-                type: "string",
-                enum: CONTENT_TYPES,
-              },
-            },
-          ],
-          description: "One content type or a list of content types.",
-        },
-        language: {
-          type: "string",
-          description: "Optional language code filter.",
-        },
-        query: {
-          type: "string",
-          description: "Optional fuzzy search query.",
-        },
-        sort: {
-          type: "string",
-          enum: SORT_OPTIONS,
-          default: "created_desc",
-        },
+        page: { type: "integer", minimum: 1, default: 1 },
+        page_size: { type: "integer", minimum: 1, maximum: 100, default: 20 },
+        type: { type: "string", enum: CONTENT_TYPES },
+        status: { type: "string", enum: ["queued", "processing", "ready", "failed", "invalid"] },
+        query: { type: "string" },
       },
     },
     handler: async (input, context) =>
-      requestJson(context, {
-        method: "GET",
-        path: "/knowledge",
-        query: cleanObject({
-          page: input?.page,
-          page_size: input?.page_size,
-          status: trimToString(input?.status) || undefined,
-          content_type: Array.isArray(input?.content_type)
-            ? input.content_type
-            : trimToString(input?.content_type) || undefined,
-          language: trimToString(input?.language) || undefined,
-          query: trimToString(input?.query) || undefined,
-          sort: trimToString(input?.sort) || undefined,
-        }),
-        needsAuth: true,
-      }),
+      requestJson(context, { method: "GET", path: "/creations", query: input }),
   });
 
   api.registerTool({
-    name: "kpainter_get_knowledge",
-    description: "Fetch one KPainter creation by knowledge id.",
+    name: "kpainter_get_creation",
+    description: "Read one creation, its artifacts, editable actions, and scenes.",
     inputSchema: {
       type: "object",
       additionalProperties: false,
-      required: ["knowledge_id"],
-      properties: {
-        knowledge_id: {
-          type: "integer",
-          minimum: 1,
-        },
-      },
+      required: ["creation_id"],
+      properties: { creation_id: { type: "integer", minimum: 1 } },
     },
     handler: async (input, context) =>
-      requestJson(context, {
-        method: "GET",
-        path: `/knowledge/${input.knowledge_id}`,
-        needsAuth: true,
-      }),
+      requestJson(context, { method: "GET", path: `/creations/${input.creation_id}` }),
   });
 
   api.registerTool({
     name: "kpainter_get_job_status",
-    description: "Fetch one KPainter job status by job id.",
+    description: "Poll one KPainter create or edit job.",
     inputSchema: {
       type: "object",
       additionalProperties: false,
       required: ["job_id"],
-      properties: {
-        job_id: {
-          type: "integer",
-          minimum: 1,
-        },
-      },
+      properties: { job_id: { type: "integer", minimum: 1 } },
     },
     handler: async (input, context) =>
-      requestJson(context, {
-        method: "GET",
-        path: `/knowledge/jobs/${input.job_id}/status`,
-        needsAuth: true,
-      }),
+      requestJson(context, { method: "GET", path: `/creations/jobs/${input.job_id}` }),
   });
 
   api.registerTool({
-    name: "kpainter_get_knowledge_status",
-    description: "Fetch KPainter knowledge status by knowledge id.",
+    name: "kpainter_edit_creation",
+    description: "Edit one scene or iterate an editable Gemini Omni Flash AI Video.",
     inputSchema: {
       type: "object",
       additionalProperties: false,
-      required: ["knowledge_id"],
+      required: ["creation_id", "action"],
       properties: {
-        knowledge_id: {
-          type: "integer",
-          minimum: 1,
-        },
+        creation_id: { type: "integer", minimum: 1 },
+        action: { type: "string", enum: EDIT_ACTIONS },
+        scene_id: { type: "string" },
+        prompt: { type: "string", maxLength: 10000 },
+        narration_text: { type: "string", maxLength: 10000 },
+        voice_id: { type: "string" },
       },
     },
-    handler: async (input, context) =>
-      requestJson(context, {
-        method: "GET",
-        path: `/knowledge/${input.knowledge_id}/status`,
-        needsAuth: true,
-      }),
+    handler: async (input, context) => {
+      const body = cleanObject({
+        action: input.action,
+        scene_id: trimToString(input.scene_id) || undefined,
+        prompt: trimToString(input.prompt) || undefined,
+        narration_text: trimToString(input.narration_text) || undefined,
+        voice_id: trimToString(input.voice_id) || undefined,
+      });
+      return requestJson(context, {
+        method: "POST",
+        path: `/creations/${input.creation_id}/edit`,
+        body,
+      });
+    },
   });
 }

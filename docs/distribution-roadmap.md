@@ -7,7 +7,7 @@ Last updated: 2026-03-26
 - Canonical public skill repo: `OriginwiseAI/skills`
 - Public skill slug: `kpainter`
 - Public site mirror: `https://kpainter.ai/skill.md`
-- Next ClawHub skill release from this source: `kpainter@0.6.14`
+- Next ClawHub skill release from this source: `kpainter@0.7.0`
 - Repo-based install path: `npx skills add OriginwiseAI/skills`
 
 ## Asset Types

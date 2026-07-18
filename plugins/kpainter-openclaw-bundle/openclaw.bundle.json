@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw-bundle",
   "name": "KPainter OpenClaw Bundle",
-  "description": "Bundle metadata for KPainter explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps.",
+  "description": "Bundle metadata for KPainter explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps.",
   "format": "openclaw-bundle",
   "hostTargets": [
     "desktop",

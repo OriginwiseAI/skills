@@ -51,10 +51,10 @@ clawhub package publish ./plugins/kpainter-openclaw-bundle \
   --family bundle-plugin \
   --name kpainter-openclaw-bundle \
   --display-name "KPainter OpenClaw Bundle" \
-  --version 0.1.8 \
+  --version 0.2.0 \
   --bundle-format openclaw-bundle \
   --host-targets desktop,mobile \
-  --changelog "Rename the continuous video product to Explainer Video and the page-by-page product to Read Aloud Video"
+  --changelog "Add the public AI Video product and align the OpenClaw package family"
 ```
 
 ## Current caveats

@@ -1,8 +1,8 @@
 {
   "name": "kpainter-openclaw",
   "displayName": "KPainter OpenClaw",
-  "version": "0.1.8",
-  "description": "OpenClaw plugin for KPainter explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps.",
+  "version": "0.2.0",
+  "description": "OpenClaw plugin for KPainter explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps.",
   "type": "module",
   "exports": {
     ".": "./src/index.js"
@@ -20,6 +20,7 @@
     "slides",
     "image",
     "interactive-lesson",
+    "ai-video",
     "gpt-image-2"
   ],
   "peerDependencies": {
@@ -47,7 +48,7 @@
       "properties": {
         "apiBaseUrl": {
           "type": "string",
-          "default": "https://kpainter.ai/kp-app-api/v1",
+          "default": "https://api.kpainter.ai/openapi/v1",
           "description": "KPainter API base URL."
         },
         "apiKey": {

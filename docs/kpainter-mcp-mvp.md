@@ -1,193 +1,55 @@
-# KPainter MCP MVP
+# KPainter MCP Public Contract
 
-Last updated: 2026-03-26
+Last updated: 2026-07-19
 
 ## Goal
 
-Ship a small MCP server that lets MCP clients connect a user's KPainter API key, create KPainter outputs, poll progress, and read result links.
+Expose the Public OpenAPI as a thin MCP adapter. MCP must not reimplement product validation, pricing, generation, or provider state.
 
-## Why This Should Be A Server-Side Project
+## Public tools
 
-- MCP is a service-facing integration surface, not a browser-side feature.
-- User API keys should be handled in a controlled server or MCP runtime, not in frontend code.
-- KPainter already has a usable OpenAPI surface, so the MCP server can act as a thin adapter instead of reimplementing business logic.
+- `kp_me`: validate the user API key
+- `kp_get_catalog`: read products, generation models, voices, styles, and limits
+- `kp_create_creation`: create any catalog-supported product
+- `kp_list_creations`: list results owned by the API key
+- `kp_get_creation`: read final URLs, artifacts, scenes, and editable actions
+- `kp_get_job_status`: poll a create or edit job
+- `kp_edit_creation`: run a scene edit or Omni AI Video iteration
 
-## Recommended Packaging
+## Products
 
-- Repo name: `OriginwiseAI/kpainter-mcp`
-- Runtime: server-side Node.js or Python
-- Transport priority:
-  1. `streamableHttp`
-  2. `sse` compatibility if a target client still prefers it
+Use only catalog-returned Public API types:
 
-## MVP Scope
+- `knowledge_video`: Explainer Video
+- `explainer_video`: Read Aloud Video
+- `vector_animation`: Vector Animation
+- `image`: AI Image; select Nano Banana 2 or GPT Image 2 through image parameters
+- `ai_video`: AI Video; select Gemini Omni Flash or Veo through video parameters
+- `slide_deck`: AI PPT
+- `interactive_lesson`: AI App
 
-### In Scope
+Do not infer the product name from the technical enum. Do not create model-specific content types.
 
-- validate a user API key
-- read catalog metadata when needed
-- create new outputs
-- poll job status
-- fetch final creation details and result URLs
+## AI Video
 
-### Out Of Scope For V1
+The MCP create tool maps its flat model arguments into Public OpenAPI `video_generation`.
 
-- scene-level editing
-- file upload pipelines
-- advanced account management
-- billing or credit purchase flows
-- multi-user admin dashboards
+- Gemini Omni Flash supports text-to-video and `iterate` follow-up edits.
+- Veo 3.1 Fast and Standard support text-to-video but not conversational editing.
+- First frame, last frame, and attachments stay unavailable until the Public Files API is exposed in Catalog.
+- MCP clients never send `previous_interaction_id`.
 
-## Proposed Tools
+## Authentication
 
-### `kpainter_validate_key`
+Forward the user's key to `https://api.kpainter.ai/openapi/v1` using `X-KGP-Api-Key`. The adapter may also send `Authorization: Bearer` for host compatibility, but it must not log or persist the complete key outside the configured connection.
 
-Purpose:
-validate that the provided user API key can access KPainter
+## Call order
 
-Maps to:
-- `GET /me`
+1. `kp_me`
+2. `kp_get_catalog`
+3. `kp_create_creation`
+4. poll `kp_get_job_status`
+5. `kp_get_creation`
+6. if supported, `kp_edit_creation`, poll, and read the creation again
 
-### `kpainter_get_catalog`
-
-Purpose:
-read supported types, ratios, page counts, durations, styles, voices, and languages before creation
-
-Maps to:
-- `GET /catalog`
-
-### `kpainter_create_knowledge_video`
-
-Purpose:
-create `knowledge_video`
-
-Maps to:
-- `POST /creations`
-
-Core inputs:
-- `prompt`
-- `language`
-- `aspect_ratio`
-- `duration_seconds`
-- optional `voice_id`
-- optional `style_id`
-
-### `kpainter_create_explainer_video`
-
-Purpose:
-create `explainer_video`
-
-Maps to:
-- `POST /creations`
-
-Core inputs:
-- `prompt`
-- `language`
-- `aspect_ratio`
-- `scene_count`
-- optional `voice_id`
-- optional `style_id`
-
-### `kpainter_create_vector_animation`
-
-Purpose:
-create `vector_animation`
-
-Maps to:
-- `POST /creations`
-
-Core inputs:
-- `prompt`
-- `language`
-- `aspect_ratio`
-- optional `style_id`
-
-### `kpainter_create_slide_deck`
-
-Purpose:
-create `slide_deck`
-
-Maps to:
-- `POST /creations`
-
-Core inputs:
-- `prompt`
-- `language`
-- `aspect_ratio`
-- `scene_count`
-
-### `kpainter_create_image`
-
-Purpose:
-create `image`
-
-Maps to:
-- `POST /creations`
-
-Core inputs:
-- `prompt`
-- `language`
-- `aspect_ratio`
-
-### `kpainter_create_web_app`
-
-Purpose:
-create `web_app`
-
-Maps to:
-- `POST /creations`
-
-Core inputs:
-- `prompt`
-- `language`
-
-### `kpainter_get_job_status`
-
-Purpose:
-read progress for a running job
-
-Maps to:
-- `GET /creations/jobs/{job_id}`
-
-### `kpainter_get_creation`
-
-Purpose:
-read final details, result URLs, artifacts, and scenes for a creation
-
-Maps to:
-- `GET /creations/{creation_id}`
-
-## Auth Model
-
-- Primary model: the user brings their own KPainter API key
-- MCP server stores the key only as needed for the current client session or MCP auth mechanism
-- MCP server forwards requests to `https://api.kpainter.ai/openapi/v1`
-- All create and read calls use the user key in `X-KGP-Api-Key`
-
-## Recommended Call Order
-
-1. `kpainter_validate_key`
-2. `kpainter_get_catalog`
-3. one of the `kpainter_create_*` tools
-4. `kpainter_get_job_status`
-5. `kpainter_get_creation`
-
-## Result-Handling Rules
-
-- Prefer `main_url` from the creation detail response for the primary result
-- Return `artifacts` when present
-- Return `scenes` only when a client benefits from scene-level inspection
-- Do not invent export URLs outside the official detail response
-
-## Release Order
-
-1. internal MVP
-2. Official MCP Registry
-3. Smithery
-4. Tencent Cloud ADP MCP plugin listing
-
-## Backend Dependencies To Confirm
-
-- `/me`, `/catalog`, `/creations`, `/creations/jobs/{job_id}`, and `/creations/{creation_id}` are stable enough for public MCP wrapping
-- rate limits and timeout expectations for MCP clients
-- whether any creation types need stricter server-side validation before external MCP exposure
+Always return URLs from the official detail response. Never construct storage URLs or expose internal `extra_config`, source records, or provider cursors.

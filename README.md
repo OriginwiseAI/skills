@@ -1,6 +1,6 @@
 # Originwise Skills
 
-KPainter helps users explain and create with Explainer Videos, Read Aloud Videos, Vector Animations, AI PPTs, AI Images, and AI Apps, then bring those workflows into agents and products through Skills, OpenAPI, and MCP.
+KPainter helps users explain and create with Explainer Videos, Read Aloud Videos, Vector Animations, AI Images, AI Videos, AI PPTs, and AI Apps, then bring those workflows into agents and products through Skills, OpenAPI, and MCP.
 
 ## Install
 
@@ -38,13 +38,13 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Current Skill
 
 - `kpainter`
-  Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, AI PPTs, AI Images, and AI Apps.
+  Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, AI Images, AI Videos, AI PPTs, and AI Apps.
 
 ## Current Positioning
 
-- Hero message: `Create explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps`
+- Hero message: `Create explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps`
 - Core product promise: Turn topics, lessons, and documents into structured learning content.
-- Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps into your agent or product.
+- Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps into your agent or product.
 
 ## Core Formats
 
@@ -58,13 +58,15 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
   Turn knowledge into interactive demos, guided exploration, practice, quizzes, and hands-on learning experiences.
 - `AI Image`
   Generate covers, posters, and visual summaries when one strong visual result is the fastest path. Latest image support now includes GPT-Image-2.
+- `AI Video`
+  Generate short videos with Gemini Omni Flash or Veo. Omni supports conversational iteration.
 
 ## Plugin Packages
 
 - `plugins/kpainter-openclaw`
-  Preview OpenClaw `code-plugin` with KPainter catalog, account, create, list, detail, and status tools. Source is prepared at `0.1.8`; latest ClawHub release is `0.1.5`.
+  Preview OpenClaw `code-plugin` using the Public OpenAPI for catalog, create, list, detail, status, and edit tools. Source is prepared at `0.2.0`; latest verified ClawHub release remains separate until republished.
 - `plugins/kpainter-openclaw-bundle`
-  Preview OpenClaw `bundle-plugin` metadata pack for KPainter host-target distribution. Source is prepared at `0.1.8`; latest ClawHub release is `0.1.5`.
+  Preview OpenClaw `bundle-plugin` metadata pack for KPainter host-target distribution. Source is prepared at `0.2.0`; its ClawHub release remains separate until republished.
 
 ## Repository Layout
 
@@ -106,7 +108,7 @@ skills/
 - The current public OpenClaw / ClawHub slug is `kpainter`.
 - Public metadata should stay English-first for broad marketplace compatibility.
 - The skill supports the user's preferred language. Multilingual examples are examples, not a language allowlist.
-- AI Video is currently available on the main site but not through the public Skill/OpenAPI contract.
+- Public AI Video uses `ai_video` with model-specific `video_generation`; read the catalog before selecting Omni or Veo.
 
 ## Planning Docs
 

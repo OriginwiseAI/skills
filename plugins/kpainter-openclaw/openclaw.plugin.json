@@ -1,14 +1,14 @@
 {
   "id": "kpainter-openclaw",
   "name": "KPainter OpenClaw",
-  "description": "Create KPainter explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps from OpenClaw.",
+  "description": "Create KPainter explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps from OpenClaw.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
     "properties": {
       "apiBaseUrl": {
         "type": "string",
-        "default": "https://kpainter.ai/kp-app-api/v1",
+        "default": "https://api.kpainter.ai/openapi/v1",
         "description": "KPainter API base URL."
       },
       "apiKey": {
@@ -26,27 +26,23 @@
   },
   "tools": [
     {
-      "name": "kpainter_get_create_catalog",
-      "description": "Fetch KPainter languages, voices, and visual-style catalog data."
+      "name": "kpainter_get_catalog",
+      "description": "Fetch KPainter products, generation models, languages, voices, styles, and limits."
     },
     {
       "name": "kpainter_get_me",
       "description": "Fetch the current KPainter user profile."
     },
     {
-      "name": "kpainter_get_credit_balance",
-      "description": "Fetch current KPainter credits and subscription balance."
+      "name": "kpainter_create_creation",
+      "description": "Create a KPainter explainer video, read aloud video, vector animation, AI image, AI video, AI PPT, or AI app."
     },
     {
-      "name": "kpainter_create_knowledge",
-      "description": "Create a KPainter explainer video, read aloud video, vector animation, AI PPT, AI image, or AI app."
-    },
-    {
-      "name": "kpainter_list_knowledge",
+      "name": "kpainter_list_creations",
       "description": "List the current user's KPainter creations."
     },
     {
-      "name": "kpainter_get_knowledge",
+      "name": "kpainter_get_creation",
       "description": "Fetch one KPainter creation by knowledge id."
     },
     {
@@ -54,8 +50,8 @@
       "description": "Fetch KPainter job status by job id."
     },
     {
-      "name": "kpainter_get_knowledge_status",
-      "description": "Fetch KPainter knowledge status by knowledge id."
+      "name": "kpainter_edit_creation",
+      "description": "Edit one scene or iterate a Gemini Omni Flash AI video."
     }
   ]
 }

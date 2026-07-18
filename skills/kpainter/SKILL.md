@@ -1,8 +1,8 @@
 ---
 name: kpainter
-description: Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, AI PPTs, AI Images, and AI Apps with KPainter.
+description: Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, AI Images, AI Videos, AI PPTs, and AI Apps with KPainter.
 metadata:
-  version: "0.6.14"
+  version: "0.7.0"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
@@ -44,13 +44,12 @@ Explainer Video and Read Aloud Video are independent products. Never present the
 | Explainer Video | `knowledge_video` | continuous animated scenes and narration for explainers, brand communication, and stories |
 | Read Aloud Video | `explainer_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
 | Vector Animation | `vector_animation` | workflows, structures, mechanisms, algorithms, math, science, and principles |
-| AI PPT | `slide_deck` | editable PPT/PDF presentations |
 | AI Image | `image` | covers, posters, illustrations, and visual summaries |
+| AI Video | `ai_video` | short model-generated videos with native audio; Omni supports conversational iteration |
+| AI PPT | `slide_deck` | editable PPT/PDF presentations |
 | AI App | `interactive_lesson` | clickable apps, lessons, demos, exercises, and learning experiences |
 
 The API type values remain stable even though the product names changed. Always map by this table instead of inferring from the identifier. Do not use the retired public type `slides_video`, and do not describe Read Aloud Video as “Lite” or a mode under Explainer Video.
-
-AI Video is available on the KPainter main site, but it is not part of the current public Skill/OpenAPI contract. Do not claim or send an `ai_video` type until it appears in `/catalog`.
 
 ## Choose The Product
 
@@ -59,10 +58,11 @@ Route by the result the user wants.
 1. Map an explicit “Explainer Video” or “解说视频” request to `knowledge_video`.
 2. Map an explicit “Read Aloud Video” or “绘本视频” request to `explainer_video`.
 3. Map workflow, structure, mechanism, algorithm, math, or principle animation to `vector_animation`.
-4. Map AI PPT, presentation, and slide-deck requests to `slide_deck`.
-5. Map AI Image, poster, cover, illustration, or single-visual requests to `image`.
-6. Map AI App, clickable lesson, app, interactive page, quiz, or simulation requests to `interactive_lesson`.
-7. If the user only says “video” or “讲解视频,” ask one short follow-up: do they want a continuously animated Explainer Video, a page-by-page Read Aloud Video, or Vector Animation?
+4. Map AI Image, poster, cover, illustration, or single-visual requests to `image`.
+5. Map standalone text-to-video requests to `ai_video`; read the model catalog before choosing Omni or Veo.
+6. Map AI PPT, presentation, and slide-deck requests to `slide_deck`.
+7. Map AI App, clickable lesson, app, interactive page, quiz, or simulation requests to `interactive_lesson`.
+8. If the user only says “video” or “讲解视频,” ask whether they want an Explainer Video, Read Aloud Video, Vector Animation, or standalone AI Video.
 
 Do not expose API type names unless the user asks for technical details.
 
@@ -115,6 +115,55 @@ Examples:
 - Animate this system architecture and data flow.
 - 用矢量动画讲清楚二分查找。
 - 把这个机制和状态变化做成矢量动画。
+
+## AI Image Models
+
+Read `image.generation_models` from `/catalog` and use a model-specific request.
+
+- Nano Banana 2: `provider=gemini`, `model=nano-banana-2`; use only its listed ratios.
+- GPT Image 2: `provider=azure_openai`, `model=gpt-image-2`; `quality=low|medium|high` is separate from top-level `output_quality`.
+
+Never send the internal `extra_config.output` shape. Use top-level `aspect_ratio` and `output_quality`.
+
+## AI Video Models
+
+Use one public type, `ai_video`, with model selection inside `video_generation`.
+
+| Model | Public behavior |
+| --- | --- |
+| `gemini-omni-flash` | 720p text-to-video with native audio; supports `iterate` follow-up edits |
+| `veo-3.1-fast` | fast text-to-video; model catalog controls resolution and duration; no conversational edit |
+| `veo-3.1-standard` | quality-first text-to-video; model catalog controls resolution and duration; no conversational edit |
+
+Example:
+
+```json
+{
+  "type": "ai_video",
+  "prompt": "Move slowly through a futuristic city on a rainy night with natural ambient audio",
+  "aspect_ratio": "16:9",
+  "video_generation": {
+    "model": "gemini-omni-flash",
+    "task": "text_to_video",
+    "resolution": "720p",
+    "duration_seconds": 8,
+    "native_audio": true
+  }
+}
+```
+
+For an Omni follow-up, read `editable_actions`, then send:
+
+```json
+{
+  "action": "iterate",
+  "prompt": "Keep the camera motion and make the lighting warmer"
+}
+```
+
+Never expose or ask the user for `previous_interaction_id`; KPainter manages it server-side. Do not attempt `iterate` with Veo.
+
+The current Public OpenAPI supports text-to-video only. Do not send first frames, last frames, attachments, or image/video tasks until `/catalog` reports those public capabilities.
 
 ## Credit Fallback
 
@@ -172,6 +221,7 @@ Use catalog values as the source of truth for:
 - languages and voices
 - styles
 - aspect ratios and qualities
+- generation models, tasks, resolutions, and durations
 - duration limits
 - scene/page limits
 
@@ -180,8 +230,10 @@ Parameter rules:
 - `knowledge_video` uses `duration_seconds`.
 - `explainer_video` uses `scene_count`.
 - `slide_deck` uses `scene_count`.
+- `ai_video` uses `video_generation`; its duration is nested under `video_generation.duration_seconds`.
 - Never send `duration_seconds` to `explainer_video` or `vector_animation`.
 - Never send `scene_count` to `knowledge_video`.
+- Never send raw `extra_config`, internal source records, or provider interaction IDs.
 
 ## Refinement
 
@@ -262,4 +314,6 @@ The skill succeeds when the agent can:
 - choose the appropriate product from user intent
 - ask only for missing information
 - create, poll, read, and refine results
+- choose AI Image and AI Video models from the catalog and use model-specific parameters
+- use Omni `iterate` only when the selected model exposes conversational editing
 - offer Read Aloud Video as a confirmed lower-cost fallback when appropriate

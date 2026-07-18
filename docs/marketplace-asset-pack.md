@@ -19,6 +19,7 @@ Keep these names stable across listings, screenshots, skill docs, and MCP/plugin
 - `Vector Animation`
 - `AI PPT`
 - `AI Image`
+- `AI Video`
 - `AI App`
 
 When API type names are needed, use:
@@ -28,15 +29,16 @@ When API type names are needed, use:
 - `vector_animation`
 - `slide_deck`
 - `image`
+- `ai_video`
 - `interactive_lesson`
 
 ## English Tagline
 
-Create explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps from one prompt.
+Create explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps from one prompt.
 
 ## English One-Paragraph Description
 
-KPainter helps users turn one topic into controllable knowledge outputs through normal conversation. Create or refine Explainer Video, Read Aloud Video, Vector Animation, AI PPT, AI Image, and AI App results. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
+KPainter helps users turn one topic into controllable knowledge outputs through normal conversation. Create or refine Explainer Video, Read Aloud Video, Vector Animation, AI Image, AI Video, AI PPT, and AI App results. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
 
 ## Official Links
 
@@ -66,8 +68,9 @@ KPainter helps users turn one topic into controllable knowledge outputs through 
 4. Build a slide deck for onboarding new product managers to AI agents.
 5. Create a course cover image for an introduction to prompt engineering.
 6. Build an interactive web app that helps students explore how attention works.
-7. Turn this document into a classroom-friendly Read Aloud Video in Spanish.
-8. Keep the same topic, but switch the result from Explainer Video to Read Aloud Video.
+7. Use Gemini Omni Flash to create an eight-second video with native audio.
+8. Turn this document into a classroom-friendly Read Aloud Video in Spanish.
+9. Keep the same topic, but switch the result from Explainer Video to Read Aloud Video.
 
 ## Chinese Sample Prompts For Domestic Listings
 
@@ -96,7 +99,7 @@ KPainter helps users turn one topic into controllable knowledge outputs through 
 - Do not say the product supports only a listed language set; say it supports the user's preferred language.
 - Do not use old video type names such as `generated_video`, `presentation_video`, or `animated_video`.
 - Do not say bare `video` automatically means one product; clarify whether the user wants Explainer Video, Read Aloud Video, or Vector Animation.
-- AI Video is available on the main site but is not part of the current public Skill/OpenAPI contract.
+- Public AI Video is available as `ai_video`; model choice belongs in `video_generation`, and only Omni supports conversational iteration.
 
 ## Manual Inputs Still Needed From The Team
 

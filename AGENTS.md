@@ -38,12 +38,14 @@
 
 ## Product Language
 
-- KPainter's public Skill/OpenAPI creates `Explainer Video`, `Read Aloud Video`, `Vector Animation`, `AI PPT`, `AI Image`, and `AI App`.
-- The main site also provides standalone `AI Video`, but the current public Skill/OpenAPI contract does not. Do not advertise or send `ai_video` until `/catalog` exposes it.
+- KPainter's public Skill/OpenAPI creates `Explainer Video`, `Read Aloud Video`, `Vector Animation`, `AI Image`, `AI Video`, `AI PPT`, and `AI App`.
+- Public AI Video uses the stable `ai_video` type and model-specific `video_generation`. Read `/catalog` before choosing Gemini Omni Flash or Veo; only Omni exposes `iterate` multi-turn editing.
 - Explainer Video and Read Aloud Video are independent products, not Standard/Lite or parent/child modes. Bare `video` is too broad; ask one short follow-up when the user does not clarify `Explainer Video`, `Read Aloud Video`, or `Vector Animation`.
-- Use current external type names when technical names are required: `explainer_video`, `knowledge_video`, `vector_animation`, `slide_deck`, `image`, `interactive_lesson`. `slides_video` is retired.
+- Use current external type names when technical names are required: `explainer_video`, `knowledge_video`, `vector_animation`, `image`, `ai_video`, `slide_deck`, `interactive_lesson`. `slides_video` is retired.
 
 ## Error Log
+
+- 2026-07-19 Public AI Video is part of the Skill/OpenAPI contract. Keep one stable `ai_video` type and select `gemini-omni-flash`, `veo-3.1-fast`, or `veo-3.1-standard` through `video_generation`; do not create model-specific types. The public surface currently exposes text-to-video only, and Catalog must report first frame, last frame, and attachments as unavailable until a Public Files API exists. Only Omni supports `iterate`; never expose `previous_interaction_id`.
 
 - 2026-07-18 Public Skill, plugin, bundle, marketplace, and website-mirror copy must use `AI PPT`, `AI Image`, and `AI App`. Standalone `AI Video` remains a main-site-only capability until the Public OpenAPI catalog exposes it; never imply that the Skill can create it.
 
