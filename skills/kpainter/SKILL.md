@@ -1,8 +1,8 @@
 ---
 name: kpainter
-description: Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, Slides, Images, and Interactive Lessons with KPainter.
+description: Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, AI PPTs, AI Images, and AI Apps with KPainter.
 metadata:
-  version: "0.6.13"
+  version: "0.6.14"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
@@ -44,11 +44,13 @@ Explainer Video and Read Aloud Video are independent products. Never present the
 | Explainer Video | `knowledge_video` | continuous animated scenes and narration for explainers, brand communication, and stories |
 | Read Aloud Video | `explainer_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
 | Vector Animation | `vector_animation` | workflows, structures, mechanisms, algorithms, math, science, and principles |
-| Slides | `slide_deck` | editable PPT/PDF presentations |
-| Image | `image` | covers, posters, illustrations, and visual summaries |
-| Interactive Lesson | `interactive_lesson` | clickable lessons, demos, exercises, and learning apps |
+| AI PPT | `slide_deck` | editable PPT/PDF presentations |
+| AI Image | `image` | covers, posters, illustrations, and visual summaries |
+| AI App | `interactive_lesson` | clickable apps, lessons, demos, exercises, and learning experiences |
 
 The API type values remain stable even though the product names changed. Always map by this table instead of inferring from the identifier. Do not use the retired public type `slides_video`, and do not describe Read Aloud Video as “Lite” or a mode under Explainer Video.
+
+AI Video is available on the KPainter main site, but it is not part of the current public Skill/OpenAPI contract. Do not claim or send an `ai_video` type until it appears in `/catalog`.
 
 ## Choose The Product
 
@@ -57,9 +59,9 @@ Route by the result the user wants.
 1. Map an explicit “Explainer Video” or “解说视频” request to `knowledge_video`.
 2. Map an explicit “Read Aloud Video” or “绘本视频” request to `explainer_video`.
 3. Map workflow, structure, mechanism, algorithm, math, or principle animation to `vector_animation`.
-4. Map presentation requests to `slide_deck`.
-5. Map poster, cover, illustration, or single-visual requests to `image`.
-6. Map clickable lesson, app, interactive page, quiz, or simulation requests to `interactive_lesson`.
+4. Map AI PPT, presentation, and slide-deck requests to `slide_deck`.
+5. Map AI Image, poster, cover, illustration, or single-visual requests to `image`.
+6. Map AI App, clickable lesson, app, interactive page, quiz, or simulation requests to `interactive_lesson`.
 7. If the user only says “video” or “讲解视频,” ask one short follow-up: do they want a continuously animated Explainer Video, a page-by-page Read Aloud Video, or Vector Animation?
 
 Do not expose API type names unless the user asks for technical details.
@@ -145,6 +147,8 @@ If the user already gave enough information, create first and refine after.
 ## Use Source Material
 
 Treat attachments and URLs supplied by the user as source or reference material.
+
+Direct public API upload is not currently available. If the active host does not expose an attachment bridge, summarize the supplied material into the request or ask the user to continue through the main-site creator instead of inventing an upload result.
 
 - Preserve the user’s requested facts and terminology.
 - Do not invent claims that are not supported by the source.

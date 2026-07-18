@@ -2,7 +2,7 @@
   "name": "kpainter-openclaw",
   "displayName": "KPainter OpenClaw",
   "version": "0.1.8",
-  "description": "OpenClaw plugin for KPainter explainer videos, read aloud videos, slides, images, and interactive lessons.",
+  "description": "OpenClaw plugin for KPainter explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps.",
   "type": "module",
   "exports": {
     ".": "./src/index.js"

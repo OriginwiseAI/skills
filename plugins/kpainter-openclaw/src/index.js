@@ -261,7 +261,7 @@ export default function registerKPainterPlugin(api) {
   api.registerTool({
     name: "kpainter_create_knowledge",
     description:
-      "Create a KPainter explainer video, read aloud video, slides, image, or interactive lesson from a prompt and optional output settings.",
+      "Create a KPainter explainer video, read aloud video, vector animation, AI PPT, AI image, or AI app from a prompt and optional output settings.",
     inputSchema: {
       type: "object",
       additionalProperties: false,

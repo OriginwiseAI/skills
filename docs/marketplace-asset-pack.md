@@ -17,9 +17,9 @@ Keep these names stable across listings, screenshots, skill docs, and MCP/plugin
 - `Explainer Video`
 - `Read Aloud Video`
 - `Vector Animation`
-- `Slides`
-- `Image`
-- `Interactive Lesson`
+- `AI PPT`
+- `AI Image`
+- `AI App`
 
 When API type names are needed, use:
 
@@ -32,11 +32,11 @@ When API type names are needed, use:
 
 ## English Tagline
 
-Create explainer videos, read aloud videos, slides, images, and web apps from one prompt.
+Create explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps from one prompt.
 
 ## English One-Paragraph Description
 
-KPainter helps users turn one topic into controllable knowledge outputs through normal conversation. Create or refine Explainer Video, Read Aloud Video, Vector Animation, Slides, Image, and Interactive Lesson results. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
+KPainter helps users turn one topic into controllable knowledge outputs through normal conversation. Create or refine Explainer Video, Read Aloud Video, Vector Animation, AI PPT, AI Image, and AI App results. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
 
 ## Official Links
 
@@ -96,6 +96,7 @@ KPainter helps users turn one topic into controllable knowledge outputs through 
 - Do not say the product supports only a listed language set; say it supports the user's preferred language.
 - Do not use old video type names such as `generated_video`, `presentation_video`, or `animated_video`.
 - Do not say bare `video` automatically means one product; clarify whether the user wants Explainer Video, Read Aloud Video, or Vector Animation.
+- AI Video is available on the main site but is not part of the current public Skill/OpenAPI contract.
 
 ## Manual Inputs Still Needed From The Team
 

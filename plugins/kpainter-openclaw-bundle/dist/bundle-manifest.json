@@ -1,7 +1,7 @@
 {
   "bundleId": "kpainter-openclaw-bundle",
   "displayName": "KPainter OpenClaw Bundle",
-  "summary": "KPainter bundle for explainer videos, read aloud videos, slides, images, and interactive lessons.",
+  "summary": "KPainter bundle for explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps.",
   "hostTargets": [
     "desktop",
     "mobile"

@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw",
   "name": "KPainter OpenClaw",
-  "description": "Create KPainter explainer videos, read aloud videos, slides, images, and interactive lessons from OpenClaw.",
+  "description": "Create KPainter explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps from OpenClaw.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -39,7 +39,7 @@
     },
     {
       "name": "kpainter_create_knowledge",
-      "description": "Create a KPainter explainer video, read aloud video, slides, image, or interactive lesson."
+      "description": "Create a KPainter explainer video, read aloud video, vector animation, AI PPT, AI image, or AI app."
     },
     {
       "name": "kpainter_list_knowledge",

@@ -1,6 +1,6 @@
 # Originwise Skills
 
-KPainter helps users explain any topic with Explainer Videos, Read Aloud Videos, Vector Animations, Slides, Images, and Interactive Lessons, then bring those workflows into agents and products through Skills, OpenAPI, and MCP.
+KPainter helps users explain and create with Explainer Videos, Read Aloud Videos, Vector Animations, AI PPTs, AI Images, and AI Apps, then bring those workflows into agents and products through Skills, OpenAPI, and MCP.
 
 ## Install
 
@@ -38,13 +38,13 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Current Skill
 
 - `kpainter`
-  Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, Slides, Images, and Interactive Lessons.
+  Create controllable Explainer Videos, Read Aloud Videos, Vector Animations, AI PPTs, AI Images, and AI Apps.
 
 ## Current Positioning
 
-- Hero message: `Create explainer videos, read aloud videos, slides, images, and interactive lessons`
+- Hero message: `Create explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps`
 - Core product promise: Turn topics, lessons, and documents into structured learning content.
-- Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, read aloud videos, slides, images, and interactive lessons into your agent or product.
+- Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps into your agent or product.
 
 ## Core Formats
 
@@ -52,11 +52,11 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
   Use continuous animated scenes and narration for science, brand communication, and children’s stories.
 - `Read Aloud Video`
   Use narrated visuals and page-by-page structure for courses, training, science, and longer topics.
-- `Slides`
+- `AI PPT`
   Organize content into presentation-ready slides for courseware, training, webinars, proposals, and page-by-page editing.
-- `Interactive Lessons`
+- `AI App`
   Turn knowledge into interactive demos, guided exploration, practice, quizzes, and hands-on learning experiences.
-- `Image`
+- `AI Image`
   Generate covers, posters, and visual summaries when one strong visual result is the fastest path. Latest image support now includes GPT-Image-2.
 
 ## Plugin Packages
@@ -106,6 +106,7 @@ skills/
 - The current public OpenClaw / ClawHub slug is `kpainter`.
 - Public metadata should stay English-first for broad marketplace compatibility.
 - The skill supports the user's preferred language. Multilingual examples are examples, not a language allowlist.
+- AI Video is currently available on the main site but not through the public Skill/OpenAPI contract.
 
 ## Planning Docs
 

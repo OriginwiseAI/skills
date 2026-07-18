@@ -9,7 +9,7 @@ can:
 
 - fetch the create catalog
 - inspect the current account and credits
-- create explainer videos, read aloud videos, slides, images, and interactive lessons
+- create explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps
 - list creations and poll job or knowledge status
 
 ## Files

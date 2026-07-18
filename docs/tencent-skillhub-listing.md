@@ -16,16 +16,16 @@ Alternative if a bilingual title is needed:
 
 ## Recommended Short Subtitle
 
-一键生成解说视频、绘本视频、矢量动画、PPT、图片和应用。
+一键生成解说视频、绘本视频、矢量动画、AI PPT、AI 图片和 AI 应用。
 
 ## Recommended Long Description
 
-KPainter 可以把一个主题快速做成解说视频、绘本视频、矢量动画、PPT、图片和互动应用。用户只需要连接自己的 KPainter 账号和 API Key，就可以在当前 agent 或 skill 环境里直接创建、继续修改和切换结果形式，不需要跳出对话重新组织流程。它尤其适合课程讲解、课件制作、产品解说、流程说明、知识传播和多语言内容创作。
+KPainter 可以把一个主题快速做成解说视频、绘本视频、矢量动画、AI PPT、AI 图片和 AI 应用。用户只需要连接自己的 KPainter 账号和 API Key，就可以在当前 agent 或 skill 环境里直接创建、继续修改和切换结果形式，不需要跳出对话重新组织流程。它尤其适合课程讲解、课件制作、产品解说、流程说明、知识传播和多语言内容创作。
 
 ## Chinese Value Points
 
 - 适合知识讲解和结构化表达，不只是泛娱乐视频
-- 能在 `解说视频 / 绘本视频 / 矢量动画 / PPT / 图片 / 应用` 之间切换
+- 能在 `解说视频 / 绘本视频 / 矢量动画 / AI PPT / AI 图片 / AI 应用` 之间切换
 - 支持用户用自己的语言直接描述需求
 - 对接用户自己的 KPainter API Key，适合 agent 内工作流
 

@@ -2,7 +2,7 @@
   "name": "kpainter-openclaw-bundle",
   "displayName": "KPainter OpenClaw Bundle",
   "version": "0.1.8",
-  "description": "OpenClaw bundle metadata for KPainter explainer videos, read aloud videos, slides, images, and interactive lessons.",
+  "description": "OpenClaw bundle metadata for KPainter explainer videos, read aloud videos, vector animations, AI PPTs, AI images, and AI apps.",
   "type": "module",
   "files": [
     "README.md",
