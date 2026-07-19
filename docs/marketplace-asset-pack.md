@@ -34,11 +34,15 @@ When API type names are needed, use:
 
 ## English Tagline
 
-Explain any topic with precision. Turn PDFs, PPTs, web links, and other documents into clearly structured explainer videos and interactive lessons.
+Explain any topic with precision. Turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons.
+
+## Chinese Tagline
+
+精准讲解每一个主题。输入 PDF、PPT、网页链接和各类文档，生成表达精准、结构清晰的解说视频和互动课程。
 
 ## English One-Paragraph Description
 
-KPainter helps users explain any topic with precision through normal conversation. Turn PDFs, PPTs, web links, and other documents into clearly structured Explainer Videos and Interactive Lessons, then create or refine Read Aloud Videos, Vector Animations, AI Images, AI Videos, and AI PPTs when the task calls for them. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
+KPainter helps users explain any topic with precision through normal conversation. Turn PDFs, PPTs, web links, and other documents into precise, clearly structured Explainer Videos and Interactive Lessons, then create or refine Read Aloud Videos, Vector Animations, AI Images, AI Videos, and AI PPTs when the task calls for them. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
 
 ## Official Links
 

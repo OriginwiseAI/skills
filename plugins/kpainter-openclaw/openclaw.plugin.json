@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw",
   "name": "KPainter OpenClaw",
-  "description": "Preview runtime connecting OpenClaw to KPainter's Public API to create, monitor, and refine precise visual explanations.",
+  "description": "Preview runtime connecting OpenClaw to KPainter's Public API to create precise, clearly structured explainer videos and interactive lessons, then monitor and refine them.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,

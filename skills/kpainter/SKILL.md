@@ -1,6 +1,6 @@
 ---
 name: kpainter
-description: Explain any topic with precision. Use KPainter to turn PDFs, PPTs, web links, and other documents into clearly structured explainer videos and interactive lessons, then monitor or refine the results.
+description: Explain any topic with precision. Use KPainter to turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons, then monitor or refine the results.
 metadata:
   version: "0.7.0"
   homepage: https://kpainter.ai/
@@ -12,7 +12,7 @@ metadata:
 
 # KPainter Skill
 
-Use KPainter to explain any topic with precision: turn PDFs, PPTs, web links, and other documents into clearly structured explainer videos and interactive lessons.
+Use KPainter to explain any topic with precision: turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons.
 
 ## Official URLs
 

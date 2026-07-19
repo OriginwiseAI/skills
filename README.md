@@ -1,6 +1,6 @@
 # Originwise Skills
 
-KPainter explains any topic with precision, turning PDFs, PPTs, web links, and other documents into clearly structured explainer videos and interactive lessons, then bringing those workflows into agents and products through Skills, OpenAPI, and MCP.
+KPainter explains any topic with precision, turning PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons, then bringing those workflows into agents and products through Skills, OpenAPI, and MCP.
 
 ## Install
 
@@ -38,12 +38,12 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Current Skill
 
 - `kpainter`
-  Turn PDFs, PPTs, web links, and other documents into clearly structured explainer videos and interactive lessons, then monitor or refine the results.
+  Turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons, then monitor or refine the results.
 
 ## Current Positioning
 
 - Hero message: `Explain any topic with precision`
-- Core product promise: Turn PDFs, PPTs, web links, and other documents into clearly structured explainer videos and interactive lessons.
+- Core product promise: Turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons.
 - Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps into your agent or product.
 
 ## Core Formats
@@ -64,7 +64,7 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Plugin Packages
 
 - `plugins/kpainter-openclaw`
-  Preview OpenClaw runtime for KPainter's Public API: create, monitor, and refine precise explainer videos, interactive lessons, and other visual knowledge content. Version `0.2.0` loads its config schema and all seven tools successfully on an isolated OpenClaw `2026.4.15` install.
+  Preview OpenClaw runtime for KPainter's Public API: create precise, clearly structured explainer videos and interactive lessons, then monitor and refine the results. Version `0.2.0` loads its config schema and all seven tools successfully on an isolated OpenClaw `2026.4.15` install.
 - `plugins/kpainter-openclaw-bundle`
   Metadata-only OpenClaw bundle linking the KPainter Skill and code plugin for desktop and mobile hosts. Source is prepared at `0.2.0`; its ClawHub release remains separate until republished.
 

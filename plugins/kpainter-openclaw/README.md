@@ -1,6 +1,6 @@
 # KPainter OpenClaw
 
-Preview OpenClaw `code-plugin` that connects agents to KPainter's Public API.
+Preview OpenClaw `code-plugin` that connects agents to KPainter's Public API to create precise, clearly structured explainer videos and interactive lessons, then monitor and refine the results.
 
 ## What it does
 
