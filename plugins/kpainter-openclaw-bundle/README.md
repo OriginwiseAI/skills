@@ -19,6 +19,7 @@ artifact line without overloading the code-plugin package name.
 ## Files
 
 - `package.json`
+- `openclaw.plugin.json`
 - `openclaw.bundle.json`
 - `dist/bundle-manifest.json`
 - `dist/README.md`

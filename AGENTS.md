@@ -44,6 +44,8 @@
 - Use exactly these current external types when technical names are required: `explainer_video`, `read_aloud_video`, `vector_animation`, `image`, `ai_video`, `slides`, `interactive_lesson`. Reject `knowledge_video`, `slide_deck`, and `slides_video`.
 
 ## Error Log
+- 2026-07-19 ClawHub 当前要求 `code-plugin` 和 `bundle-plugin` 都包含 `openclaw.plugin.json`；只有 `openclaw.bundle.json` 的 bundle 包会在提交后被后端拒绝。网页更新发布必须使用 `name=<package>`，这样才会显示 Changelog；bundle 同时显式带 `family=bundle-plugin`，否则页面会默认成 Code plugin。发布前核对 Package type、版本、包内说明、Changelog 和源码 SHA。
+
 - 2026-07-19 OpenClaw `--profile <name> plugins install <local-path>` may record the profile config while copying the extension into the default `~/.openclaw/extensions`, after which the profile reports a stale entry and cannot discover the plugin. For a genuinely isolated plugin load test, set both `OPENCLAW_STATE_DIR` and `OPENCLAW_CONFIG_PATH` to the same temporary test directory for install, inspect, and doctor. The expected local-path provenance warning is not a load failure; still verify status, version, config schema, and all seven tool names.
 
 - 2026-07-19 `npm pack --dry-run --prefix <plugin-dir>` 在当前 npm 版本仍会从仓库根寻找 `package.json`，导致 `ENOENT`。验证 ClawHub 包时要把工作目录直接切到各插件目录后运行 `npm pack --dry-run`，并分别核对 tarball 文件清单、版本和 package family。

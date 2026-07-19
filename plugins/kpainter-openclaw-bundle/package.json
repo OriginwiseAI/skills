@@ -6,6 +6,7 @@
   "type": "module",
   "files": [
     "README.md",
+    "openclaw.plugin.json",
     "openclaw.bundle.json",
     "dist/README.md",
     "dist/bundle-manifest.json"
