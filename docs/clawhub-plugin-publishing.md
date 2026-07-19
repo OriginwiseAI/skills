@@ -249,6 +249,6 @@ The lowest-risk order for KPainter is:
 
 Important current caution:
 
-- external OpenClaw plugins are moving quickly right now
-- recent upstream regressions have affected `plugin-sdk` resolution and plugin-registered tools
-- treat the first KPainter plugin releases as preview-quality until runtime verification passes on a clean OpenClaw install
+- external OpenClaw plugins are moving quickly, so keep KPainter releases labeled preview
+- `kpainter-openclaw@0.2.0` has passed an isolated install/load check on OpenClaw `2026.4.15`, including its config schema and all seven registered tools
+- this check did not use a real user API key for a paid end-to-end generation, so it is not yet a production-readiness claim

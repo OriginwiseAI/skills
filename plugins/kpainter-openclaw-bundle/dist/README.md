@@ -1,4 +1,5 @@
-# Draft Bundle Artifacts
+# KPainter OpenClaw Bundle Metadata
 
-Replace this placeholder with the real bundle assets before publishing a public
-bundle-plugin release.
+This package intentionally ships metadata rather than executable code. Its
+manifest links the `kpainter` Skill and `kpainter-openclaw` code plugin for
+desktop and mobile OpenClaw hosts.

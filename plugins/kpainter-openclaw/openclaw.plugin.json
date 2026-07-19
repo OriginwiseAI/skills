@@ -1,7 +1,7 @@
 {
   "id": "kpainter-openclaw",
   "name": "KPainter OpenClaw",
-  "description": "Create KPainter explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps from OpenClaw.",
+  "description": "Preview runtime connecting OpenClaw to KPainter's Public API to create, monitor, and refine precise visual explanations.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,

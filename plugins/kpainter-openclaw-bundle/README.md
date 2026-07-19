@@ -1,6 +1,6 @@
 # KPainter OpenClaw Bundle
 
-OpenClaw `bundle-plugin` package for KPainter.
+Metadata-only OpenClaw `bundle-plugin` for KPainter's desktop and mobile distribution surfaces.
 
 ## What it is
 

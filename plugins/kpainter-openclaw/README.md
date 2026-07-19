@@ -1,6 +1,6 @@
 # KPainter OpenClaw
 
-OpenClaw `code-plugin` package for KPainter.
+Preview OpenClaw `code-plugin` that connects agents to KPainter's Public API.
 
 ## What it does
 
@@ -71,7 +71,7 @@ npm pack --dry-run
   --changelog "Use Public OpenAPI, add model catalogs, and expose AI Video with Omni iteration"
 ```
 
-## Current caveats
+## Validation status
 
-- This package is now a real runtime, but it has not been runtime-tested against a fresh OpenClaw install in this repo.
-- Recent upstream OpenClaw issues have affected external plugin loading and tool registration. Re-test on the target OpenClaw version before recommending broad production use.
+- An isolated install on OpenClaw `2026.4.15` loaded the plugin, its config schema, and all seven tools successfully.
+- The package remains a preview because this release check did not use a real user API key to run a paid end-to-end generation.

@@ -1,6 +1,6 @@
 # KPainter Marketplace Asset Pack
 
-Last updated: 2026-03-26
+Last updated: 2026-07-19
 
 ## Canonical Identity
 
@@ -34,11 +34,11 @@ When API type names are needed, use:
 
 ## English Tagline
 
-Create explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps from one prompt.
+Explain any topic with precision. Turn PDFs, PPTs, web links, and other documents into clearly structured explainer videos and interactive lessons.
 
 ## English One-Paragraph Description
 
-KPainter helps users turn one topic into controllable knowledge outputs through normal conversation. Create or refine Explainer Video, Read Aloud Video, Vector Animation, AI Image, AI Video, AI PPT, and AI App results. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
+KPainter helps users explain any topic with precision through normal conversation. Turn PDFs, PPTs, web links, and other documents into clearly structured Explainer Videos and Interactive Lessons, then create or refine Read Aloud Videos, Vector Animations, AI Images, AI Videos, and AI PPTs when the task calls for them. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
 
 ## Official Links
 

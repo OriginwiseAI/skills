@@ -1,18 +1,18 @@
-# KPainter ClawHub Plugin Drafts
+# KPainter OpenClaw Packages
 
-These folders are draft OpenClaw plugin packages for ClawHub publishing.
+These folders are the canonical OpenClaw packages for KPainter's ClawHub distribution.
 
 They are intentionally separate from the public `skills/` directory:
 
 - `skills/` contains publishable `SKILL.md` skills
-- `plugins/` contains draft package-based plugin scaffolds
+- `plugins/` contains package-based OpenClaw distributions
 
-Current draft packages:
+Current packages:
 
 - `kpainter-openclaw`
-  First real `code-plugin` preview for KPainter API tools
+  Preview `code-plugin` runtime for KPainter Public API tools
 - `kpainter-openclaw-bundle`
-  Draft `bundle-plugin`
+  Metadata-only `bundle-plugin` linking the Skill and code plugin for desktop and mobile hosts
 
 These folders are intentionally separate from `skills/` so ClawHub package work
 does not leak into the installable `SKILL.md` surface.
