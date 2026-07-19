@@ -40,10 +40,16 @@
 
 - KPainter's public Skill/OpenAPI creates `Explainer Video`, `Read Aloud Video`, `Vector Animation`, `AI Image`, `AI Video`, `AI PPT`, and `AI App`.
 - Public AI Video uses the stable `ai_video` type and model-specific `video_generation`. Read `/catalog` before choosing Gemini Omni Flash or Veo; only Omni exposes `iterate` multi-turn editing.
-- Explainer Video and Read Aloud Video are independent products, not Standard/Lite or parent/child modes. Bare `video` is too broad; ask one short follow-up when the user does not clarify `Explainer Video`, `Read Aloud Video`, or `Vector Animation`.
-- Use current external type names when technical names are required: `explainer_video`, `knowledge_video`, `vector_animation`, `image`, `ai_video`, `slide_deck`, `interactive_lesson`. `slides_video` is retired.
+- Explainer Video and Read Aloud Video are independent products, not Standard/Lite or parent/child modes. Bare `video` is too broad; ask whether the user wants `Explainer Video`, `Read Aloud Video`, or `AI Video`. Offer Vector Animation only after the user explicitly says “Vector Animation” or “矢量动画”.
+- Use exactly these current external types when technical names are required: `explainer_video`, `read_aloud_video`, `vector_animation`, `image`, `ai_video`, `slides`, `interactive_lesson`. Reject `knowledge_video`, `slide_deck`, and `slides_video`.
 
 ## Error Log
+- 2026-07-19 OpenClaw `--profile <name> plugins install <local-path>` may record the profile config while copying the extension into the default `~/.openclaw/extensions`, after which the profile reports a stale entry and cannot discover the plugin. For a genuinely isolated plugin load test, set both `OPENCLAW_STATE_DIR` and `OPENCLAW_CONFIG_PATH` to the same temporary test directory for install, inspect, and doctor. The expected local-path provenance warning is not a load failure; still verify status, version, config schema, and all seven tool names.
+
+- 2026-07-19 `npm pack --dry-run --prefix <plugin-dir>` 在当前 npm 版本仍会从仓库根寻找 `package.json`，导致 `ENOENT`。验证 ClawHub 包时要把工作目录直接切到各插件目录后运行 `npm pack --dry-run`，并分别核对 tarball 文件清单、版本和 package family。
+
+- 2026-07-19 Canonical Skill、网站镜像、OpenClaw code-plugin 与公开文档必须共同使用七类新契约。矢量动画的触发必须严格到明确产品名，不能因算法、公式、流程、结构或普通动画描述自动选择；模糊 `video` 只询问 Explainer Video、Read Aloud Video、AI Video。Skill 更新后运行 `quick_validate.py`、前向触发测试，并确保 `kgp-web/public/skill.md` 与 canonical `SKILL.md` 字节一致。
+
 
 - 2026-07-19 ClawHub 线上详情页确认 `kpainter-openclaw` 与 `kpainter-openclaw-bundle` 在发布 `0.2.0` 前的实际当前版本都是 `0.1.5`；仓库里写 `0.1.0` 的内容只能视为首发历史，不能继续当作当前市场版本。发布新版本前以详情页 `Current version` 为准，并用高于它的 semver。
 

@@ -64,7 +64,7 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Plugin Packages
 
 - `plugins/kpainter-openclaw`
-  Preview OpenClaw runtime for KPainter's Public API: create precise, clearly structured explainer videos and interactive lessons, then monitor and refine the results. Version `0.2.0` loads its config schema and all seven tools successfully on an isolated OpenClaw `2026.4.15` install.
+  Preview OpenClaw runtime for KPainter's Public API: create precise, clearly structured explainer videos and interactive lessons, then monitor and refine the results. Version `0.3.0` exposes the seven current public product types and keeps strict Vector Animation routing.
 - `plugins/kpainter-openclaw-bundle`
   Metadata-only OpenClaw bundle linking the KPainter Skill and code plugin for desktop and mobile hosts. Source is prepared at `0.2.0`; its ClawHub release remains separate until republished.
 

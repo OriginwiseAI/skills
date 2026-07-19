@@ -2,11 +2,11 @@ const DEFAULT_API_BASE_URL = "https://api.kpainter.ai/openapi/v1";
 const DEFAULT_TIMEOUT_MS = 30_000;
 const CONTENT_TYPES = [
   "explainer_video",
-  "knowledge_video",
+  "read_aloud_video",
   "vector_animation",
   "image",
   "ai_video",
-  "slide_deck",
+  "slides",
   "interactive_lesson",
 ];
 const OUTPUT_QUALITIES = ["1K", "2K", "4K"];
@@ -154,7 +154,12 @@ export default function registerKPainterPlugin(api) {
       additionalProperties: false,
       required: ["type", "prompt"],
       properties: {
-        type: { type: "string", enum: CONTENT_TYPES },
+        type: {
+          type: "string",
+          enum: CONTENT_TYPES,
+          description:
+            "Choose by the requested result: explainer_video for continuous narrated explanation; read_aloud_video for page-by-page narration; image for one image; ai_video for storyboard, cinematic, or short video; slides for a presentation; interactive_lesson for an interactive app. Use vector_animation only when the user explicitly requests Vector Animation or 矢量动画. Source files do not determine the output type.",
+        },
         prompt: { type: "string", minLength: 1, maxLength: 10000 },
         instructions: { type: "string", maxLength: 10000 },
         language: { type: "string", maxLength: 32 },
@@ -162,8 +167,18 @@ export default function registerKPainterPlugin(api) {
         output_quality: { type: "string", enum: OUTPUT_QUALITIES },
         voice_id: { type: "string" },
         style_id: { type: "string" },
-        duration_seconds: { type: "integer", minimum: 4, maximum: 90 },
-        scene_count: { type: "integer", minimum: 1, maximum: 20 },
+        duration_seconds: {
+          type: "integer",
+          minimum: 4,
+          maximum: 90,
+          description: "Explainer Video duration. Use only with explainer_video.",
+        },
+        scene_count: {
+          type: "integer",
+          minimum: 1,
+          maximum: 20,
+          description: "Page count. Use only with read_aloud_video or slides.",
+        },
         image_provider: { type: "string", enum: ["gemini", "azure_openai"] },
         image_model: { type: "string" },
         image_size: { type: "string", enum: ["1536x1024", "1024x1536", "1024x1024"] },

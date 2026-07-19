@@ -1,13 +1,13 @@
 # KPainter Distribution Roadmap
 
-Last updated: 2026-03-26
+Last updated: 2026-07-19
 
 ## Current State
 
 - Canonical public skill repo: `OriginwiseAI/skills`
 - Public skill slug: `kpainter`
 - Public site mirror: `https://kpainter.ai/skill.md`
-- Next ClawHub skill release from this source: `kpainter@0.7.0`
+- Next ClawHub skill release from this source: `kpainter@0.8.0`
 - Repo-based install path: `npx skills add OriginwiseAI/skills`
 
 ## Asset Types
@@ -34,7 +34,7 @@ Best for GPT Store, Microsoft 365 Agent Store, and other channel-specific storef
 
 - Keep `kpainter` as the skill slug.
 - Keep `kpainter.ai` as the public domain.
-- Keep public type naming aligned to `explainer_video / knowledge_video / vector_animation`.
+- Keep all seven public types aligned: `explainer_video / read_aloud_video / vector_animation / image / ai_video / slides / interactive_lesson`.
 - Finish the marketplace asset pack in `docs/marketplace-asset-pack.md`.
 
 ### P1: Finish The Skill Track

@@ -20,12 +20,12 @@ Expose the Public OpenAPI as a thin MCP adapter. MCP must not reimplement produc
 
 Use only catalog-returned Public API types:
 
-- `knowledge_video`: Explainer Video
-- `explainer_video`: Read Aloud Video
+- `explainer_video`: Explainer Video
+- `read_aloud_video`: Read Aloud Video
 - `vector_animation`: Vector Animation
 - `image`: AI Image; select Nano Banana 2 or GPT Image 2 through image parameters
 - `ai_video`: AI Video; select Gemini Omni Flash or Veo through video parameters
-- `slide_deck`: AI PPT
+- `slides`: AI PPT
 - `interactive_lesson`: AI App
 
 Do not infer the product name from the technical enum. Do not create model-specific content types.

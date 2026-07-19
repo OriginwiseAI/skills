@@ -17,19 +17,19 @@ Keep these names stable across listings, screenshots, skill docs, and MCP/plugin
 - `Explainer Video`
 - `Read Aloud Video`
 - `Vector Animation`
-- `AI PPT`
 - `AI Image`
 - `AI Video`
+- `AI PPT`
 - `AI App`
 
 When API type names are needed, use:
 
 - `explainer_video`
-- `knowledge_video`
+- `read_aloud_video`
 - `vector_animation`
-- `slide_deck`
 - `image`
 - `ai_video`
+- `slides`
 - `interactive_lesson`
 
 ## English Tagline
@@ -102,7 +102,7 @@ KPainter helps users explain any topic with precision through normal conversatio
 - Keep marketplace-facing metadata English-first unless the target platform is explicitly Chinese-first.
 - Do not say the product supports only a listed language set; say it supports the user's preferred language.
 - Do not use old video type names such as `generated_video`, `presentation_video`, or `animated_video`.
-- Do not say bare `video` automatically means one product; clarify whether the user wants Explainer Video, Read Aloud Video, or Vector Animation.
+- Do not say bare `video` automatically means one product; clarify whether the user wants Explainer Video, Read Aloud Video, or AI Video. Offer Vector Animation only when the user explicitly names it.
 - Public AI Video is available as `ai_video`; model choice belongs in `video_generation`, and only Omni supports conversational iteration.
 
 ## Manual Inputs Still Needed From The Team

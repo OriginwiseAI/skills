@@ -1,7 +1,7 @@
 {
   "name": "kpainter-openclaw",
   "displayName": "KPainter OpenClaw",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Preview OpenClaw runtime for KPainter's Public API: create precise, clearly structured explainer videos and interactive lessons, then monitor and refine the results.",
   "type": "module",
   "exports": {

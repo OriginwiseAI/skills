@@ -43,7 +43,7 @@ This repo now keeps matching draft scaffolds under:
 - `plugins/kpainter-openclaw`
 - `plugins/kpainter-openclaw-bundle`
 
-Current published state before the `0.2.0` release:
+Current published state before the next release:
 
 - `kpainter-openclaw@0.1.5` is live on ClawHub as a `code-plugin`
 - `kpainter-openclaw-bundle@0.1.5` is live on ClawHub as a `bundle-plugin`
@@ -250,5 +250,5 @@ The lowest-risk order for KPainter is:
 Important current caution:
 
 - external OpenClaw plugins are moving quickly, so keep KPainter releases labeled preview
-- `kpainter-openclaw@0.2.0` has passed an isolated install/load check on OpenClaw `2026.4.15`, including its config schema and all seven registered tools
+- `kpainter-openclaw@0.3.0` has passed an isolated install/load check on OpenClaw `2026.4.15`, including its config schema and all seven registered tools
 - this check did not use a real user API key for a paid end-to-end generation, so it is not yet a production-readiness claim

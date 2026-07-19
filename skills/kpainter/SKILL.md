@@ -2,7 +2,7 @@
 name: kpainter
 description: Explain any topic with precision. Use KPainter to turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons, then monitor or refine the results.
 metadata:
-  version: "0.7.0"
+  version: "0.8.0"
   homepage: https://kpainter.ai/
   skill_url: https://kpainter.ai/skill.md
   docs_url: https://kpainter.ai/docs/skills
@@ -41,28 +41,30 @@ Explainer Video and Read Aloud Video are independent products. Never present the
 
 | Product | Public API type | Best for |
 | --- | --- | --- |
-| Explainer Video | `knowledge_video` | continuous animated scenes and narration for explainers, brand communication, and stories |
-| Read Aloud Video | `explainer_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
-| Vector Animation | `vector_animation` | workflows, structures, mechanisms, algorithms, math, science, and principles |
+| Explainer Video | `explainer_video` | continuous animated scenes and narration for explainers, brand communication, and stories |
+| Read Aloud Video | `read_aloud_video` | narrated visuals and page-by-page structure for courses, training, SOPs, science, and longer topics |
+| Vector Animation | `vector_animation` | precise vector explanations when the user explicitly requests Vector Animation |
 | AI Image | `image` | covers, posters, illustrations, and visual summaries |
-| AI Video | `ai_video` | short model-generated videos with native audio; Omni supports conversational iteration |
-| AI PPT | `slide_deck` | editable PPT/PDF presentations |
+| AI Video | `ai_video` | storyboard videos, cinematic shots, and short videos |
+| AI PPT | `slides` | editable PPT/PDF presentations |
 | AI App | `interactive_lesson` | clickable apps, lessons, demos, exercises, and learning experiences |
 
-The API type values remain stable even though the product names changed. Always map by this table instead of inferring from the identifier. Do not use the retired public type `slides_video`, and do not describe Read Aloud Video as “Lite” or a mode under Explainer Video.
+Use the public types in this table. Do not describe Read Aloud Video as “Lite” or a mode under Explainer Video.
 
 ## Choose The Product
 
 Route by the result the user wants.
 
-1. Map an explicit “Explainer Video” or “解说视频” request to `knowledge_video`.
-2. Map an explicit “Read Aloud Video” or “绘本视频” request to `explainer_video`.
-3. Map workflow, structure, mechanism, algorithm, math, or principle animation to `vector_animation`.
+1. Map an explicit “Explainer Video,” “解说视频,” or “讲解视频” request to `explainer_video`.
+2. Map an explicit “Read Aloud Video” or “绘本视频” request to `read_aloud_video`.
+3. Use `vector_animation` only when the user explicitly says “Vector Animation” or “矢量动画.” Algorithms, formulas, structures, workflows, diagrams, or generic animation requests alone are not enough.
 4. Map AI Image, poster, cover, illustration, or single-visual requests to `image`.
-5. Map standalone text-to-video requests to `ai_video`; read the model catalog before choosing Omni or Veo.
-6. Map AI PPT, presentation, and slide-deck requests to `slide_deck`.
+5. Map storyboard-video, cinematic-shot, or short-video requests to `ai_video`.
+6. Map AI PPT, presentation, and slide-deck requests to `slides`.
 7. Map AI App, clickable lesson, app, interactive page, quiz, or simulation requests to `interactive_lesson`.
-8. If the user only says “video” or “讲解视频,” ask whether they want an Explainer Video, Read Aloud Video, Vector Animation, or standalone AI Video.
+8. Treat PDFs, PPTs, URLs, images, and documents as source formats, not output-type signals.
+9. If the user only says “video,” ask whether they want an Explainer Video, Read Aloud Video, or AI Video. Do not offer or select Vector Animation unless the user explicitly requests it.
+10. Never switch products silently because of credits or unsupported parameters.
 
 Do not expose API type names unless the user asks for technical details.
 
@@ -107,14 +109,14 @@ Load valid page counts, voices, styles, ratios, and qualities from the catalog.
 
 ## Vector Animation
 
-Choose Vector Animation for precise processes and state changes.
+Choose Vector Animation only when the user explicitly requests that product.
 
 Examples:
 
 - Use Vector Animation to show how binary search removes half of the range in each round.
-- Animate this system architecture and data flow.
+- Use Vector Animation to animate this system architecture and data flow.
 - 用矢量动画讲清楚二分查找。
-- 把这个机制和状态变化做成矢量动画。
+- 请用矢量动画展示这个机制和状态变化。
 
 ## AI Image Models
 
@@ -227,12 +229,12 @@ Use catalog values as the source of truth for:
 
 Parameter rules:
 
-- `knowledge_video` uses `duration_seconds`.
-- `explainer_video` uses `scene_count`.
-- `slide_deck` uses `scene_count`.
+- `explainer_video` uses `duration_seconds`.
+- `read_aloud_video` uses `scene_count`.
+- `slides` uses `scene_count`.
 - `ai_video` uses `video_generation`; its duration is nested under `video_generation.duration_seconds`.
-- Never send `duration_seconds` to `explainer_video` or `vector_animation`.
-- Never send `scene_count` to `knowledge_video`.
+- Never send `duration_seconds` to `read_aloud_video` or `vector_animation`.
+- Never send `scene_count` to `explainer_video`.
 - Never send raw `extra_config`, internal source records, or provider interaction IDs.
 
 ## Refinement
@@ -312,6 +314,7 @@ The skill succeeds when the agent can:
 - explain Explainer Video and Read Aloud Video as independent products
 - use the current public API type names
 - choose the appropriate product from user intent
+- choose Vector Animation only after an explicit Vector Animation or 矢量动画 request
 - ask only for missing information
 - create, poll, read, and refine results
 - choose AI Image and AI Video models from the catalog and use model-specific parameters

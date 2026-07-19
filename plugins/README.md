@@ -19,7 +19,7 @@ does not leak into the installable `SKILL.md` surface.
 
 Publishing status:
 
-1. `kpainter-openclaw@0.1.5` is the current ClawHub code-plugin release; local source `0.2.0` adds the Public OpenAPI contract and AI Video support.
+1. `kpainter-openclaw@0.1.5` is the current ClawHub code-plugin release; local source `0.3.0` adds the seven current Public OpenAPI types, AI Video, and strict Vector Animation selection.
 2. `kpainter-openclaw-bundle@0.1.5` is the current ClawHub bundle-plugin release; local source `0.2.0` aligns the metadata-only package family with the updated Skill and code plugin.
 
 Before publishing any plugin release:
