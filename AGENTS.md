@@ -45,6 +45,8 @@
 
 ## Error Log
 
+- 2026-07-19 ClawHub 线上详情页确认 `kpainter-openclaw` 与 `kpainter-openclaw-bundle` 在发布 `0.2.0` 前的实际当前版本都是 `0.1.5`；仓库里写 `0.1.0` 的内容只能视为首发历史，不能继续当作当前市场版本。发布新版本前以详情页 `Current version` 为准，并用高于它的 semver。
+
 - 2026-07-19 `kpainter-openclaw@0.2.0` 已在隔离的 OpenClaw `2026.4.15` 状态目录完成安装/加载检查，config schema 与 7 个工具全部被识别；`plugins doctor` 仅出现隔离本地路径缺少 provenance 的信任提醒，没有插件加载错误。该结果允许以 preview runtime 发布，但因未使用真实用户 API Key 跑付费生成，不能升级为 production-ready 声明。
 
 - 2026-07-19 ClawHub 的 Skill、code-plugin 与 bundle-plugin 不能复用同一条七产品长列表说明。Skill 应沿用官网定位 `Explain any topic with precision`，具体写清 PDF、PPT、网页链接和其他文档到结构清晰的解说视频与互动课程；code-plugin 必须明确是连接 Public API 的 preview runtime，且在 Public Files API 上线前不能宣称直接上传这些附件；bundle-plugin 必须明确是 metadata-only 的桌面/移动端分发关联包，不能暗示其执行生成。市场短说明、package/manifest description、README 首段和 bundle manifest summary 要同步。
