@@ -34,6 +34,7 @@
 - Keep `SKILL.md` concise and agent-facing.
 - Put repository-level human guidance in `README.md`, not inside the skill folder.
 - Put marketplace copy, rollout plans, and channel checklists in `docs/`, not in the skill folder.
+- Store public, copyable source-to-video worksheets under `resources/<resource-pack>/`; each pack needs its own attribution and license file, plus a README entry that identifies it as the canonical public copy.
 - Draft ClawHub plugin package scaffolds may live under `plugins/<package-name>/`; keep them clearly separated from installable `skills/` content and document their publish commands in repo docs.
 
 ## Product Language
