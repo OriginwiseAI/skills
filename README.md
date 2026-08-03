@@ -92,12 +92,6 @@ plugins/
 skills/
   kpainter/
     SKILL.md
-resources/
-  source-to-video-templates/
-    README.md
-    sop-training-video-review-checklist.md
-    source-to-video-handoff-sheet.md
-    decision-point-storyboard.md
 ```
 
 ## Product Links
@@ -107,17 +101,10 @@ resources/
 - OpenAPI docs: `https://kpainter.ai/docs/openapi`
 - API key: `https://kpainter.ai/api-key`
 
-## Reusable Resources
+## Related projects
 
-### Source-to-Video Templates
-
-Copyable, source-led worksheets for training, operations, and technical-document explanations:
-
-- [SOP-to-training-video review checklist](resources/source-to-video-templates/sop-training-video-review-checklist.md)
-- [Source-to-video handoff sheet](resources/source-to-video-templates/source-to-video-handoff-sheet.md)
-- [Decision-point storyboard](resources/source-to-video-templates/decision-point-storyboard.md)
-
-These templates are the canonical organization-owned copy, released under [CC BY 4.0](resources/source-to-video-templates/LICENSE). They help teams preserve source ownership, decision points, review boundaries, and update triggers; they do not replace a controlled procedure or domain review.
+- [KPainter source-to-video templates](https://github.com/OriginwiseAI/kpainter-source-to-video-templates) — copyable, CC BY 4.0 worksheets for training, operations, and technical-document explanations.
+- [Awesome Technical Writing](https://github.com/OriginwiseAI/awesome-technical-writing) — a curated collection of technical-writing resources, maintained as its own project and attributed to its upstream source.
 
 ## Notes
 
