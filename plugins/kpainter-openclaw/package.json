@@ -1,11 +1,15 @@
 {
   "name": "kpainter-openclaw",
   "displayName": "KPainter OpenClaw",
-  "version": "0.3.0",
-  "description": "Preview OpenClaw runtime for KPainter's Public API: create precise, clearly structured explainer videos and interactive lessons, then monitor and refine the results.",
+  "version": "1.0.0",
+  "description": "OpenClaw runtime for KPainter OpenAPI: explainer video, AI image, and AI app.",
   "type": "module",
   "exports": {
     ".": "./src/index.js"
+  },
+  "scripts": {
+    "check": "node --check src/index.js",
+    "test": "node --test test/*.test.mjs"
   },
   "files": [
     "README.md",
@@ -16,12 +20,9 @@
     "openclaw",
     "clawhub",
     "kpainter",
-    "explainer-video",
-    "slides",
+    "video",
     "image",
-    "interactive-lesson",
-    "ai-video",
-    "gpt-image-2"
+    "app"
   ],
   "peerDependencies": {
     "openclaw": ">=2026.3.22"

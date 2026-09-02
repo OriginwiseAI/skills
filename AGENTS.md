@@ -39,19 +39,26 @@
 
 ## Product Language
 
-- KPainter's public Skill/OpenAPI creates `Explainer Video`, `Read Aloud Video`, `Vector Animation`, `AI Image`, `AI Video`, `AI PPT`, and `AI App`.
-- Public AI Video uses the stable `ai_video` type and model-specific `video_generation`. Read `/catalog` before choosing Gemini Omni Flash or Veo; only Omni exposes `iterate` multi-turn editing.
-- Explainer Video and Read Aloud Video are independent products, not Standard/Lite or parent/child modes. Bare `video` is too broad; ask whether the user wants `Explainer Video`, `Read Aloud Video`, or `AI Video`. Offer Vector Animation only after the user explicitly says “Vector Animation” or “矢量动画”.
-- Use exactly these current external types when technical names are required: `explainer_video`, `read_aloud_video`, `vector_animation`, `image`, `ai_video`, `slides`, `interactive_lesson`. Reject `knowledge_video`, `slide_deck`, and `slides_video`.
+- The external brand is KPainter OpenAPI, with canonical base `/openapi/v1` and `video`, `image`, and `app` through one `creations` resource. Public Skills, MCP, OpenClaw, marketplace material, and website mirrors use `snake_case`, must not double the `/v1` prefix, and must not reintroduce project/proposal/job/quote/provider terms or retired type aliases.
+- Preserve the canonical Skill's complete user-intent routing, natural-language trigger examples, attachment and URL behavior, asynchronous progress, refinement, recovery, multilingual, security, and success guidance when narrowing the product set. Do not replace the installable Skill or marketplace copy with a terse internal-contract summary; remove unavailable products while retaining the established user-facing structure and examples.
+
+- The public agent catalog has exactly three products: `video`, `image`, and `app`.
+- Every public write uses `/openapi/v1/creations`; input files are uploaded first and referenced by `file_id`.
+- Explainer and training requests route to `video`. Picture-book video, standalone AI Video, AI Presentation, and vector animation are not currently public OpenAPI products and must not be silently mapped. Treat PDF/PPT/PPTX, webpages, and images as input sources rather than product selectors; only Video may claim URL Context support.
+- MCP uses the unified capability/upload/create/list/get/message/action/output tool set; it has no public project, proposal, job, or production-confirmation workflow.
+- Video creation and accepted edits automatically continue after planning when the quote fits the user's balance and budget ceiling. Only an advertised paused action requires further user authorization.
 
 ## Error Log
-- 2026-07-19 ClawHub 当前要求 `code-plugin` 和 `bundle-plugin` 都包含 `openclaw.plugin.json`；只有 `openclaw.bundle.json` 的 bundle 包会在提交后被后端拒绝。网页更新发布必须使用 `name=<package>`，这样才会显示 Changelog；bundle 同时显式带 `family=bundle-plugin`，否则页面会默认成 Code plugin。发布前核对 Package type、版本、包内说明、Changelog 和源码 SHA。
+- 2026-09-01 KPainter OpenAPI supersedes the older public-product notes below: the current public set is only `video|image|app`, with no public AI Presentation, picture-book video, standalone AI Video, or legacy product aliases. OpenClaw keeps its installed `kpainter_*` tool names but mirrors the same `snake_case` schema and `/openapi/v1` base.
+- 2026-09-02 ClawHub validates native manifests against current OpenClaw fields: declare tool ownership under `contracts.tools`, never a legacy top-level `tools`; every native code plugin must declare `package.json#openclaw.compat.pluginApi`. A portable bundle must use a recognized bundle layout such as Agent Plugins root `plugin.json`; `openclaw.bundle.json` is not a current contract, and adding `openclaw.plugin.json` makes OpenClaw prefer native-plugin detection. Publish a new semver version after either migration.
+- 2026-07-19 网页更新发布必须使用 `name=<package>`，这样才会显示 Changelog；bundle 同时显式带 `family=bundle-plugin`，否则页面会默认成 Code plugin。发布前核对 Package type、版本、包内说明、Changelog 和源码 SHA。
 
 - 2026-07-19 OpenClaw `--profile <name> plugins install <local-path>` may record the profile config while copying the extension into the default `~/.openclaw/extensions`, after which the profile reports a stale entry and cannot discover the plugin. For a genuinely isolated plugin load test, set both `OPENCLAW_STATE_DIR` and `OPENCLAW_CONFIG_PATH` to the same temporary test directory for install, inspect, and doctor. The expected local-path provenance warning is not a load failure; still verify status, version, config schema, and all seven tool names.
 
 - 2026-07-19 `npm pack --dry-run --prefix <plugin-dir>` 在当前 npm 版本仍会从仓库根寻找 `package.json`，导致 `ENOENT`。验证 ClawHub 包时要把工作目录直接切到各插件目录后运行 `npm pack --dry-run`，并分别核对 tarball 文件清单、版本和 package family。
 
-- 2026-07-19 Canonical Skill、网站镜像、OpenClaw code-plugin 与公开文档必须共同使用七类新契约。矢量动画的触发必须严格到明确产品名，不能因算法、公式、流程、结构或普通动画描述自动选择；模糊 `video` 只询问 Explainer Video、Read Aloud Video、AI Video。Skill 更新后运行 `quick_validate.py`、前向触发测试，并确保 `kgp-web/public/skill.md` 与 canonical `SKILL.md` 字节一致。
+- 2026-08-29 AI Presentation 暂时从公开 Agent 目录、网站镜像和公开文档隐藏；保留实现与历史兼容，但不得宣传或路由新的 AI Presentation 请求。Knowledge Video 走 Scene Film project 链路，AI Image / AI App 走 creation 链路；更新后确保 `kgp-web/public/skill.md` 与 canonical `SKILL.md` 字节一致。
+- 2026-08-20 `kpainter-openclaw@0.4.0` 已在隔离的 OpenClaw `2026.4.15` 状态目录完成安装和加载；host 识别全部 15 个工具且 doctor 无 KPainter 加载错误。局部路径 provenance warning 是预期提醒，不代表失败；付费 API canary 仍需单独授权。
 
 
 - 2026-07-19 ClawHub 线上详情页确认 `kpainter-openclaw` 与 `kpainter-openclaw-bundle` 在发布 `0.2.0` 前的实际当前版本都是 `0.1.5`；仓库里写 `0.1.0` 的内容只能视为首发历史，不能继续当作当前市场版本。发布新版本前以详情页 `Current version` 为准，并用高于它的 semver。

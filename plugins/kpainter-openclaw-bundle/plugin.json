@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kpainter-openclaw-bundle",
+  "version": "0.3.0",
+  "description": "Portable KPainter Skill bundle for Agent Plugins-compatible hosts."
+}

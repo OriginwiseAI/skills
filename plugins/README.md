@@ -10,17 +10,17 @@ They are intentionally separate from the public `skills/` directory:
 Current packages:
 
 - `kpainter-openclaw`
-  Preview `code-plugin` runtime for KPainter Public API tools
+  `code-plugin` runtime for the three-product KPainter OpenAPI tools
 - `kpainter-openclaw-bundle`
-  Metadata-only `bundle-plugin` linking the Skill and code plugin for desktop and mobile hosts
+  Agent Plugins `bundle-plugin` carrying the canonical KPainter Skill
 
 These folders are intentionally separate from `skills/` so ClawHub package work
 does not leak into the installable `SKILL.md` surface.
 
 Publishing status:
 
-1. `kpainter-openclaw@0.1.5` is the current ClawHub code-plugin release; local source `0.3.0` adds the seven current Public OpenAPI types, AI Video, and strict Vector Animation selection.
-2. `kpainter-openclaw-bundle@0.1.5` is the current ClawHub bundle-plugin release; local source `0.2.0` aligns the metadata-only package family with the updated Skill and code plugin.
+1. `kpainter-openclaw@0.3.0` is the current ClawHub code-plugin release. Local source `1.0.0` uses the three-product KPainter OpenAPI contract and must pass its package checks before republishing.
+2. `kpainter-openclaw-bundle@0.2.0` is the current ClawHub bundle-plugin release. Local source `0.3.0` migrates it to a portable Agent Plugins bundle with the canonical Skill.
 
 Before publishing any plugin release:
 

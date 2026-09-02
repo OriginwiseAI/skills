@@ -1,6 +1,6 @@
 # Originwise Skills
 
-KPainter explains any topic with precision, turning PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons, then bringing those workflows into agents and products through Skills, OpenAPI, and MCP.
+KPainter explains complex topics with videos, images, and interactive apps, then brings those workflows into agents and products through Skills, KPainter OpenAPI, and MCP.
 
 ## Install
 
@@ -38,35 +38,29 @@ bunx add-skill OriginwiseAI/skills --skill kpainter
 ## Current Skill
 
 - `kpainter`
-  Turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons, then monitor or refine the results.
+  Create and refine Explainer Videos, AI Images, and AI Apps from natural-language requests and uploaded sources.
 
 ## Current Positioning
 
 - Hero message: `Explain any topic with precision`
-- Core product promise: Turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons.
-- Integration promise: Browse Skills, OpenAPI, and MCP docs to bring explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps into your agent or product.
+- Core product promise: Turn topics, PDFs, PPTs, webpages, and other sources into clear Explainer Videos, AI Images, and interactive AI Apps.
+- Integration promise: Use one KPainter OpenAPI creations workflow through REST, MCP, or the KPainter Skill.
 
 ## Core Formats
 
 - `Explainer Video`
-  Use continuous animated scenes and narration for science, brand communication, and children’s stories.
-- `Read Aloud Video`
-  Use narrated visuals and page-by-page structure for courses, training, science, and longer topics.
-- `AI PPT`
-  Organize content into presentation-ready slides for courseware, training, webinars, proposals, and page-by-page editing.
+  Create narrated courses, training, SOPs, research summaries, product education, and story-led explanations.
 - `AI App`
   Turn knowledge into interactive demos, guided exploration, practice, quizzes, and hands-on learning experiences.
 - `AI Image`
   Generate covers, posters, and visual summaries when one strong visual result is the fastest path. Latest image support now includes GPT-Image-2.
-- `AI Video`
-  Generate short videos with Gemini Omni Flash or Veo. Omni supports conversational iteration.
 
 ## Plugin Packages
 
 - `plugins/kpainter-openclaw`
-  Preview OpenClaw runtime for KPainter's Public API: create precise, clearly structured explainer videos and interactive lessons, then monitor and refine the results. Version `0.3.0` exposes the seven current public product types and keeps strict Vector Animation routing.
+  OpenClaw runtime for the eight-tool KPainter MCP-compatible workflow. Version `1.0.0` exposes `video`, `image`, and `app`.
 - `plugins/kpainter-openclaw-bundle`
-  Metadata-only OpenClaw bundle linking the KPainter Skill and code plugin for desktop and mobile hosts. Source is prepared at `0.2.0`; its ClawHub release remains separate until republished.
+  Portable Agent Plugins bundle carrying the canonical KPainter Skill. Source is prepared at `0.3.0`; its ClawHub release remains separate until republished.
 
 ## Repository Layout
 
@@ -113,7 +107,9 @@ skills/
 - The current public OpenClaw / ClawHub slug is `kpainter`.
 - Public metadata should stay English-first for broad marketplace compatibility.
 - The skill supports the user's preferred language. Multilingual examples are examples, not a language allowlist.
-- Public AI Video uses `ai_video` with model-specific `video_generation`; read the catalog before selecting Omni or Veo.
+- Public integrations use `video`, `image`, and `app` through `https://api.kpainter.ai/openapi/v1`.
+- Treat PDFs, PPTs, webpages, and images as sources rather than product selectors.
+- Picture-book video, standalone AI Video, AI Presentation, and Vector Animation are not currently exposed through KPainter OpenAPI and must not be silently remapped.
 
 ## Planning Docs
 

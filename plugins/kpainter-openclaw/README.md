@@ -1,16 +1,16 @@
 # KPainter OpenClaw
 
-Preview OpenClaw `code-plugin` that connects agents to KPainter's Public API to create precise, clearly structured explainer videos and interactive lessons, then monitor and refine the results.
+OpenClaw `code-plugin` that connects agents to KPainter OpenAPI to create Explainer Videos, AI Images, and AI Apps, then monitor supported results.
 
 ## What it does
 
 This package adds a minimal set of KPainter API tools to OpenClaw so an agent
 can:
 
-- fetch the Public OpenAPI catalog, including generation models
-- validate the current API key
-- create explainer videos, read aloud videos, vector animations, AI images, AI videos, AI PPTs, and AI apps
-- list creations, poll jobs, read results, and run supported edits
+- read current video, image, app, and file capabilities
+- upload source files
+- create Explainer Videos, AI Images, and AI Apps
+- list creations, read status, send video follow-ups, continue paused work, and read outputs
 
 ## Files
 
@@ -33,18 +33,19 @@ Configure the plugin under `plugins.entries["kpainter-openclaw"].config`:
 Notes:
 
 - `apiBaseUrl` defaults to the public production API
-- `apiKey` is required for catalog, create, list, detail, status, and edit tools
-- the runtime sends both `Authorization: Bearer <key>` and `X-KGP-Api-Key: <key>` for compatibility with KPainter's public API surfaces
+- `apiKey` is required for account-scoped tools
+- the runtime sends `Authorization: Bearer <key>`
 
 ## Exposed tools
 
-- `kpainter_get_catalog`
-- `kpainter_get_me`
-- `kpainter_create_creation`
-- `kpainter_list_creations`
-- `kpainter_get_creation`
-- `kpainter_get_job_status`
-- `kpainter_edit_creation`
+- `kpainter_capabilities`
+- `kpainter_upload_file`
+- `kpainter_create`
+- `kpainter_list`
+- `kpainter_get`
+- `kpainter_message`
+- `kpainter_act`
+- `kpainter_outputs`
 
 ## Validation
 
@@ -63,15 +64,15 @@ npm pack --dry-run
   --family code-plugin \
   --name kpainter-openclaw \
   --display-name "KPainter OpenClaw" \
-  --version 0.3.0 \
+  --version 1.0.0 \
   --source-repo OriginwiseAI/skills \
   --source-commit <git-sha> \
   --source-ref refs/heads/main \
   --source-path plugins/kpainter-openclaw \
-  --changelog "Use Public OpenAPI, add model catalogs, and expose AI Video with Omni iteration"
+  --changelog "Align OpenClaw with KPainter OpenAPI video, image, and app creations"
 ```
 
 ## Validation status
 
-- An isolated install on OpenClaw `2026.4.15` loaded the plugin, its config schema, and all seven tools successfully.
+- Contract tests validate all eight tools and the three-product schema.
 - The package remains a preview because this release check did not use a real user API key to run a paid end-to-end generation.

@@ -1,37 +1,27 @@
 # KPainter OpenClaw Bundle
 
-Metadata-only OpenClaw `bundle-plugin` for KPainter's desktop and mobile distribution surfaces.
+Portable `bundle-plugin` that delivers the KPainter Skill in the Agent Plugins
+standard layout.
 
 ## What it is
 
-This package is a lightweight bundle-family metadata pack for KPainter's
-OpenClaw distribution surface.
+This package is a content bundle, not an in-process OpenClaw runtime. It ships
+the canonical KPainter Skill so compatible hosts can load its instructions
+without installing executable plugin code.
 
-It does not execute code. Instead, it declares:
-
-- bundle-family package identity separate from the `kpainter` skill and the `kpainter-openclaw` code plugin
-- host targets for `desktop` and `mobile`
-- a small bundle manifest describing what this package is meant to accompany
-
-This is useful when a downstream host or marketplace flow wants a bundle-only
-artifact line without overloading the code-plugin package name.
+For the account-scoped eight-tool OpenClaw runtime, install the separate
+`kpainter-openclaw` code plugin.
 
 ## Files
 
 - `package.json`
-- `openclaw.plugin.json`
-- `openclaw.bundle.json`
-- `dist/bundle-manifest.json`
-- `dist/README.md`
+- `plugin.json` — Agent Plugins manifest
+- `skills/kpainter/SKILL.md` — canonical KPainter Skill
 
 ## Current intent
 
-This bundle currently acts as a distribution metadata pack that points to the
-real KPainter surfaces:
-
-- skill: `kpainter`
-- code plugin: `kpainter-openclaw`
-- homepage: `https://kpainter.ai/`
+The bundle provides the KPainter Skill for Agent Plugins-compatible hosts. It
+does not create, proxy, or execute KPainter requests by itself.
 
 ## Validation
 
@@ -40,8 +30,7 @@ Before publishing:
 ```bash
 cd plugins/kpainter-openclaw-bundle
 jq . package.json >/dev/null
-jq . openclaw.bundle.json >/dev/null
-jq . dist/bundle-manifest.json >/dev/null
+jq . plugin.json >/dev/null
 npm pack --dry-run
 ```
 
@@ -52,13 +41,13 @@ clawhub package publish ./plugins/kpainter-openclaw-bundle \
   --family bundle-plugin \
   --name kpainter-openclaw-bundle \
   --display-name "KPainter OpenClaw Bundle" \
-  --version 0.2.0 \
-  --bundle-format openclaw-bundle \
-  --host-targets desktop,mobile \
-  --changelog "Add the public AI Video product and align the OpenClaw package family"
+  --version 0.3.0 \
+  --bundle-format agent \
+  --changelog "Migrate to a portable Agent Plugins bundle carrying the canonical KPainter Skill"
 ```
 
 ## Current caveats
 
-- This package is intentionally bundle-only metadata, not a runnable plugin.
-- If KPainter later needs host-specific assets or a concrete bundle binary layout, publish a new version that adds those artifacts under the same package name.
+- This package intentionally contains no executable runtime code.
+- Keep `skills/kpainter/SKILL.md` byte-identical to the canonical
+  `../../skills/kpainter/SKILL.md` before publishing.

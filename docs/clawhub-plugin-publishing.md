@@ -45,10 +45,10 @@ This repo now keeps matching draft scaffolds under:
 
 Current published state before the next release:
 
-- `kpainter-openclaw@0.1.5` is live on ClawHub as a `code-plugin`
-- `kpainter-openclaw-bundle@0.1.5` is live on ClawHub as a `bundle-plugin`
+- `kpainter-openclaw@0.3.0` is live on ClawHub as a `code-plugin`
+- `kpainter-openclaw-bundle@0.2.0` is live on ClawHub as a `bundle-plugin`
 - the code plugin is a preview runtime with KPainter API tools
-- the bundle release is a metadata-only host-target pack, not runnable plugin code
+- the historical bundle release is a metadata-only host-target pack; the next bundle release uses the Agent Plugins content layout
 - initial security/verification scan state may remain `pending` right after publish
 
 ## When to use each family
@@ -131,15 +131,16 @@ Minimum publish metadata now needed in practice:
 - `openclaw.build.openclawVersion`
 - config schema metadata
 
-Current KPainter runtime scope:
+Current KPainter runtime scope keeps the installed OpenClaw names stable:
 
-- `kpainter_get_catalog`
-- `kpainter_get_me`
-- `kpainter_create_creation`
-- `kpainter_list_creations`
-- `kpainter_get_creation`
-- `kpainter_get_job_status`
-- `kpainter_edit_creation`
+- `kpainter_capabilities`
+- `kpainter_upload_file`
+- `kpainter_create`
+- `kpainter_list`
+- `kpainter_get`
+- `kpainter_message`
+- `kpainter_act`
+- `kpainter_outputs`
 
 Example publish command:
 
@@ -161,16 +162,17 @@ Notes:
 - ClawHub will reject the publish if `openclaw.plugin.json` is missing
 - ClawHub will reject the publish if `source-repo` or `source-commit` is missing
 - ClawHub backend now also extracts `openclaw.extensions`, compatibility metadata, build metadata, and config schema from the package payload
-- the code plugin calls `https://api.kpainter.ai/openapi/v1` and sends both `Authorization: Bearer <key>` and `X-KGP-Api-Key: <key>`
+- the code plugin calls `https://api.kpainter.ai/openapi/v1` and sends only `Authorization: Bearer <key>`
 
-## Minimal `bundle-plugin` skeleton
+## Agent Plugins `bundle-plugin` skeleton
 
 ```text
 kpainter-openclaw-bundle/
   package.json
-  openclaw.bundle.json
-  dist/
-    plugin.wasm
+  plugin.json
+  skills/
+    kpainter/
+      SKILL.md
   README.md
 ```
 
@@ -180,24 +182,18 @@ Example `package.json`:
 {
   "name": "kpainter-openclaw-bundle",
   "displayName": "KPainter OpenClaw Bundle",
-  "version": "0.1.0",
-  "openclaw": {
-    "bundleFormat": "openclaw-bundle",
-    "hostTargets": ["desktop", "mobile"],
-    "compat": {
-      "minGatewayVersion": "2026.3.22"
-    }
-  }
+  "version": "0.3.0"
 }
 ```
 
-Example `openclaw.bundle.json`:
+Example `plugin.json`:
 
 ```json
 {
-  "id": "kpainter-openclaw-bundle",
-  "hostTargets": ["desktop", "mobile"],
-  "format": "openclaw-bundle"
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kpainter-openclaw-bundle",
+  "version": "0.3.0",
+  "description": "Portable KPainter Skill bundle for Agent Plugins-compatible hosts."
 }
 ```
 
@@ -208,18 +204,16 @@ clawhub package publish ./kpainter-openclaw-bundle \
   --family bundle-plugin \
   --name kpainter-openclaw-bundle \
   --display-name "KPainter OpenClaw Bundle" \
-  --version 0.1.0 \
-  --bundle-format openclaw-bundle \
-  --host-targets desktop,mobile \
-  --changelog "Initial bundle release"
+  --version 0.3.0 \
+  --bundle-format agent \
+  --changelog "Migrate to a portable Agent Plugins bundle carrying the canonical KPainter Skill"
 ```
 
 Notes:
 
-- bundle plugins do not need the code-plugin source repo requirement
-- bundle plugins still need a clear host target story
-- if `openclaw.bundle.json` is omitted, `--host-targets` is still required
-- a lightweight metadata pack is acceptable as a first bundle release if it clearly declares host targets and does not pretend to execute code
+- Agent Plugins bundles use root `plugin.json`; `openclaw.bundle.json` is not a current OpenClaw bundle contract
+- do not add `openclaw.plugin.json` to this bundle: native OpenClaw manifests take precedence over bundle markers
+- bundle plugins do not need a native runtime entrypoint when they contain recognized content such as `skills/`
 
 ## VirusTotal `Pending`
 
@@ -244,11 +238,11 @@ The lowest-risk order for KPainter is:
 
 1. Keep `kpainter` as the current public `skill`
 2. Publish `kpainter-openclaw` as a preview `code-plugin` only after validating it on the target OpenClaw version
-3. Publish `kpainter-openclaw-bundle` as a preview `bundle-plugin` when KPainter wants a distinct bundle-only distribution line for host targets
-4. If future hosts need real bundle assets, publish forward under the same bundle package name instead of creating a third package name
+3. Publish `kpainter-openclaw-bundle` as a portable Agent Plugins bundle that carries the canonical Skill
+4. Keep a future code runtime in the separate `kpainter-openclaw` code-plugin package rather than creating a third package
 
 Important current caution:
 
 - external OpenClaw plugins are moving quickly, so keep KPainter releases labeled preview
-- `kpainter-openclaw@0.3.0` has passed an isolated install/load check on OpenClaw `2026.4.15`, including its config schema and all seven registered tools
+- Historical `kpainter-openclaw@0.3.0` passed an isolated install/load check on OpenClaw `2026.4.15`; that seven-tool evidence does not validate the current eight-tool, three-product KPainter OpenAPI source, which requires a fresh isolated load check before publication
 - this check did not use a real user API key for a paid end-to-end generation, so it is not yet a production-readiness claim

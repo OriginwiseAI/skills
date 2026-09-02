@@ -1,112 +1,113 @@
 # KPainter Marketplace Asset Pack
 
-Last updated: 2026-07-19
+Last updated: 2026-09-01
 
 ## Canonical Identity
 
-- Product name: `KPainter`
-- Skill slug: `kpainter`
-- Domain: `https://kpainter.ai/`
-- Public skill file: `https://kpainter.ai/skill.md`
-- Skills repo: `https://github.com/OriginwiseAI/skills`
+- Product name: KPainter
+- Skill slug: kpainter
+- Domain: https://kpainter.ai/
+- Public Skill: https://kpainter.ai/skill.md
+- Skills repository: https://github.com/OriginwiseAI/skills
+- API brand: KPainter OpenAPI
+- API base: https://api.kpainter.ai/openapi/v1
 
-## Canonical Product Naming
+## Public Products
 
-Keep these names stable across listings, screenshots, skill docs, and MCP/plugin docs:
+Keep these names stable across listings, screenshots, Skill docs, MCP, and plugins:
 
-- `Explainer Video`
-- `Read Aloud Video`
-- `Vector Animation`
-- `AI Image`
-- `AI Video`
-- `AI PPT`
-- `AI App`
+- Explainer Video — video
+- AI Image — image
+- AI App — app
 
-When API type names are needed, use:
-
-- `explainer_video`
-- `read_aloud_video`
-- `vector_animation`
-- `image`
-- `ai_video`
-- `slides`
-- `interactive_lesson`
+PDFs, presentations, webpages, documents, spreadsheets, and images are source formats. They are not additional products.
 
 ## English Tagline
 
-Explain any topic with precision. Turn PDFs, PPTs, web links, and other documents into precise, clearly structured explainer videos and interactive lessons.
+Explain any topic with precision through videos, images, and interactive apps.
 
 ## Chinese Tagline
 
-精准讲解每一个主题。输入 PDF、PPT、网页链接和各类文档，生成表达精准、结构清晰的解说视频和互动课程。
+用视频、图片和互动应用，精准讲解每一个主题。
 
-## English One-Paragraph Description
+## English Description
 
-KPainter helps users explain any topic with precision through normal conversation. Turn PDFs, PPTs, web links, and other documents into precise, clearly structured Explainer Videos and Interactive Lessons, then create or refine Read Aloud Videos, Vector Animations, AI Images, AI Videos, and AI PPTs when the task calls for them. When setup is needed, connect a KPainter account and API key inside the current agent workflow.
+KPainter lets users create Explainer Videos, AI Images, and interactive AI Apps through natural conversation. Turn topics, PDFs, presentations, webpages, and other sources into a complete result, follow asynchronous progress, and refine supported work without leaving the current agent.
 
-## Official Links
+## Chinese Description
 
-- Homepage: `https://kpainter.ai/`
-- Skill file: `https://kpainter.ai/skill.md`
-- Skills docs: `https://kpainter.ai/docs/skills`
-- OpenAPI docs: `https://kpainter.ai/docs/openapi`
-- API key: `https://kpainter.ai/api-key`
-- Privacy policy: `https://kpainter.ai/policies/privacy-policy`
-- Terms of service: `https://kpainter.ai/policies/terms-of-use`
-- Support email: `support@originwise.ai`
+KPainter 让用户通过自然对话创建解说视频、AI 图片和互动应用。输入主题、PDF、PPT、网页或其他资料，持续查看生成进度，并在当前 Agent 中继续完善支持修改的结果。
 
-## Recommended Marketplace Tags
+## Value Points
 
-- `education`
-- `video`
-- `slides`
-- `explainer`
-- `knowledge`
-- `productivity`
+- Three clear result types instead of a long technical model list.
+- Source-aware creation from documents and references.
+- Account-scoped capabilities, progress, ETA, and credit information.
+- Natural-language Explainer Video refinement.
+- Secure file upload and recoverable paused tasks.
+- Support for the user's preferred language.
+
+## Recommended Tags
+
+- education
+- explainer-video
+- training
+- image
+- interactive-app
+- productivity
+- content-creation
 
 ## English Sample Prompts
 
-1. Make an Explainer Video that explains MCP clearly in about 30 seconds.
-2. Create a Read Aloud Video that teaches transformer attention step by step.
-3. Use vector animation to explain how a retrieval pipeline works.
-4. Build a slide deck for onboarding new product managers to AI agents.
-5. Create a course cover image for an introduction to prompt engineering.
-6. Build an interactive web app that helps students explore how attention works.
-7. Use Gemini Omni Flash to create an eight-second video with native audio.
-8. Turn this document into a classroom-friendly Read Aloud Video in Spanish.
-9. Keep the same topic, but switch the result from Explainer Video to Read Aloud Video.
+1. Turn this onboarding handbook into a 1–3 minute English training video.
+2. Create an Explainer Video that teaches the Pythagorean theorem with clear visual steps.
+3. Turn this webpage into a customer education video.
+4. Create a 16:9 cover image for a prompt-engineering course.
+5. Use this reference image to design an event poster.
+6. Build an interactive quiz from this safety handbook.
+7. Create a simulator that shows how compound interest changes over time.
 
-## Chinese Sample Prompts For Domestic Listings
+## Chinese Sample Prompts
 
-1. 帮我做一个讲清楚 MCP 的解说视频。
-2. 做一个绘本视频，分步骤讲解 Transformer attention。
-3. 用矢量动画讲清楚 RAG 的调用流程。
-4. 做一份给新员工培训 AI agents 的 PPT。
-5. 做一张提示词工程课程封面图。
+1. 把这份员工手册做成 1–3 分钟的培训解说视频。
+2. 做一个用清晰视觉步骤讲解勾股定理的解说视频。
+3. 把这个网页做成面向客户的产品教育视频。
+4. 为提示词工程课程做一张 16:9 封面图。
+5. 参考这张图片设计一张活动海报。
+6. 根据安全手册做一个互动测验。
+7. 做一个可以调节参数观察复利变化的模拟器。
 
-## Current Ready Assets In This Repo
+## Official Links
 
-- Horizontal logo: `assets/brand/logo_en.png`
-- Square icon: `assets/brand/logo_en_s.png`
-- Promo cover placeholder: `assets/screenshots/hero-cover-zh.jpg`
+- Homepage: https://kpainter.ai/
+- Skill: https://kpainter.ai/skill.md
+- Skills docs: https://kpainter.ai/docs/skills
+- OpenAPI docs: https://kpainter.ai/docs/openapi
+- MCP docs: https://kpainter.ai/docs/mcp
+- API Key: https://kpainter.ai/api-key
+- Privacy policy: https://kpainter.ai/policies/privacy-policy
+- Terms: https://kpainter.ai/policies/terms-of-use
+- Support: support@originwise.ai
+
+## Current Assets
+
+- Horizontal logo: assets/brand/logo_en.png
+- Square icon: assets/brand/logo_en_s.png
+- Promo cover placeholder: assets/screenshots/hero-cover-zh.jpg
 
 ## Still Needed
 
-- English product screenshot sized for marketplace listing pages
-- Short product GIF or MP4 preview showing create -> poll -> result
-- Optional square social cover with English title treatment
-- Optional Chinese localized cover for Tencent SkillHub if the platform favors Chinese-first cards
+- English marketplace screenshot showing create → progress → result.
+- Short GIF or MP4 demonstrating the three-product workflow.
+- Optional localized Chinese cover for Chinese-first directories.
+- Final review of marketplace character limits.
 
-## Listing Copy Rules
+## Listing Rules
 
-- Keep marketplace-facing metadata English-first unless the target platform is explicitly Chinese-first.
-- Do not say the product supports only a listed language set; say it supports the user's preferred language.
-- Do not use old video type names such as `generated_video`, `presentation_video`, or `animated_video`.
-- Do not say bare `video` automatically means one product; clarify whether the user wants Explainer Video, Read Aloud Video, or AI Video. Offer Vector Animation only when the user explicitly names it.
-- Public AI Video is available as `ai_video`; model choice belongs in `video_generation`, and only Omni supports conversational iteration.
-
-## Manual Inputs Still Needed From The Team
-
-- Final choice of marketplace hero screenshot
-- Final short demo GIF or MP4
-- Confirmation on whether `support@originwise.ai` stays the external support mailbox for all marketplaces
+- Keep public metadata English-first unless the marketplace is Chinese-first.
+- Describe multilingual support as the user's preferred language; example languages are not an allowlist.
+- Use KPainter OpenAPI as the API brand and creations only as the resource name.
+- Use only video, image, and app in technical examples.
+- Do not advertise picture-book video, standalone AI Video, AI Presentation, or Vector Animation as available OpenAPI products.
+- Do not silently map an unavailable product to Explainer Video.
+- Keep URLs, product names, and sample prompts aligned with the canonical Skill.

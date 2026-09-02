@@ -1,79 +1,77 @@
 # Tencent SkillHub Listing Pack
 
-Last updated: 2026-07-19
+Last updated: 2026-09-01
 
 ## Positioning
 
-Use this pack for Tencent SkillHub or other Chinese-first skill directories that want localized copy for the existing `kpainter` skill.
+Use this pack for Tencent SkillHub or another Chinese-first skill directory.
 
-## Recommended Listing Name
+## Recommended Name
 
-`KPainter`
+KPainter
 
-Alternative if a bilingual title is needed:
+Optional bilingual name: KPainter 知识画家
 
-`KPainter 知识画家`
+## Short Subtitle
 
-## Recommended Short Subtitle
+用视频、图片和互动应用，精准讲解每一个主题。
 
-精准讲解每一个主题，生成解说视频、绘本视频、矢量动画、AI 图片、AI 视频、AI PPT 和互动课程。
+## Long Description
 
-## Recommended Long Description
+KPainter 帮助用户在 Agent 对话中创建解说视频、AI 图片和 AI 应用。输入主题、PDF、PPT、网页或其他资料，即可生成结构清晰的知识讲解、课程封面、海报、互动测验、模拟器和小工具，并持续查看生成进度与结果。
 
-KPainter 帮助用户精准讲解每一个主题。输入 PDF、PPT、网页链接和各类文档，即可在当前 agent 或 skill 环境里生成表达精准、结构清晰的解说视频和互动课程，也可创建绘本视频、矢量动画、AI 图片、AI 视频和 AI PPT，并继续修改结果。
+## Core Value
 
-## Chinese Value Points
-
-- 适合知识讲解和结构化表达，不只是泛娱乐视频
-- 能在 `解说视频 / 绘本视频 / 矢量动画 / AI 图片 / AI 视频 / AI PPT / AI 应用` 之间切换
-- 支持用户用自己的语言直接描述需求
-- 对接用户自己的 KPainter API Key，适合 agent 内工作流
+- 解说视频：适合课程、培训、SOP、研究解读和产品教育。
+- AI 生图：适合封面、海报、插画和单张视觉创意。
+- AI 应用：适合互动网页、模拟器、测验和实用工具。
+- 支持上传 PDF、PPT、文档、表格和图片等资料。
+- 支持用户偏好的语言，不把示例语言当作限制。
+- 使用用户自己的 KPainter 账号和 API Key。
 
 ## Suggested Tags
 
-- `解说视频`
-- `绘本视频`
-- `PPT`
-- `图解视频`
-- `矢量动画`
-- `教育`
-- `内容创作`
+- 解说视频
+- 培训
+- 教育
+- 图片生成
+- 互动应用
+- 内容创作
+- 效率工具
 
-## Chinese Example Prompts
+## Chinese Sample Prompts
 
-1. 帮我做一个讲清楚 MCP 的解说视频，30 秒左右。
-2. 做一个绘本视频，分步骤讲解 Transformer attention。
-3. 用矢量动画讲清楚 RAG 的调用流程。
-4. 做一份给新员工培训 AI agents 的 PPT。
-5. 把这份材料做成一张课程封面图。
-6. 做一个分镜短视频，展示雨夜未来城市的电影镜头。
-7. 做一个互动网页，让学生理解注意力机制。
-
-## Recommended Assets
-
-- Horizontal logo: `assets/brand/logo_en.png`
-- Square icon: `assets/brand/logo_en_s.png`
-- Temporary cover image: `assets/screenshots/hero-cover-zh.jpg`
+1. 把这份员工手册做成 1–3 分钟的培训解说视频。
+2. 做一个用清晰视觉步骤讲解勾股定理的解说视频。
+3. 把这个网页做成面向客户的产品教育视频。
+4. 为提示词工程课程做一张 16:9 封面图。
+5. 参考这张图片设计一张活动海报。
+6. 根据安全手册做一个互动测验。
+7. 做一个可以调节参数观察复利变化的模拟器。
 
 ## Official Links
 
-- Homepage: `https://kpainter.ai/`
-- Skill file: `https://kpainter.ai/skill.md`
-- Skills docs: `https://kpainter.ai/docs/skills`
-- OpenAPI docs: `https://kpainter.ai/docs/openapi`
-- API Key page: `https://kpainter.ai/api-key`
-- Privacy policy: `https://kpainter.ai/policies/privacy-policy`
-- Terms of service: `https://kpainter.ai/policies/terms-of-use`
-- Support email: `support@originwise.ai`
+- Homepage: https://kpainter.ai/
+- Skill: https://kpainter.ai/skill.md
+- Skills repo: https://github.com/OriginwiseAI/skills
+- Skills docs: https://kpainter.ai/docs/skills
+- OpenAPI docs: https://kpainter.ai/docs/openapi
+- API Key: https://kpainter.ai/api-key
+- Privacy policy: https://kpainter.ai/policies/privacy-policy
+- Terms: https://kpainter.ai/policies/terms-of-use
+- Support: support@originwise.ai
+
+## Recommended Assets
+
+- Horizontal logo: assets/brand/logo_en.png
+- Square icon: assets/brand/logo_en_s.png
+- Temporary cover: assets/screenshots/hero-cover-zh.jpg
 
 ## Submission Notes
 
-- Keep the primary skill slug as `kpainter`.
-- If SkillHub allows only one display language, prefer Chinese copy with `KPainter` as the visible product name.
-- Keep all seven public type names aligned with the canonical Skill and Catalog.
-- If Tencent requests extra trust or moderation information, provide the public docs links, policy links, and support mailbox first.
-
-## Current Blockers
-
-- No confirmed public self-serve submission flow has been documented in this repo yet.
-- Need final marketplace screenshot and short demo visual if Tencent asks for richer media.
+- Keep the public skill slug kpainter.
+- Keep the API brand KPainter OpenAPI.
+- Public technical types are video, image, and app.
+- PDF, PPT, webpage, document, spreadsheet, and image are sources rather than product types.
+- Do not advertise picture-book video, standalone AI Video, AI Presentation, or Vector Animation as public OpenAPI products.
+- If SkillHub asks for trust or moderation material, provide the official policy links and support address first.
