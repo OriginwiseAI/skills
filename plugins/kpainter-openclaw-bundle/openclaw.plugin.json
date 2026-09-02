@@ -1,0 +1,12 @@
+{
+  "id": "kpainter-openclaw-bundle",
+  "name": "KPainter OpenClaw Bundle",
+  "description": "Compatibility manifest for the portable KPainter Skill bundle.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false
+  },
+  "contracts": {
+    "tools": []
+  }
+}

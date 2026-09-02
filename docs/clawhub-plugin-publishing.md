@@ -170,6 +170,7 @@ Notes:
 kpainter-openclaw-bundle/
   package.json
   plugin.json
+  openclaw.plugin.json
   skills/
     kpainter/
       SKILL.md
@@ -211,9 +212,9 @@ clawhub package publish ./kpainter-openclaw-bundle \
 
 Notes:
 
-- Agent Plugins bundles use root `plugin.json`; `openclaw.bundle.json` is not a current OpenClaw bundle contract
-- do not add `openclaw.plugin.json` to this bundle: native OpenClaw manifests take precedence over bundle markers
-- bundle plugins do not need a native runtime entrypoint when they contain recognized content such as `skills/`
+- Agent Plugins bundles use root `plugin.json`; `openclaw.bundle.json` is not a current OpenClaw bundle contract.
+- The current hosted ClawHub bundle release endpoint additionally requires a minimal `openclaw.plugin.json`, even though the local package validator accepts the Agent Plugins layout without it. Keep that compatibility manifest tool-free (`contracts.tools: []`), and mirror its compatibility/build/config metadata in `package.json`.
+- The bundle still has no native runtime entrypoint: it carries recognized `skills/` content only.
 
 ## VirusTotal `Pending`
 
